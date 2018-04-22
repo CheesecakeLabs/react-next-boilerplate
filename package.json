@@ -6,7 +6,7 @@
   "scripts": {
     "test": "test",
     "dev": "node server.js",
-    "build": "next build",
+    "build": "next build src",
     "start": "NODE_ENV=production node server.js"
   },
   "author": "Daniel Leite de Oliveira <dleitee@gmail.com> (https://github.com/dleitee)",
