@@ -5,11 +5,10 @@ const optimizedImages = require('next-optimized-images')
 const withOffline = require('next-offline')
 
 const webpackExtra = require('./webpack.extra')
-const getRoutes = require('./routes')
 
 const nextConfiguration = {
   webpack: config => Object.assign({}, config, webpackExtra),
-  exportPathMap: getRoutes,
+  poweredByHeader: false,
 }
 
 const sourceMapsConfiguration = [withSourceMaps, {}]
