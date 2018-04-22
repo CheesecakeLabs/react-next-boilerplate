@@ -1,0 +1,40 @@
+{
+  "name": "singularity-directory-webapp-react",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "test",
+    "dev": "node server.js",
+    "build": "next build",
+    "start": "NODE_ENV=production node server.js"
+  },
+  "author": "Daniel Leite de Oliveira <dleitee@gmail.com> (https://github.com/dleitee)",
+  "license": "ISC",
+  "dependencies": {
+    "@zeit/next-css": "^0.1.5",
+    "@zeit/next-source-maps": "0.0.2",
+    "express": "^4.16.3",
+    "next": "^5.1.0",
+    "next-compose-plugins": "^1.0.3",
+    "next-offline": "^2.3.1",
+    "next-optimized-images": "^1.2.2",
+    "next-routes": "^1.4.1",
+    "prop-types": "^15.6.1",
+    "react": "^16.3.0",
+    "react-dom": "^16.3.0"
+  },
+  "devDependencies": {
+    "autoprefixer": "^8.2.0",
+    "babel-eslint": "^8.2.2",
+    "eslint": "^4.19.1",
+    "eslint-config-cheesecakelabs": "^2.0.3",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "postcss-color-function": "^4.0.1",
+    "postcss-css-variables": "^0.8.1",
+    "postcss-custom-media": "^6.0.0",
+    "postcss-import": "^11.1.0",
+    "postcss-inline-svg": "^3.1.1",
+    "postcss-nested": "^3.0.0"
+  }
+}

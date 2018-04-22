@@ -1,0 +1,16 @@
+.logoContainer {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+
+  & .logo {
+    width: 350px;
+    height: 240px;
+  }
+}
+
+.text {
+  width: 100vw;
+  text-align: center;
+  font-size: 2em;
+}
