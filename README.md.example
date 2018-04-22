@@ -1,0 +1,40 @@
+# Project Name
+
+<Description>
+
+## Getting Started
+
+### Requirements
+
+1. Node 9.4
+1. Yarn
+1. ...
+
+### Env vars
+
+In the project's root directory has a file called `.env.example`, please **rename** it to only `.env`.
+
+Ask your project manager for all environment's variables and put them there.
+
+### How to run the development mode
+<step-by-step>
+
+**Example:**
+1. Clone your repository `git clone git@github.com:CheesecakeLabs/react-next-boilerplate.git`
+1. Go to the dir: `cd react-next-boilerplate`
+1. Run the script: `yarn dev`
+1. Now it's running on [http://localhost:5000](http://localhost:5000)
+
+### How to build for a deploy
+
+<step-by-step>
+
+**Example:**
+1. Go to the dir: `cd react-next-boilerplate`
+1. Run the script: `yarn build`
+1. Run the script: `yarn start`
+1. Now it's running on [http://localhost:5000](http://localhost:5000)
+
+## More info
+
+[CheesecakeLabs Boilerplate](https://github.com/CheesecakeLabs/react-next-boilerplate)
