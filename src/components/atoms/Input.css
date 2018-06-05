@@ -1,6 +1,9 @@
 .Input {
   border: solid 1px #dcdcdc;
   border-radius: 3px;
-  display: block;
   margin-bottom: 15px;
+  height: 20px;
+  width: 200px;
+  color: #4a4a4a;
+  font-size: 13px
 }

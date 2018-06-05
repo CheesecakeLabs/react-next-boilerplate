@@ -4,16 +4,18 @@ import Input from '../atoms/Input'
 import Button from '../atoms/Button'
 import Label from '../atoms/Label'
 
+import classes from './Login.css'
+
 const login = () => (
-  <div>
-    <form>
+  <form>
+    <div className={classes.Login}>
       <Label label="Email" />
       <Input type="email" />
       <Label label="Senha" />
       <Input type="password" />
       <Button label="Login" />
-    </form>
-  </div>
+    </div>
+  </form>
 )
 
 export default login
