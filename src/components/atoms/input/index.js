@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 
-import classes from './Input.css'
+import classes from './styles.css'
 
 const input = props => <input className={classes.Input} type={props.type} />
 

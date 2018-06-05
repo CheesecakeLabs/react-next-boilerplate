@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 
-import classes from './Label.css'
+import classes from './styles.css'
 
 const label = props => (
   <label htmlFor={props.htmlFor} className={classes.Label}>

@@ -1,10 +1,10 @@
 import React from 'react'
 
-import Input from '../atoms/Input'
-import Button from '../atoms/Button'
-import Label from '../atoms/Label'
+import Input from '../../atoms/input'
+import Button from '../../atoms/button'
+import Label from '../../atoms/label'
 
-import classes from './Login.css'
+import classes from './styles.css'
 
 const login = () => (
   <form>
