@@ -1,18 +1,15 @@
 import React from 'react'
 
-import Input from '../../atoms/input'
 import Button from '../../atoms/button'
-import Label from '../../atoms/label'
+import InputWithLabel from '../../molecules/input-with-label'
 
 import classes from './styles.css'
 
 const login = () => (
   <form>
     <div className={classes.Login}>
-      <Label label="Email" />
-      <Input type="email" />
-      <Label label="Senha" />
-      <Input type="password" />
+      <InputWithLabel label="Email" type="email" />
+      <InputWithLabel label="Senha" type="password" />
       <Button label="Login" />
     </div>
   </form>

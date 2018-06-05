@@ -3,4 +3,6 @@
   background: transparent;
   padding: 5px;
   border-radius: 3px;
+  width: 200px;
+  box-sizing: border-box;
 }
