@@ -2,17 +2,18 @@ import React from 'react'
 
 import Button from '../../atoms/button'
 import InputWithLabel from '../../molecules/input-with-label'
+import PasswordField from '../../molecules/password-field'
 
 import classes from './styles.css'
 
-const login = () => (
+const signIn = () => (
   <form>
     <div className={classes.Login}>
       <InputWithLabel label="Email" type="email" />
-      <InputWithLabel label="Senha" type="password" />
+      <PasswordField label="Senha" type="password" />
       <Button label="Login" />
     </div>
   </form>
 )
 
-export default login
+export default signIn

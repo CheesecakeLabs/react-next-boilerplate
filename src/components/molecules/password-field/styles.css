@@ -1,0 +1,29 @@
+.PasswordMask {
+  border: solid 1px #dcdcdc;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  padding-left: 8px;
+  margin-bottom: 15px;
+  width: 250px;
+  justify-content: space-between;
+  box-sizing: content-box;
+
+  input {
+    border: none;
+    outline: none;
+    margin: 0;
+    width: auto;
+  }
+
+  button {
+
+    border: none;
+    outline: none;
+    padding: 0 7px;
+
+    img {
+      width: 20px;
+    }
+  }
+}
