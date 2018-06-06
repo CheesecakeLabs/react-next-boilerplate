@@ -1,10 +1,9 @@
 import React from 'react'
 
-import Button from '../../atoms/button'
-import InputWithLabel from '../../molecules/input-with-label'
-import PasswordField from '../../molecules/password-field'
-
-import classes from './styles.css'
+import Button from '../../components/atoms/button'
+import InputWithLabel from '../../components/molecules/input-with-label'
+import PasswordField from '../../components/molecules/password-field'
+import classes from '../signin/styles.css'
 
 const signIn = () => (
   <form>
