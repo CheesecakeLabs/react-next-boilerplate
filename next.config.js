@@ -7,8 +7,33 @@ const withOffline = require('next-offline')
 const webpackExtra = require('./webpack.extra')
 
 const nextConfiguration = {
-  webpack: config => Object.assign({}, config, webpackExtra),
+  webpack: (config, options) => {
+    const entryFactory = config.entry
+    const { isServer } = options
+    if (!isServer) {
+      const newConfig = {
+        ...config,
+        entry: () =>
+          entryFactory().then(entry => {
+            const main = entry['main.js']
+            main.push('./pages/_document.js')
+            main.push('./pages/index/index.js')
+            main.push('./pages/signin/index.js')
+
+            return {
+              'main.js': main,
+              'bundles/pages/_app.js': './pages/_app.js',
+              'bundles/pages/_document.js': './pages/_document.js',
+              'bundles/pages/_error.js': './pages/_error.js',
+            }
+          }),
+      }
+      return Object.assign({}, newConfig, webpackExtra)
+    }
+    return Object.assign({}, config, webpackExtra)
+  },
   poweredByHeader: false,
+  rootPaths: ['./src'],
 }
 
 const sourceMapsConfiguration = [withSourceMaps, {}]
