@@ -5,12 +5,14 @@ import logo from '_images/logo.png'
 
 import styles from './styles.css'
 
+import Button from '../../components/atoms/button'
+
 const CKLBoilerplate = () => (
   <Fragment>
     <div className={styles.buttons}>
-      <button>Sign up</button>
+      <Button label="Sign up" />
       <Link href="/signin">
-        <button>Sign in</button>
+        <Button label="Sign in" link="/signin" />
       </Link>
     </div>
     <div className={styles.logoContainer}>

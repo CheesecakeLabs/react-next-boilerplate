@@ -1,0 +1,8 @@
+.button {
+  outline: none;
+  background: transparent;
+  padding: 5px;
+  border-radius: 3px;
+  width: 250px;
+  box-sizing: content-box;
+}

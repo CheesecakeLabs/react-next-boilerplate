@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import GoogleLogin from 'react-google-login'
 
-import Button from '../../components/atoms/button'
+import ButtonSignin from '../../components/atoms/button-signin'
 import InputWithLabel from '../../components/molecules/input-with-label'
 import PasswordField from '../../components/molecules/password-field'
 import styles from '../signin/styles.css'
@@ -49,7 +49,7 @@ class signIn extends Component {
                 <div className={styles.login}>
                   <InputWithLabel label="Email" type="email" />
                   <PasswordField label="Senha" type="password" />
-                  <Button label="Login" />
+                  <ButtonSignin label="Login" />
                 </div>
               </form>
 
