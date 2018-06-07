@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 
-import classes from './styles.css'
+import styles from './styles.css'
 
 const label = props => (
-  <label htmlFor={props.htmlFor} className={classes.Label}>
+  <label htmlFor={props.htmlFor} className={styles.label}>
     {props.label}
   </label>
 )

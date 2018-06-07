@@ -4,10 +4,10 @@ import React from 'react'
 import Label from '../../atoms/label'
 import Input from '../../atoms/input'
 
-import classes from './styles.css'
+import styles from './styles.css'
 
 const inputWithLabel = props => (
-  <div className={classes.InputWithLabel}>
+  <div className={styles.inputWithLabel}>
     <Label label={props.label} />
     <Input type={props.type} />
   </div>

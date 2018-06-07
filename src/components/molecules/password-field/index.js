@@ -7,7 +7,7 @@ import icVisible from '_images/ic-visible.png'
 import Label from '../../atoms/label'
 import Input from '../../atoms/input'
 
-import classes from './styles.css'
+import styles from './styles.css'
 
 class passwordMask extends Component {
   state = {
@@ -26,9 +26,9 @@ class passwordMask extends Component {
     return (
       <div>
         <Label label={this.props.label} />
-        <div className={classes.PasswordMask}>
+        <div className={styles.passwordMask}>
           <Input type={this.state.type} />
-          <button onClick={this.showHide} className={classes.button}>
+          <button onClick={this.showHide} className={styles.button}>
             <img
               src={this.state.type === 'input' ? icVisible : icInvisible}
               alt="Visibility icon"

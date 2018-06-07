@@ -1,12 +1,11 @@
 import React, { Component } from 'react'
+import GoogleLogin from 'react-google-login'
 
 import Button from '../../components/atoms/button'
 import InputWithLabel from '../../components/molecules/input-with-label'
 import PasswordField from '../../components/molecules/password-field'
-import classes from '../signin/styles.css'
+import styles from '../signin/styles.css'
 import FacebookLoginButton from '../../components/organisms/facebook-login-button'
-
-import GoogleLogin from 'react-google-login'
 
 class signIn extends Component {
   state = {
@@ -47,7 +46,7 @@ class signIn extends Component {
           {!username && (
             <div>
               <form>
-                <div className={classes.Login}>
+                <div className={styles.login}>
                   <InputWithLabel label="Email" type="email" />
                   <PasswordField label="Senha" type="password" />
                   <Button label="Login" />
