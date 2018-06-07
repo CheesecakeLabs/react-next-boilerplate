@@ -1,7 +1,22 @@
-.login {
-  margin-top: 100px;
+.siginWrapper {
+  width: 50%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+.siginEmailField {
+  margin-top: 70px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.socialButtons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 50px;
 }

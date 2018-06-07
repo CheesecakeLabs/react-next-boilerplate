@@ -37,32 +37,30 @@ class signIn extends Component {
   render() {
     const { username } = this.state
     return (
-      <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">React Social Media Login</h1>
-        </header>
+      <div className={styles.siginWrapper}>
+        <h1 className="signin-title">CKL Labs</h1>
 
-        <div className="App-intro">
+        <div className="signin-content__fields">
           {!username && (
             <div>
               <form>
-                <div className={styles.login}>
+                <div className={styles.siginEmailField}>
                   <InputWithLabel label="Email" type="email" />
                   <PasswordField label="Senha" type="password" />
                   <ButtonSignin label="Login" />
                 </div>
               </form>
-
-              <p>Click on one of any button below to login</p>
-              <FacebookLoginButton onLogin={this.onFacebookLogin}>
-                <button>Facebook</button>
-              </FacebookLoginButton>
-              <GoogleLogin
-                clientId="339667288442-a608ubodajou9kdmp0foct11molm1s1r.apps.googleusercontent.com"
-                buttonText="Login"
-                onSuccess={this.responseGoogle}
-                onFailure={this.responseGoogle}
-              />
+              <div className={styles.socialButtons}>
+                <FacebookLoginButton onLogin={this.onFacebookLogin}>
+                  <button>Facebook</button>
+                </FacebookLoginButton>
+                <GoogleLogin
+                  clientId="339667288442-a608ubodajou9kdmp0foct11molm1s1r.apps.googleusercontent.com"
+                  buttonText="Login"
+                  onSuccess={this.responseGoogle}
+                  onFailure={this.responseGoogle}
+                />
+              </div>
             </div>
           )}
           {username && (
