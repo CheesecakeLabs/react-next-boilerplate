@@ -6,6 +6,8 @@ import PasswordField from '../../components/molecules/password-field'
 import classes from '../signin/styles.css'
 import FacebookLoginButton from '../../components/organisms/facebook-login-button'
 
+import GoogleLogin from 'react-google-login'
+
 class signIn extends Component {
   state = {
     username: null,
@@ -27,6 +29,10 @@ class signIn extends Component {
         username: null,
       })
     }
+  }
+
+  responseGoogle = response => {
+    console.log(response)
   }
 
   render() {
@@ -52,6 +58,12 @@ class signIn extends Component {
               <FacebookLoginButton onLogin={this.onFacebookLogin}>
                 <button>Facebook</button>
               </FacebookLoginButton>
+              <GoogleLogin
+                clientId="339667288442-a608ubodajou9kdmp0foct11molm1s1r.apps.googleusercontent.com"
+                buttonText="Login"
+                onSuccess={this.responseGoogle}
+                onFailure={this.responseGoogle}
+              />
             </div>
           )}
           {username && (
