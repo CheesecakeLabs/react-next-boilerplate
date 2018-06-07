@@ -21,6 +21,14 @@ class signIn extends Component {
     }
   }
 
+  onFacebookLogout = () => {
+    window.FB.logout = response => {
+      this.setState({
+        username: null,
+      })
+    }
+  }
+
   render() {
     const { username } = this.state
     return (
@@ -46,7 +54,12 @@ class signIn extends Component {
               </FacebookLoginButton>
             </div>
           )}
-          {username && <p>Welcome back, {username}</p>}
+          {username && (
+            <div>
+              <button onClick={this.onFacebookLogout}>facebook logout</button>
+              <p>Welcome back, {username}</p>
+            </div>
+          )}
         </div>
       </div>
     )
