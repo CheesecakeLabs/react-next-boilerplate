@@ -20,3 +20,15 @@
   align-items: center;
   margin: 50px;
 }
+
+.facebookButton {
+  background-color: #4469B0;
+  color: white;
+  width: 190px;
+  padding: 10px;
+  font: bold 16px Roboto;
+  border-radius: 2px;
+  border: 1px solid transparent;
+  margin-right: 10px;
+  cursor: pointer;
+}

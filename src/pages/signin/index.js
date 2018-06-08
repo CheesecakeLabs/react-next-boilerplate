@@ -30,8 +30,18 @@ class signIn extends Component {
     }
   }
 
-  responseGoogle = response => {
-    console.log(response)
+  responseSuccessGoogle = response => {
+    if (response.profileObj.name) {
+      this.setState({
+        username: response.profileObj.name,
+      })
+    } else {
+      this.responseFailureGoogle(response)
+    }
+  }
+
+  responseFailureGoogle = response => {
+    alert(`Google login error ${response}`)
   }
 
   render() {
@@ -52,13 +62,13 @@ class signIn extends Component {
               </form>
               <div className={styles.socialButtons}>
                 <FacebookLoginButton onLogin={this.onFacebookLogin}>
-                  <button>Facebook</button>
+                  <button className={styles.facebookButton}>Facebook</button>
                 </FacebookLoginButton>
                 <GoogleLogin
                   clientId="339667288442-a608ubodajou9kdmp0foct11molm1s1r.apps.googleusercontent.com"
                   buttonText="Login"
-                  onSuccess={this.responseGoogle}
-                  onFailure={this.responseGoogle}
+                  onSuccess={this.responseSuccessGoogle}
+                  onFailure={this.responseFailureGoogle}
                 />
               </div>
             </div>
