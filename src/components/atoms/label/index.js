@@ -11,7 +11,7 @@ const label = ({ htmlFor, label }) => (
 
 label.propTypes = {
   label: PropTypes.string.isRequired,
-  htmlFor: PropTypes.string.isRequired,
+  htmlFor: PropTypes.string,
 }
 
 export default label

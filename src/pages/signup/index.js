@@ -5,6 +5,8 @@ import InputWithLabel from '../../components/molecules/input-with-label'
 import PasswordField from '../../components/molecules/password-field'
 import Button from '../../components/atoms/button'
 
+import styles from './styles.css'
+
 const mapDispatchToProps = (http, dispatch) => ({
   signUpUser: dispatch(http.post('register')),
 })
@@ -13,7 +15,9 @@ class signup extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      newUser: {},
+      newUser: {
+        token: '',
+      },
       userName: '',
       email: '',
       password: '',
@@ -28,12 +32,13 @@ class signup extends Component {
         email: this.state.email,
         password: this.state.password,
       })
+      .catch(error => {
+        console.log(error)
+      })
       .then(({ data }) => {
-        if (this.props.token) {
-          this.setState(prevState => ({
-            newUser: data,
-          }))
-        }
+        this.setState(prevState => ({
+          newUser: data,
+        }))
       })
   }
 
@@ -42,14 +47,16 @@ class signup extends Component {
   }
 
   render() {
-    if (this.props.loading) {
-      return 'Loading...'
-    }
+    const {
+      newUser: { token },
+    } = this.state
+
+    const { newUser } = this.state
 
     return (
       <div>
-        <div>
-          <form onSubmit={this.signUpUser}>
+        {!newUser || !token ? (
+          <form onSubmit={this.signUpUser} className={styles.form}>
             <p>Sign up form</p>
             <InputWithLabel
               label="Email"
@@ -71,7 +78,11 @@ class signup extends Component {
             />
             <Button label="Send" />
           </form>
-        </div>
+        ) : (
+          <div>
+            <p>Welcome, {this.state.userName}</p>
+          </div>
+        )}
       </div>
     )
   }

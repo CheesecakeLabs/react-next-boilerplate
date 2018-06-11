@@ -17,30 +17,26 @@ class signIn extends Component {
     loggedUser: {},
     username: null,
     password: '',
+    token: '',
+    loginError: '',
   }
 
   onFacebookLogin = (loginStatus, resultObject) => {
     if (loginStatus === true) {
       this.setState({
         username: resultObject.user.name,
+        token: resultObject.authResponse.accessToken,
       })
     } else {
       alert('Facebook login error')
     }
   }
 
-  onFacebookLogout = () => {
-    window.FB.logout = response => {
-      this.setState({
-        username: null,
-      })
-    }
-  }
-
   responseSuccessGoogle = response => {
-    if (response.profileObj.name) {
+    if (response.tokenId) {
       this.setState({
         username: response.getBasicProfile().getName(),
+        token: response.tokenId,
       })
     } else {
       this.responseFailureGoogle(response)
@@ -48,23 +44,30 @@ class signIn extends Component {
   }
 
   responseFailureGoogle = response => {
-    alert(`Google login error ${response}`)
+    this.setState({
+      loginError: response.error,
+    })
   }
 
   signInUser = event => {
     event.preventDefault()
-    console.log('USER: ', this.state.username)
-    console.log('password: ', this.state.password)
     this.props
       .signInUser({
         username: this.state.username,
         password: this.state.password,
       })
-      .then(({ data }) => {
-        console.log('password: ', data)
-        this.setState(prevState => ({
-          loggedUser: data,
-        }))
+      .then(({ data, error }) => {
+        if (!error) {
+          this.setState(prevState => ({
+            loggedUser: data,
+            token: data.token,
+            loginError: error,
+          }))
+        } else {
+          this.setState(prevState => ({
+            loginError: error.non_field_errors,
+          }))
+        }
       })
   }
 
@@ -73,19 +76,16 @@ class signIn extends Component {
   }
 
   render() {
-    const {
-      username,
-      loggedUser: { token },
-    } = this.state
+    const { token, username, loginError } = this.state
     return (
       <div className={styles.siginWrapper}>
         <h1 className="signin-title">CKL Labs</h1>
-
         <div className="signin-content__fields">
           {!token && (
             <div>
               <form onSubmit={this.signInUser}>
                 <div className={styles.siginEmailField}>
+                  {loginError && <p>Error: {loginError}</p>}
                   <InputWithLabel
                     label="Username"
                     type="text"

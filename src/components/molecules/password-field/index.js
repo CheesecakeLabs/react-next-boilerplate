@@ -27,7 +27,7 @@ class passwordMask extends Component {
       <div>
         <Label label={this.props.label} />
         <div className={styles.passwordMask}>
-          <Input type={this.state.type} value={this.props.value} onChange={this.props.changed} />
+          <input type={this.state.type} value={this.props.value} onChange={this.props.changed} />
           <button onClick={this.showHide} className={styles.button}>
             <img
               src={this.state.type === 'input' ? icVisible : icInvisible}
