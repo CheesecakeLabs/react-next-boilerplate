@@ -69,7 +69,7 @@ class signup extends Component {
               value={this.state.password}
               changed={event => this.inputChangedHandler(event, 'password')}
             />
-            <Button click={this.signUpUser} label="Send" link="" />
+            <Button label="Send" />
           </form>
         </div>
       </div>
