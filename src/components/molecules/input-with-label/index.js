@@ -6,10 +6,10 @@ import Input from '../../atoms/input'
 
 import styles from './styles.css'
 
-const inputWithLabel = props => (
+const inputWithLabel = ({ label, type, changed, value }) => (
   <div className={styles.inputWithLabel}>
-    <Label label={props.label} />
-    <Input type={props.type} />
+    <Label label={label} />
+    <Input type={type} onChange={changed} value={value} />
   </div>
 )
 

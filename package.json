@@ -15,6 +15,7 @@
     "@zeit/next-css": "^0.1.5",
     "@zeit/next-source-maps": "0.0.2",
     "express": "^4.16.3",
+    "fetches": "^0.1.4",
     "next": "^6",
     "next-compose-plugins": "^1.0.3",
     "next-offline": "^2.3.1",
@@ -23,6 +24,7 @@
     "prop-types": "^15.6.1",
     "react": "^16.3.0",
     "react-dom": "^16.3.0",
+    "react-fetches": "^1.0.0",
     "react-google-login": "^3.2.1",
     "react-router-dom": "^4.2.2"
   },

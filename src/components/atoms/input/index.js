@@ -3,7 +3,9 @@ import React from 'react'
 
 import styles from './styles.css'
 
-const input = props => <input className={styles.input} type={props.type} />
+const input = ({ type, onChange, value }) => (
+  <input className={styles.input} type={type} onChange={onChange} value={value} />
+)
 
 input.propTypes = {
   type: PropTypes.string.isRequired,

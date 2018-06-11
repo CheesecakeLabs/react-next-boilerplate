@@ -5,21 +5,19 @@ import Link from 'next/link'
 import styles from './styles.css'
 
 const button = props => (
-  <Link href={props.link}>
-    <button className={styles.button} onClick={props.action}>
-      {props.label}
-    </button>
-  </Link>
+  <button onClick={props.click} className={styles.button}>
+    {props.label}
+  </button>
 )
 
 button.propTypes = {
   label: PropTypes.string.isRequired,
-  action: PropTypes.func,
+  onClick: PropTypes.func,
   link: PropTypes.string,
 }
 
 button.defaultProps = {
-  action: null,
+  onClick: null,
   link: '',
 }
 

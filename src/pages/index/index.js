@@ -3,14 +3,17 @@ import Link from 'next/link'
 
 import logo from '_images/logo.png'
 
-import styles from './styles.css'
-
 import Button from '../../components/atoms/button'
+
+import styles from './styles.css'
 
 const CKLBoilerplate = () => (
   <Fragment>
     <div className={styles.buttons}>
-      <Button label="Sign up" />
+      <Link href="/signup">
+        <Button label="Sign up" link="/signup" />
+      </Link>
+
       <Link href="/signin">
         <Button label="Sign in" link="/signin" />
       </Link>

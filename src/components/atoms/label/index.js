@@ -3,9 +3,9 @@ import React from 'react'
 
 import styles from './styles.css'
 
-const label = props => (
-  <label htmlFor={props.htmlFor} className={styles.label}>
-    {props.label}
+const label = ({ htmlFor, label }) => (
+  <label htmlFor={htmlFor} className={styles.label}>
+    {label}
   </label>
 )
 

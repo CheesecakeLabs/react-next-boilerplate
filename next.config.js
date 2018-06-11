@@ -19,6 +19,7 @@ const nextConfiguration = {
             main.push('./pages/_document.js')
             main.push('./pages/index/index.js')
             main.push('./pages/signin/index.js')
+            main.push('./pages/signup/index.js')
 
             return {
               'main.js': main,
