@@ -12,7 +12,7 @@ const mapDispatchToProps = (http, dispatch) => ({
   submitHandler: dispatch(http.post('login')),
 })
 
-class signIn extends Component {
+class SignIn extends Component {
   state = {
     loggedUser: {},
     username: null,
@@ -130,4 +130,4 @@ class signIn extends Component {
 export default connect(
   null,
   mapDispatchToProps
-)(signIn)
+)(SignIn)

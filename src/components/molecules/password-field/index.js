@@ -9,7 +9,7 @@ import Input from '../../atoms/input'
 
 import styles from './styles.css'
 
-class passwordMask extends Component {
+class PasswordMask extends Component {
   state = {
     type: 'password',
   }
@@ -40,8 +40,8 @@ class passwordMask extends Component {
   }
 }
 
-passwordMask.propTypes = {
+PasswordMask.propTypes = {
   label: PropTypes.string.isRequired,
 }
 
-export default passwordMask
+export default PasswordMask

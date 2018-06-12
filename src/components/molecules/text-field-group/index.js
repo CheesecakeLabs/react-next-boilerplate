@@ -6,16 +6,16 @@ import Input from '../../atoms/input'
 
 import styles from './styles.css'
 
-const textFieldGroup = ({ label, type, changed, value }) => (
+const TextFieldGroup = ({ label, type, changed, value }) => (
   <div className={styles.textFieldGroup}>
     <Label label={label} />
     <Input type={type} onChange={changed} value={value} />
   </div>
 )
 
-textFieldGroup.propTypes = {
+TextFieldGroup.propTypes = {
   label: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
 }
 
-export default textFieldGroup
+export default TextFieldGroup

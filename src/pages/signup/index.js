@@ -15,7 +15,7 @@ const mapDispatchToProps = (http, dispatch) => ({
   signUpUser: dispatch(http.post('register')),
 })
 
-class signup extends Component {
+class Signup extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -92,4 +92,4 @@ class signup extends Component {
 export default connect(
   null,
   mapDispatchToProps
-)(signup)
+)(Signup)

@@ -3,10 +3,10 @@ import React from 'react'
 
 import styles from './styles.css'
 
-const buttonSignin = props => <button className={styles.button}>{props.label}</button>
+const ButtonSignin = props => <button className={styles.button}>{props.label}</button>
 
-buttonSignin.propTypes = {
+ButtonSignin.propTypes = {
   label: PropTypes.string.isRequired,
 }
 
-export default buttonSignin
+export default ButtonSignin

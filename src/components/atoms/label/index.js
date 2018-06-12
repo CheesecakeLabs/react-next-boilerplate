@@ -3,15 +3,15 @@ import React from 'react'
 
 import styles from './styles.css'
 
-const label = ({ htmlFor, label }) => (
+const Label = ({ htmlFor, label }) => (
   <label htmlFor={htmlFor} className={styles.label}>
     {label}
   </label>
 )
 
-label.propTypes = {
+Label.propTypes = {
   label: PropTypes.string.isRequired,
   htmlFor: PropTypes.string,
 }
 
-export default label
+export default Label

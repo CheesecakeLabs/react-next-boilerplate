@@ -3,12 +3,12 @@ import React from 'react'
 
 import styles from './styles.css'
 
-const input = ({ type, onChange, value }) => (
+const Input = ({ type, onChange, value }) => (
   <input className={styles.input} type={type} onChange={onChange} value={value} />
 )
 
-input.propTypes = {
+Input.propTypes = {
   type: PropTypes.string.isRequired,
 }
 
-export default input
+export default Input
