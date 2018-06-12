@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react'
-import Link from 'next/link'
+import Router from 'next/router'
 
 import logo from '_images/logo.png'
 
@@ -10,13 +10,8 @@ import styles from './styles.css'
 const CKLBoilerplate = () => (
   <Fragment>
     <div className={styles.buttons}>
-      <Link href="/signup">
-        <Button label="Sign up" link="/signup" />
-      </Link>
-
-      <Link href="/signin">
-        <Button label="Sign in" link="/signin" />
-      </Link>
+      <Button label="Sign up" click={() => Router.push('/signup')} />
+      <Button label="Sign in" click={() => Router.push('/signin')} />
     </div>
     <div className={styles.logoContainer}>
       <img src={logo} alt="CheesecakeLabs logo" className={styles.logo} />
