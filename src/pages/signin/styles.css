@@ -3,10 +3,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  color: #545454
 
 }
 .siginEmailField {
-  margin-top: 70px;
   display: flex;
   flex-direction: column;
   justify-content: center;

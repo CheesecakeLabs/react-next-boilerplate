@@ -1,7 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-fetches'
 
-import InputWithLabel from '../../components/molecules/input-with-label'
+import TextFieldGroup from '../../components/molecules/text-field-group'
+
+import Input from '../../components/atoms/input'
+import Label from '../../components/atoms/label'
+
 import PasswordField from '../../components/molecules/password-field'
 import Button from '../../components/atoms/button'
 
@@ -18,9 +22,10 @@ class signup extends Component {
       newUser: {
         token: '',
       },
-      userName: '',
+      username: '',
       email: '',
       password: '',
+      signupError: {},
     }
   }
 
@@ -28,16 +33,15 @@ class signup extends Component {
     event.preventDefault()
     this.props
       .signUpUser({
-        username: this.state.userName,
+        username: this.state.username,
         email: this.state.email,
         password: this.state.password,
       })
-      .catch(error => {
-        console.log(error)
-      })
-      .then(({ data }) => {
+      .then(({ data, error }) => {
+        console.log('DATA: ', data)
         this.setState(prevState => ({
           newUser: data,
+          signupError: error,
         }))
       })
   }
@@ -47,28 +51,25 @@ class signup extends Component {
   }
 
   render() {
-    const {
-      newUser: { token },
-    } = this.state
-
     const { newUser } = this.state
-
     return (
       <div>
-        {!newUser || !token ? (
+        {this.state.newUser ? (
           <form onSubmit={this.signUpUser} className={styles.form}>
-            <p>Sign up form</p>
-            <InputWithLabel
+            <h1>Sign up form</h1>
+
+            <TextFieldGroup
               label="Email"
               type="email"
               value={this.state.email}
               changed={event => this.inputChangedHandler(event, 'email')}
             />
-            <InputWithLabel
+
+            <TextFieldGroup
               label="Name"
               type="text"
-              value={this.state.userName}
-              changed={event => this.inputChangedHandler(event, 'userName')}
+              value={this.state.username}
+              changed={event => this.inputChangedHandler(event, 'username')}
             />
             <PasswordField
               label="Senha"
@@ -80,7 +81,7 @@ class signup extends Component {
           </form>
         ) : (
           <div>
-            <p>Welcome, {this.state.userName}</p>
+            <p>Welcome, {this.state.username}</p>
           </div>
         )}
       </div>

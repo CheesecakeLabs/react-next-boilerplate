@@ -1,6 +1,8 @@
 .button {
   outline: none;
-  background: transparent;
+  background: #1B63F7;
+  border: 1px solid #1B63F7;
+  color: white;
   padding: 5px;
   border-radius: 3px;
   width: 250px;

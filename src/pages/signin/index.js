@@ -3,13 +3,13 @@ import GoogleLogin from 'react-google-login'
 import { connect } from 'react-fetches'
 
 import ButtonSignin from '../../components/atoms/button-signin'
-import InputWithLabel from '../../components/molecules/input-with-label'
+import TextFieldGroup from '../../components/molecules/text-field-group'
 import PasswordField from '../../components/molecules/password-field'
 import styles from '../signin/styles.css'
 import FacebookLoginButton from '../../components/organisms/facebook-login-button'
 
 const mapDispatchToProps = (http, dispatch) => ({
-  signInUser: dispatch(http.post('login')),
+  submitHandler: dispatch(http.post('login')),
 })
 
 class signIn extends Component {
@@ -49,10 +49,10 @@ class signIn extends Component {
     })
   }
 
-  signInUser = event => {
+  submitHandler = event => {
     event.preventDefault()
     this.props
-      .signInUser({
+      .submitHandler({
         username: this.state.username,
         password: this.state.password,
       })
@@ -79,16 +79,17 @@ class signIn extends Component {
     const { token, username, loginError } = this.state
     return (
       <div className={styles.siginWrapper}>
-        <h1 className="signin-title">CKL Labs</h1>
+        <h1>Sign in form</h1>
         <div className="signin-content__fields">
           {!token && (
             <div>
-              <form onSubmit={this.signInUser}>
+              <form onSubmit={this.submitHandler}>
                 <div className={styles.siginEmailField}>
                   {loginError && <p>Error: {loginError}</p>}
-                  <InputWithLabel
+                  <TextFieldGroup
                     label="Username"
                     type="text"
+                    name="username"
                     value={this.state.username}
                     changed={event => this.inputChangedHandler(event, 'username')}
                   />
