@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-fetches'
 
-import TextFieldGroup from '../../components/molecules/text-field-group'
+import Cookie from 'js-cookie'
+import Router from 'next/router'
 
+import TextFieldGroup from '../../components/molecules/text-field-group'
 import Input from '../../components/atoms/input'
 import Label from '../../components/atoms/label'
 
@@ -19,13 +21,12 @@ class Signup extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      newUser: {
-        token: '',
-      },
+      newUser: {},
       username: '',
       email: '',
       password: '',
       signupError: {},
+      authenticated: Cookie.get('token') ? true : false,
     }
   }
 
@@ -38,10 +39,13 @@ class Signup extends Component {
         password: this.state.password,
       })
       .then(({ data, error }) => {
-        console.log('DATA: ', data)
+        if (!error) {
+          Cookie.set('token', data.token)
+        }
         this.setState(prevState => ({
           newUser: data,
           signupError: error,
+          authenticated: data && data.token ? true : false,
         }))
       })
   }
@@ -51,10 +55,9 @@ class Signup extends Component {
   }
 
   render() {
-    const { newUser } = this.state
     return (
       <div>
-        {this.state.newUser ? (
+        {!this.state.authenticated ? (
           <form onSubmit={this.signUpUser} className={styles.form}>
             <h1>Sign up form</h1>
 
