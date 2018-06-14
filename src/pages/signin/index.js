@@ -14,6 +14,7 @@ import Button from '../../components/atoms/button'
 
 const mapDispatchToProps = (http, dispatch) => ({
   submitHandler: dispatch(http.post('login')),
+  submitFacebookHandler: dispatch(http.post('social/facebook')),
 })
 
 class SignIn extends Component {
@@ -32,11 +33,7 @@ class SignIn extends Component {
 
   onFacebookLogin = (loginStatus, resultObject) => {
     if (loginStatus === true) {
-      this.storeToken(resultObject.authResponse.accessToken)
-      this.setState({
-        username: resultObject.user.name,
-        token: resultObject.authResponse.accessToken,
-      })
+      this.submitFacebookHandler(resultObject.authResponse.accessToken)
     } else {
       alert('Facebook login error')
     }
@@ -79,6 +76,23 @@ class SignIn extends Component {
           this.setState(prevState => ({
             loginError: error.non_field_errors,
           }))
+        }
+      })
+  }
+
+  submitFacebookHandler = token => {
+    this.props
+      .submitFacebookHandler({
+        access_token: token,
+      })
+      .then(({ data, error }) => {
+        if (data.token) {
+          this.storeToken(data.token)
+          this.setState({
+            username: data.user.username,
+            token: data.token,
+            authenticated: true,
+          })
         }
       })
   }

@@ -31,7 +31,7 @@ export default class FacebookLogin extends Component {
       if (response.status === 'connected') {
         this.facebookLoginHandler(response)
       } else {
-        window.FB.login(this.facebookLoginHandler, { scope: 'public_profile' })
+        window.FB.login(this.facebookLoginHandler, { scope: 'email' })
       }
     })
   }
