@@ -5,6 +5,7 @@ const express = require('express')
 const next = require('next')
 
 const routes = require('./routes')
+const cookieParser = require('cookie-parser')
 
 const dev = process.env.NODE_ENV !== 'production'
 const PORT = process.env.PORT || 5000
@@ -25,10 +26,32 @@ const handler = routes.getRequestHandler(app, ({ req, res, route, query }) => {
 
 app.prepare().then(() => {
   const server = express()
-  server.use(handler)
 
-  server.listen(PORT, err => {
+  // Authorization Cookie handle
+  server.use(cookieParser())
+  server.get('/token', (req, res) => {
+    if ('cookie' in req.headers) {
+      const cookieParts = req.headers.cookie.split('; ')
+      const authorization = cookieParts
+        .map(cookie => {
+          const cookieParts = cookie.split('=')
+          if (cookieParts.length && cookieParts[0] === 'csrftoken') {
+            return cookieParts[1]
+          }
+          return false
+        })
+        .filter(cookie => cookie !== false)
+      if (authorization.length) {
+        res.send(authorization[0])
+        return
+      }
+    }
+    res.status(204).send()
+  })
+
+  server.use(handler)
+  server.listen(5000, err => {
     if (err) throw err
-    console.info(`> Ready on http://localhost:${PORT}`)
+    console.log('> Ready on http://localhost:5000')
   })
 })
