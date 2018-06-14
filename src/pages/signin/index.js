@@ -7,6 +7,10 @@ import TextFieldGroup from '../../components/molecules/text-field-group'
 import PasswordField from '../../components/molecules/password-field'
 import styles from '../signin/styles.css'
 import FacebookLoginButton from '../../components/organisms/facebook-login-button'
+import Cookie from 'js-cookie'
+import Router from 'next/router'
+import { signOff } from '../../utils/Signoff'
+import Button from '../../components/atoms/button'
 
 const mapDispatchToProps = (http, dispatch) => ({
   submitHandler: dispatch(http.post('login')),
@@ -19,10 +23,16 @@ class SignIn extends Component {
     password: '',
     token: '',
     loginError: '',
+    authenticated: Cookie.get('token') ? true : false,
+  }
+
+  storeToken = token => {
+    Cookie.set('token', token)
   }
 
   onFacebookLogin = (loginStatus, resultObject) => {
     if (loginStatus === true) {
+      this.storeToken(resultObject.authResponse.accessToken)
       this.setState({
         username: resultObject.user.name,
         token: resultObject.authResponse.accessToken,
@@ -34,6 +44,7 @@ class SignIn extends Component {
 
   responseSuccessGoogle = response => {
     if (response.tokenId) {
+      this.storeToken(response.tokenId)
       this.setState({
         username: response.getBasicProfile().getName(),
         token: response.tokenId,
@@ -62,6 +73,7 @@ class SignIn extends Component {
             loggedUser: data,
             token: data.token,
             loginError: error,
+            authenticated: data.token ? true : false,
           }))
         } else {
           this.setState(prevState => ({
@@ -81,7 +93,7 @@ class SignIn extends Component {
       <div className={styles.siginWrapper}>
         <h1>Sign in form</h1>
         <div className="signin-content__fields">
-          {!token && (
+          {!this.state.authenticated ? (
             <div>
               <form onSubmit={this.submitHandler}>
                 <div className={styles.siginEmailField}>
@@ -114,11 +126,10 @@ class SignIn extends Component {
                 />
               </div>
             </div>
-          )}
-          {token && (
+          ) : (
             <div>
-              <button onClick={this.onFacebookLogout}>facebook logout</button>
               <p>Welcome back, {username}</p>
+              <Button label="Sign off" click={signOff} />
             </div>
           )}
         </div>
