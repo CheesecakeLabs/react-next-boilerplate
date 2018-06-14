@@ -11,6 +11,8 @@ import Label from '../../components/atoms/label'
 import PasswordField from '../../components/molecules/password-field'
 import Button from '../../components/atoms/button'
 
+import { signOff } from '../../utils/Signoff'
+
 import styles from './styles.css'
 
 const mapDispatchToProps = (http, dispatch) => ({
@@ -85,6 +87,7 @@ class Signup extends Component {
         ) : (
           <div>
             <p>Welcome, {this.state.username}</p>
+            <Button label="Sign off" click={signOff} />
           </div>
         )}
       </div>
