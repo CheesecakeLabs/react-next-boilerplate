@@ -15,6 +15,7 @@ import Button from '../../components/atoms/button'
 const mapDispatchToProps = (http, dispatch) => ({
   submitHandler: dispatch(http.post('login')),
   submitFacebookHandler: dispatch(http.post('social/facebook')),
+  submitGoogleHandler: dispatch(http.post('social/google')),
 })
 
 class SignIn extends Component {
@@ -40,12 +41,8 @@ class SignIn extends Component {
   }
 
   responseSuccessGoogle = response => {
-    if (response.tokenId) {
-      this.storeToken(response.tokenId)
-      this.setState({
-        username: response.getBasicProfile().getName(),
-        token: response.tokenId,
-      })
+    if (response.accessToken) {
+      this.submitGoogleHandler(response.accessToken)
     } else {
       this.responseFailureGoogle(response)
     }
@@ -83,6 +80,23 @@ class SignIn extends Component {
   submitFacebookHandler = token => {
     this.props
       .submitFacebookHandler({
+        access_token: token,
+      })
+      .then(({ data, error }) => {
+        if (data.token) {
+          this.storeToken(data.token)
+          this.setState({
+            username: data.user.username,
+            token: data.token,
+            authenticated: true,
+          })
+        }
+      })
+  }
+
+  submitGoogleHandler = token => {
+    this.props
+      .submitGoogleHandler({
         access_token: token,
       })
       .then(({ data, error }) => {
