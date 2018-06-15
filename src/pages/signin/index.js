@@ -22,7 +22,7 @@ const mapDispatchToProps = (http, dispatch) => ({
 class SignIn extends Component {
   state = {
     loggedUser: {},
-    username: null,
+    username: '',
     password: '',
     token: '',
     loginError: '',
