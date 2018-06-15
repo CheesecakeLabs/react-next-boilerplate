@@ -12,6 +12,7 @@ import PasswordField from '../../components/molecules/password-field'
 import Button from '../../components/atoms/button'
 
 import { signOff } from '../../utils/Signoff'
+import { privateView } from '../../hoc/private-view'
 
 import styles from './styles.css'
 
@@ -19,7 +20,7 @@ const mapDispatchToProps = (http, dispatch) => ({
   signUpUser: dispatch(http.post('register')),
 })
 
-class Signup extends Component {
+class SignUp extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -98,4 +99,4 @@ class Signup extends Component {
 export default connect(
   null,
   mapDispatchToProps
-)(Signup)
+)(privateView(SignUp, Cookie.get('token')))

@@ -11,6 +11,7 @@ import Cookie from 'js-cookie'
 import Router from 'next/router'
 import { signOff } from '../../utils/Signoff'
 import Button from '../../components/atoms/button'
+import { privateView } from '../../hoc/private-view'
 
 const mapDispatchToProps = (http, dispatch) => ({
   submitHandler: dispatch(http.post('login')),
@@ -63,6 +64,7 @@ class SignIn extends Component {
       })
       .then(({ data, error }) => {
         if (!error) {
+          this.storeToken(data.token)
           this.setState(prevState => ({
             loggedUser: data,
             token: data.token,
@@ -169,4 +171,4 @@ class SignIn extends Component {
 export default connect(
   null,
   mapDispatchToProps
-)(SignIn)
+)(privateView(SignIn, Cookie.get('token')))
