@@ -46,15 +46,15 @@ The **first** step of our work is done.
 
 [WIP]
 
-### Social Login Setup
+## Social Login Setup
 
-##Facebook Setup
+### Facebook Setup
 
 Go to [Facebook developers](https://developers.facebook.com/apps/) and create an app and give a name to it 'ckl-oauth'.
 
 <img src="./src/images/fb-create-app.png" width="70%">
 
-Click on `create app identification` button 
+Click on `create app identification` button
 Wait the page load then on left side menu click on `Basic` button then click on `Add Platform` section and finally select the `Site` option
 
 Fill `Site URL` section with client url
@@ -63,17 +63,17 @@ After that on your left menu side click on `Products +` button -> choose `facebo
 
 **Don't forget to `save` all the changes
 
-##Google Setup
+### Google Setup
 
 Go to [Google developers](https://developers.google.com/identity/sign-in/web/sign-in) click on `configure a project` button
 
 <img src="./src/images/google-config-project.png" width="70%">
 
-Then click on `continue` button
+Then click on `next` button
 
 <img src="./src/images/google-config-client.png" width="70%">
 
-Then click on `continue` button
+Then click on `next` button
 
 <img src="./src/images/google-oauth-client.png" width="70%">
 
