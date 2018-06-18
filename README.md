@@ -46,6 +46,29 @@ The **first** step of our work is done.
 
 [WIP]
 
+### Social Login Setup
+
+##Facebook Setup
+
+Go to [Facebook developers](https://developers.facebook.com/apps/) and create an app and give a name to it 'ckl-oauth'.
+
+![Facebook create app](./src/images/fb-create-app.png)
+
+Click on `create app identification` button 
+Wait the page load then on left side menu click on `Basic` button then click on `Add Platform` section and finally select the `Site` option
+
+Fill `Site URL` section with client url
+
+After that on your left menu side click on `Products +` button -> choose `facebook login product` -> click on `Settings` and fill `Valid OAuth redirect URIs` input
+
+**Don't forget to `save` all the changes
+
+
+
+
+
+
+
 ## How to...
 
 [WIP]
