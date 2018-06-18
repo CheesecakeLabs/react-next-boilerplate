@@ -52,7 +52,7 @@ The **first** step of our work is done.
 
 Go to [Facebook developers](https://developers.facebook.com/apps/) and create an app and give a name to it 'ckl-oauth'.
 
-![Facebook create app](./src/images/fb-create-app.png)
+<img src="./src/images/fb-create-app.png" width="70%">
 
 Click on `create app identification` button 
 Wait the page load then on left side menu click on `Basic` button then click on `Add Platform` section and finally select the `Site` option
@@ -65,20 +65,21 @@ After that on your left menu side click on `Products +` button -> choose `facebo
 
 ##Google Setup
 
-Go to [Google developers] (https://developers.google.com/identity/sign-in/web/sign-in) click on `configure a project` button
+Go to [Google developers](https://developers.google.com/identity/sign-in/web/sign-in) click on `configure a project` button
 
-![Google create app](./src/images/google-config-project.png)
-
-Then click on `continue` button
-
-![Google create app](./src/images/google-config-client.png)
+<img src="./src/images/google-config-project.png" width="70%">
 
 Then click on `continue` button
 
-![Google create app](./src/images/google-oauth-client.png)
+<img src="./src/images/google-config-client.png" width="70%">
+
+Then click on `continue` button
+
+<img src="./src/images/google-oauth-client.png" width="70%">
 
 Fill the `Authorized redirect URIs` input
-![Google create app](./src/images/google-redirect-uri.png)
+
+<img src="./src/images/google-redirect-uri.png" width="70%">
 
 
 **You can always manage your API credentials and usage later in the [API Console](https://console.developers.google.com/apis/dashboard).
