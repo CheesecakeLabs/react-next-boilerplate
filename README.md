@@ -63,10 +63,25 @@ After that on your left menu side click on `Products +` button -> choose `facebo
 
 **Don't forget to `save` all the changes
 
+##Google Setup
+
+Go to [Google developers] (https://developers.google.com/identity/sign-in/web/sign-in) click on `configure a project` button
+
+![Google create app](./src/images/google-config-project.png)
+
+Then click on `continue` button
+
+![Google create app](./src/images/google-config-client.png)
+
+Then click on `continue` button
+
+![Google create app](./src/images/google-oauth-client.png)
+
+Fill the `Authorized redirect URIs` input
+![Google create app](./src/images/google-redirect-uri.png)
 
 
-
-
+**You can always manage your API credentials and usage later in the [API Console](https://console.developers.google.com/apis/dashboard).
 
 
 ## How to...
