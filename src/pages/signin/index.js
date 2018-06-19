@@ -149,7 +149,7 @@ class SignIn extends Component {
                   <button className={styles.facebookButton}>Facebook</button>
                 </FacebookLoginButton>
                 <GoogleLogin
-                  clientId="339667288442-a608ubodajou9kdmp0foct11molm1s1r.apps.googleusercontent.com"
+                  clientId={process.env.REACT_APP_GOOGLE_ID}
                   buttonText="Login"
                   onSuccess={this.responseSuccessGoogle}
                   onFailure={this.responseFailureGoogle}
