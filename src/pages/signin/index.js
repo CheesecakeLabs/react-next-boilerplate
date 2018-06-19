@@ -6,7 +6,7 @@ import ButtonSignin from '../../components/atoms/button-signin'
 import TextFieldGroup from '../../components/molecules/text-field-group'
 import PasswordField from '../../components/molecules/password-field'
 import styles from '../signin/styles.css'
-import FacebookLoginButton from '../../components/organisms/facebook-login-button'
+import FacebookLogin from '../../components/organisms/facebook-login'
 import Cookie from 'js-cookie'
 import Router from 'next/router'
 import { signOff } from '../../utils/Signoff'
@@ -145,9 +145,9 @@ class SignIn extends Component {
                 </div>
               </form>
               <div className={styles.socialButtons}>
-                <FacebookLoginButton onLogin={this.onFacebookLogin}>
+                <FacebookLogin onLogin={this.onFacebookLogin}>
                   <button className={styles.facebookButton}>Facebook</button>
-                </FacebookLoginButton>
+                </FacebookLogin>
                 <GoogleLogin
                   clientId={process.env.REACT_APP_GOOGLE_ID}
                   buttonText="Login"
@@ -155,11 +155,6 @@ class SignIn extends Component {
                   onFailure={this.responseFailureGoogle}
                 />
               </div>
-            </div>
-          ) : (
-            <div>
-              <p>Welcome back, {username}</p>
-              <Button label="Sign off" click={signOff} />
             </div>
           )}
         </div>
