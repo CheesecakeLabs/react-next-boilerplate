@@ -4,21 +4,19 @@ import Link from 'next/link'
 
 import styles from './styles.css'
 
-const Button = props => (
-  <button onClick={props.click} className={styles.button}>
-    {props.label}
+const Button = ({ click, label }) => (
+  <button onClick={click} className={styles.button}>
+    {label}
   </button>
 )
 
 Button.propTypes = {
   label: PropTypes.string.isRequired,
   onClick: PropTypes.func,
-  link: PropTypes.string,
 }
 
 Button.defaultProps = {
   onClick: null,
-  link: '',
 }
 
 export default Button

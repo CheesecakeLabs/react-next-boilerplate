@@ -5,13 +5,9 @@ import Cookie from 'js-cookie'
 import Router from 'next/router'
 
 import TextFieldGroup from '../../components/molecules/text-field-group'
-import Input from '../../components/atoms/input'
-import Label from '../../components/atoms/label'
-
 import PasswordField from '../../components/molecules/password-field'
 import Button from '../../components/atoms/button'
 
-import { signOut } from '../../utils/SignOut'
 import { protectedRouter } from '../../hoc/with-auth'
 
 import styles from './styles.css'
@@ -24,7 +20,6 @@ class SignUp extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      newUser: {},
       username: '',
       email: '',
       password: '',
@@ -46,10 +41,10 @@ class SignUp extends Component {
           Cookie.set('token', data.token)
         }
         this.setState(prevState => ({
-          newUser: data,
           signupError: error,
           authenticated: data && data.token ? true : false,
         }))
+        Router.push('/')
       })
   }
 
@@ -60,7 +55,7 @@ class SignUp extends Component {
   render() {
     return (
       <div>
-        {!this.state.authenticated ? (
+        {!this.state.authenticated && (
           <form onSubmit={this.signUpUser} className={styles.form}>
             <h1>Sign up form</h1>
 
@@ -85,11 +80,6 @@ class SignUp extends Component {
             />
             <Button label="Send" />
           </form>
-        ) : (
-          <div>
-            <p>Welcome, {this.state.username}</p>
-            <Button label="Sign off" click={signOut} />
-          </div>
         )}
       </div>
     )

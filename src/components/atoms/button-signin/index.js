@@ -3,7 +3,7 @@ import React from 'react'
 
 import styles from './styles.css'
 
-const ButtonSignin = props => <button className={styles.button}>{props.label}</button>
+const ButtonSignin = ({ label }) => <button className={styles.button}>{label}</button>
 
 ButtonSignin.propTypes = {
   label: PropTypes.string.isRequired,
