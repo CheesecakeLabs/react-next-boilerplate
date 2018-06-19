@@ -11,8 +11,8 @@ import Label from '../../components/atoms/label'
 import PasswordField from '../../components/molecules/password-field'
 import Button from '../../components/atoms/button'
 
-import { signOff } from '../../utils/Signoff'
-import { privateView } from '../../hoc/private-view'
+import { signOut } from '../../utils/SignOut'
+import { protectedRouter } from '../../hoc/with-auth'
 
 import styles from './styles.css'
 
@@ -88,7 +88,7 @@ class SignUp extends Component {
         ) : (
           <div>
             <p>Welcome, {this.state.username}</p>
-            <Button label="Sign off" click={signOff} />
+            <Button label="Sign off" click={signOut} />
           </div>
         )}
       </div>
@@ -99,4 +99,4 @@ class SignUp extends Component {
 export default connect(
   null,
   mapDispatchToProps
-)(privateView(SignUp, Cookie.get('token')))
+)(protectedRouter(SignUp, Cookie.get('token')))

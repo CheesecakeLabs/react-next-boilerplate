@@ -5,16 +5,27 @@ import logo from '_images/logo.png'
 
 import Button from '../../components/atoms/button'
 import Cookie from 'js-cookie'
-import { signOff } from '../../utils/Signoff'
+import { signOut } from '../../utils/SignOut'
 
 import styles from './styles.css'
 
 const CKLBoilerplate = () => (
   <Fragment>
     <div className={styles.buttons}>
-      <Button label="Sign up" click={() => Router.push('/signup')} />
-      <Button label="Sign in" click={() => Router.push('/signin')} />
-      {Cookie.get('token') && <Button label="Sign off" click={signOff} />}
+      <Button
+        label="Private view"
+        click={() =>
+          Cookie.get('token') ? Router.push('/privatesection') : Router.push('/signin')
+        }
+      />
+      {Cookie.get('token') ? (
+        <Button label="Sign off" click={signOut} />
+      ) : (
+        <div>
+          <Button label="Sign up" click={() => Router.push('/signup')} />
+          <Button label="Sign in" click={() => Router.push('/signin')} />
+        </div>
+      )}
     </div>
     <div className={styles.logoContainer}>
       <img src={logo} alt="CheesecakeLabs logo" className={styles.logo} />

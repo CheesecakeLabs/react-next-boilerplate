@@ -1,7 +1,7 @@
 import Router from 'next/router'
 import Cookie from 'js-cookie'
 
-export const signOff = () => {
+export const signOut = () => {
   if (!process.browser) {
     return
   }

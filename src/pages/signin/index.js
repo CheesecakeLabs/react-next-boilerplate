@@ -9,9 +9,9 @@ import styles from '../signin/styles.css'
 import FacebookLogin from '../../components/organisms/facebook-login'
 import Cookie from 'js-cookie'
 import Router from 'next/router'
-import { signOff } from '../../utils/Signoff'
+import { signOut } from '../../utils/SignOut'
 import Button from '../../components/atoms/button'
-import { privateView } from '../../hoc/private-view'
+import { protectedRouter } from '../../hoc/with-auth'
 
 const mapDispatchToProps = (http, dispatch) => ({
   submitHandler: dispatch(http.post('login')),
@@ -71,6 +71,7 @@ class SignIn extends Component {
             loginError: error,
             authenticated: data.token ? true : false,
           }))
+          Router.push('/')
         } else {
           this.setState(prevState => ({
             loginError: error.non_field_errors,
@@ -123,7 +124,7 @@ class SignIn extends Component {
       <div className={styles.siginWrapper}>
         <h1>Sign in form</h1>
         <div className="signin-content__fields">
-          {!this.state.authenticated ? (
+          {!this.state.authenticated && (
             <div>
               <form onSubmit={this.submitHandler}>
                 <div className={styles.siginEmailField}>
@@ -166,4 +167,4 @@ class SignIn extends Component {
 export default connect(
   null,
   mapDispatchToProps
-)(privateView(SignIn, Cookie.get('token')))
+)(protectedRouter(SignIn, Cookie.get('token')))
