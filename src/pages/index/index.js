@@ -2,6 +2,8 @@ import React, { Fragment } from 'react'
 
 import logo from '_components/assets/icons/logo.png'
 
+import LeafletWrapper from '../../components/organisms/LeafletMap'
+
 import styles from './styles.css'
 
 import Button from '_components/atoms/button'
@@ -15,7 +17,8 @@ const CKLBoilerplate = () => (
     {/* eslint-disable-next-line jsx-a11y/no-distracting-elements */}
     <marquee className={styles.text}>React Boilerplate</marquee>
     <hr />
-    <Button>TESTEE</Button>
+
+    <LeafletWrapper />
   </Fragment>
 )
 
