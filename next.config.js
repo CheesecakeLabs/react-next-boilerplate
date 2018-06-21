@@ -1,3 +1,4 @@
+const glob = require('glob')
 const withPlugins = require('next-compose-plugins')
 const withCSS = require('@zeit/next-css')
 const withSourceMaps = require('@zeit/next-source-maps')
@@ -19,14 +20,9 @@ const nextConfiguration = {
         entry: () =>
           entryFactory().then(entry => {
             const main = entry['main.js']
-            main.push('./pages/_document.js')
-            main.push('./pages/index/index.js')
-            main.push('./pages/signin/index.js')
-            main.push('./pages/signup/index.js')
-            main.push('./pages/privatesection/index.js')
-
+            const pages = glob.sync('./src/pages/**/*.js').map(page => page.replace('src/', ''))
             return {
-              'main.js': main,
+              'main.js': [...main, ...pages],
               'bundles/pages/_app.js': './pages/_app.js',
               'bundles/pages/_document.js': './pages/_document.js',
               'bundles/pages/_error.js': './pages/_error.js',
