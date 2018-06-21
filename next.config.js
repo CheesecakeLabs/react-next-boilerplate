@@ -4,13 +4,17 @@ const withCSS = require('@zeit/next-css')
 const withSourceMaps = require('@zeit/next-source-maps')
 const optimizedImages = require('next-optimized-images')
 const withOffline = require('next-offline')
+const webpack = require('webpack')
 
 const webpackExtra = require('./webpack.extra')
+
+require('dotenv').config()
 
 const nextConfiguration = {
   webpack: (config, options) => {
     const entryFactory = config.entry
     const { isServer } = options
+    config.plugins.push(new webpack.EnvironmentPlugin(process.env))
     if (!isServer) {
       const newConfig = {
         ...config,
