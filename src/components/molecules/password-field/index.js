@@ -5,7 +5,6 @@ import icInvisible from '_images/ic-invisible.png'
 import icVisible from '_images/ic-visible.png'
 
 import Label from '../../atoms/label'
-import Input from '../../atoms/input'
 
 import styles from './styles.css'
 
@@ -42,6 +41,8 @@ class PasswordMask extends Component {
 
 PasswordMask.propTypes = {
   label: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired,
+  changed: PropTypes.func.isRequired,
 }
 
 export default PasswordMask

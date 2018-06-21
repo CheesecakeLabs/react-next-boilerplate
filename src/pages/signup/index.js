@@ -1,13 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-fetches'
-
 import Cookie from 'js-cookie'
 import Router from 'next/router'
 
 import TextFieldGroup from '../../components/molecules/text-field-group'
 import PasswordField from '../../components/molecules/password-field'
 import Button from '../../components/atoms/button'
-
 import { protectedRouter } from '../../hoc/with-auth'
 
 import styles from './styles.css'
@@ -40,7 +38,7 @@ class SignUp extends Component {
         if (!error) {
           Cookie.set('token', data.token)
         }
-        this.setState(prevState => ({
+        this.setState(() => ({
           signupError: error,
           authenticated: data && data.token ? true : false,
         }))

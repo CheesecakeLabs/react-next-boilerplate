@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types'
 import React from 'react'
-import Link from 'next/link'
 
 import styles from './styles.css'
 
@@ -12,11 +11,11 @@ const Button = ({ click, label }) => (
 
 Button.propTypes = {
   label: PropTypes.string.isRequired,
-  onClick: PropTypes.func,
+  click: PropTypes.func,
 }
 
 Button.defaultProps = {
-  onClick: null,
+  click: null,
 }
 
 export default Button

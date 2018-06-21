@@ -3,9 +3,9 @@ const { parse } = require('url')
 
 const express = require('express')
 const next = require('next')
+const cookieParser = require('cookie-parser')
 
 const routes = require('./routes')
-const cookieParser = require('cookie-parser')
 
 const dev = process.env.NODE_ENV !== 'production'
 const PORT = process.env.PORT || 5000
@@ -50,8 +50,8 @@ app.prepare().then(() => {
   })
 
   server.use(handler)
-  server.listen(5000, err => {
+  server.listen(PORT, err => {
     if (err) throw err
-    console.log('> Ready on http://localhost:5000')
+    console.log(`> Ready on http://localhost:${PORT}`)
   })
 })

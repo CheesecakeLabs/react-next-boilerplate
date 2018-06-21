@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import Cookie from 'js-cookie'
 import Router from 'next/router'
 
 export const privateRouter = (AuthComponent, token) => {

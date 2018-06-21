@@ -1,16 +1,14 @@
 import React, { Component } from 'react'
 import GoogleLogin from 'react-google-login'
 import { connect } from 'react-fetches'
+import Cookie from 'js-cookie'
+import Router from 'next/router'
 
 import ButtonSignin from '../../components/atoms/button-signin'
 import TextFieldGroup from '../../components/molecules/text-field-group'
 import PasswordField from '../../components/molecules/password-field'
 import styles from '../signin/styles.css'
 import FacebookLogin from '../../components/organisms/facebook-login'
-import Cookie from 'js-cookie'
-import Router from 'next/router'
-import { signOut } from '../../utils/SignOut'
-import Button from '../../components/atoms/button'
 import { protectedRouter } from '../../hoc/with-auth'
 
 const mapDispatchToProps = (http, dispatch) => ({
@@ -26,11 +24,7 @@ class SignIn extends Component {
     password: '',
     token: '',
     loginError: '',
-    authenticated: Cookie.get('token') ? true : false,
-  }
-
-  storeToken = token => {
-    Cookie.set('token', token)
+    authenticated: Cookie.get(process.env.REACT_APP_TOKEN_TEXT) ? true : false,
   }
 
   onFacebookLogin = (loginStatus, resultObject) => {
@@ -39,6 +33,10 @@ class SignIn extends Component {
     } else {
       alert('Facebook login error')
     }
+  }
+
+  storeToken = token => {
+    Cookie.set(process.env.REACT_APP_TOKEN_TEXT, token)
   }
 
   responseSuccessGoogle = response => {
@@ -65,7 +63,7 @@ class SignIn extends Component {
       .then(({ data, error }) => {
         if (!error) {
           this.storeToken(data.token)
-          this.setState(prevState => ({
+          this.setState(() => ({
             loggedUser: data,
             token: data.token,
             loginError: error,
@@ -73,7 +71,7 @@ class SignIn extends Component {
           }))
           Router.push('/')
         } else {
-          this.setState(prevState => ({
+          this.setState(() => ({
             loginError: error.non_field_errors,
           }))
         }
@@ -93,6 +91,7 @@ class SignIn extends Component {
             token: data.token,
             authenticated: true,
           })
+          Router.push('/')
         }
       })
   }
@@ -110,6 +109,7 @@ class SignIn extends Component {
             token: data.token,
             authenticated: true,
           })
+          Router.push('/')
         }
       })
   }
@@ -119,7 +119,7 @@ class SignIn extends Component {
   }
 
   render() {
-    const { token, username, loginError } = this.state
+    const { username, password, loginError } = this.state
     return (
       <div className={styles.siginWrapper}>
         <h1>Sign in form</h1>
@@ -133,29 +133,31 @@ class SignIn extends Component {
                     label="Username"
                     type="text"
                     name="username"
-                    value={this.state.username}
+                    value={username}
                     changed={event => this.inputChangedHandler(event, 'username')}
                   />
                   <PasswordField
                     label="Senha"
                     type="password"
-                    value={this.state.password}
+                    value={password}
                     changed={event => this.inputChangedHandler(event, 'password')}
                   />
                   <ButtonSignin label="Login" />
                 </div>
               </form>
-              <div className={styles.socialButtons}>
-                <FacebookLogin onLogin={this.onFacebookLogin}>
-                  <button className={styles.facebookButton}>Facebook</button>
-                </FacebookLogin>
-                <GoogleLogin
-                  clientId={process.env.REACT_APP_GOOGLE_ID}
-                  buttonText="Login"
-                  onSuccess={this.responseSuccessGoogle}
-                  onFailure={this.responseFailureGoogle}
-                />
-              </div>
+              {process.env.REACT_APP_HAS_SOCIAL_LOGIN === 'true' && (
+                <div className={styles.socialButtons}>
+                  <FacebookLogin onLogin={this.onFacebookLogin}>
+                    <button className={styles.facebookButton}>Facebook</button>
+                  </FacebookLogin>
+                  <GoogleLogin
+                    clientId={process.env.REACT_APP_GOOGLE_ID}
+                    buttonText="Login"
+                    onSuccess={this.responseSuccessGoogle}
+                    onFailure={this.responseFailureGoogle}
+                  />
+                </div>
+              )}
             </div>
           )}
         </div>
@@ -167,4 +169,4 @@ class SignIn extends Component {
 export default connect(
   null,
   mapDispatchToProps
-)(protectedRouter(SignIn, Cookie.get('token')))
+)(protectedRouter(SignIn, Cookie.get(process.env.REACT_APP_TOKEN_TEXT)))

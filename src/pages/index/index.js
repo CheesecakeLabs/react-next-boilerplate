@@ -1,10 +1,10 @@
 import React, { Fragment } from 'react'
 import Router from 'next/router'
+import Cookie from 'js-cookie'
 
 import logo from '_images/logo.png'
 
 import Button from '../../components/atoms/button'
-import Cookie from 'js-cookie'
 import { signOut } from '../../utils/SignOut'
 
 import styles from './styles.css'
