@@ -14,7 +14,14 @@
   "dependencies": {
     "@zeit/next-css": "^0.1.5",
     "@zeit/next-source-maps": "0.0.2",
+    "cookie-parser": "^1.4.3",
+    "dotenv": "^6.0.0",
+    "dotenv-webpack": "^1.5.7",
     "express": "^4.16.3",
+    "fetches": "^0.1.4",
+    "glob": "^7.1.2",
+    "isomorphic-fetch": "^2.2.1",
+    "js-cookie": "^2.2.0",
     "next": "^6",
     "next-compose-plugins": "^1.0.3",
     "next-offline": "^2.3.1",
@@ -22,7 +29,10 @@
     "next-routes": "^1.4.1",
     "prop-types": "^15.6.1",
     "react": "^16.3.0",
-    "react-dom": "^16.3.0"
+    "react-dom": "^16.3.0",
+    "react-fetches": "^1.0.0",
+    "react-google-login": "^3.2.1",
+    "react-router-dom": "^4.2.2"
   },
   "devDependencies": {
     "autoprefixer": "^8.2.0",
