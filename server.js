@@ -5,6 +5,7 @@ const express = require('express')
 const next = require('next')
 const cookieParser = require('cookie-parser')
 
+const proxy = require('./server-proxy')
 const routes = require('./routes')
 
 const dev = process.env.NODE_ENV !== 'production'
@@ -29,6 +30,10 @@ app.prepare().then(() => {
 
   // Authorization Cookie handle
   server.use(cookieParser())
+
+  // Server Proxy
+  server.use(proxy())
+
   server.get('/token', (req, res) => {
     if ('cookie' in req.headers) {
       const cookieParts = req.headers.cookie.split('; ')

@@ -29,7 +29,7 @@ class ProjectApp extends App {
 
   render() {
     const { Component, pageProps, token } = this.props
-    const client = createClient(process.env.REACT_APP_SERVER_URL, {
+    const client = createClient(process.env.REACT_APP_CLIENT_URL, {
       request: {
         headers: {
           Authorization: token ? `Token: ${token}` : undefined,
