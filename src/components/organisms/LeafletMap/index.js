@@ -13,6 +13,11 @@ let Popup
 let Icon
 let IconMarker
 
+let GL
+let GoogleLayer
+
+const road = 'ROADMAP'
+
 const PopupMarker = ({ children, position, icon }) => (
   <Marker position={position} icon={icon}>
     <Popup>
@@ -32,6 +37,8 @@ export default class LeafletWrapper extends Component {
   }
 
   componentDidMount() {
+    GL = require('react-leaflet-google')
+
     if (!RL) {
       RL = require('react-leaflet')
     }
@@ -54,6 +61,8 @@ export default class LeafletWrapper extends Component {
     Marker = RL.Marker
     Popup = RL.Popup
     Icon = RL.Icon
+
+    GoogleLayer = GL.GoogleLayer
 
     this.setState({ showMap: true })
   }
@@ -85,6 +94,8 @@ export default class LeafletWrapper extends Component {
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
           <MarkersList markers={markers} />
+
+          <GoogleLayer googlekey="AIzaSyBdgTtj8NTssQCF9LJl-TfX4xbP4qUoMeI" maptype={road} />
         </Map>
       </div>
     ) : (
