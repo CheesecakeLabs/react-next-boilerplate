@@ -1,15 +1,20 @@
 import React, { createRef, Component } from 'react'
 
+import markerIcon from '_images/icon.png'
+
 import styles from './styles.css'
 
+let LT
+let RL
 let Map
 let TileLayer
 let Marker
 let Popup
-const outer = [[50.505, -29.09], [52.505, 29.09]]
+let Icon
+let IconMarker
 
-const PopupMarker = ({ children, position }) => (
-  <Marker position={position}>
+const PopupMarker = ({ children, position, icon }) => (
+  <Marker position={position} icon={icon}>
     <Popup>
       <span>{children}</span>
     </Popup>
@@ -24,18 +29,31 @@ const MarkersList = ({ markers }) => {
 export default class LeafletWrapper extends Component {
   state = {
     showMap: false,
-    lat: 51.505,
-    lng: -0.09,
-    zoom: 13,
-    bounds: outer,
   }
 
   componentDidMount() {
-    let RL = require('react-leaflet')
+    if (!RL) {
+      RL = require('react-leaflet')
+    }
+    if (!LT) {
+      LT = require('leaflet')
+    }
+
+    IconMarker = new LT.Icon({
+      iconUrl: markerIcon,
+      iconSize: [38, 46],
+      iconAnchor: [22, 94],
+      popupAnchor: [-3, -76],
+      shadowUrl: markerIcon,
+      shadowSize: [68, 46],
+      shadowAnchor: [22, 94],
+    })
+
     Map = RL.Map
     TileLayer = RL.TileLayer
     Marker = RL.Marker
     Popup = RL.Popup
+    Icon = RL.Icon
 
     this.setState({ showMap: true })
   }
@@ -47,21 +65,28 @@ export default class LeafletWrapper extends Component {
   }
 
   render() {
-    const position = [this.state.lat, this.state.lng]
+    const position = [this.props.lat, this.props.lng]
     const markers = [
-      { key: 'marker1', position: [51.5, -0.1], children: 'My first popup' },
-      { key: 'marker2', position: [51.51, -0.1], children: 'My second popup' },
-      { key: 'marker3', position: [51.49, -0.05], children: 'My third popup' },
+      { key: 'marker1', position: [51.5, -0.1], children: 'My first popup', icon: IconMarker },
+      { key: 'marker2', position: [51.51, -0.1], children: 'My second popup', icon: IconMarker },
+      { key: 'marker3', position: [51.49, -0.05], children: 'My third popup', icon: IconMarker },
     ]
 
     return this.state.showMap ? (
-      <Map center={position} zoom={13} onClick={this.handleClick} className={styles.map}>
-        <TileLayer
-          attribution="&amp;copy <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        />
-        <MarkersList markers={markers} />
-      </Map>
+      <div>
+        <Map
+          center={position}
+          zoom={this.props.zoom}
+          onClick={this.handleClick}
+          className={styles.map}
+        >
+          <TileLayer
+            attribution="&amp;copy <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          />
+          <MarkersList markers={markers} />
+        </Map>
+      </div>
     ) : (
       <div>Loading map</div>
     )

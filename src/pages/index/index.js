@@ -16,8 +16,7 @@ const CKLBoilerplate = () => (
     <hr />
     <marquee className={styles.text}>React Boilerplate</marquee>
     <hr />
-
-    <LeafletWrapper />
+    <LeafletWrapper lat={51.505} lng={-0.09} zoom={13} />
   </Fragment>
 )
 
