@@ -3551,6 +3551,10 @@ glogg@^1.0.0:
   dependencies:
     sparkles "^1.0.0"
 
+google-maps@^3.3.0:
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/google-maps/-/google-maps-3.3.0.tgz#4432b4715406bc15268ad35b1dd1b04d974956a6"
+
 got@^5.0.0:
   version "5.7.1"
   resolved "https://registry.yarnpkg.com/got/-/got-5.7.1.tgz#5f81635a61e4a6589f180569ea4e381680a51f35"
@@ -6353,6 +6357,10 @@ react-hot-loader@4.1.3:
     prop-types "^15.6.1"
     react-lifecycles-compat "^3.0.2"
     shallowequal "^1.0.2"
+
+react-leaflet-google@^3.3.1:
+  version "3.3.1"
+  resolved "https://registry.yarnpkg.com/react-leaflet-google/-/react-leaflet-google-3.3.1.tgz#29bb6e03f99638fda020c61937cd8ffeac1c939a"
 
 react-leaflet@^1.9.1:
   version "1.9.1"
