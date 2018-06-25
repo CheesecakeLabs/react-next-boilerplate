@@ -2,20 +2,11 @@ import React, { createRef, Component } from 'react'
 
 import markerIcon from '_images/icon.png'
 
+import { isBrowser, GoogleLayer, Icon, Map, TileLayer, Marker, Popup } from '../leafletLibs'
+
 import styles from './styles.css'
 
-let LT
-let RL
-let Map
-let TileLayer
-let Marker
-let Popup
-let Icon
 let IconMarker
-
-let GL
-let GoogleLayer
-
 const road = 'ROADMAP'
 
 const PopupMarker = ({ children, position, icon }) => (
@@ -33,38 +24,23 @@ const MarkersList = ({ markers }) => {
 
 export default class LeafletWrapper extends Component {
   state = {
-    showMap: false,
+    isBrowser,
   }
 
   componentDidMount() {
-    GL = require('react-leaflet-google')
+    if (isBrowser) {
+      IconMarker = new Icon({
+        iconUrl: markerIcon,
+        iconSize: [38, 46],
+        iconAnchor: [22, 94],
+        popupAnchor: [-3, -76],
+        shadowUrl: markerIcon,
+        shadowSize: [68, 46],
+        shadowAnchor: [22, 94],
+      })
 
-    if (!RL) {
-      RL = require('react-leaflet')
+      this.setState({ isBrowser })
     }
-    if (!LT) {
-      LT = require('leaflet')
-    }
-
-    IconMarker = new LT.Icon({
-      iconUrl: markerIcon,
-      iconSize: [38, 46],
-      iconAnchor: [22, 94],
-      popupAnchor: [-3, -76],
-      shadowUrl: markerIcon,
-      shadowSize: [68, 46],
-      shadowAnchor: [22, 94],
-    })
-
-    Map = RL.Map
-    TileLayer = RL.TileLayer
-    Marker = RL.Marker
-    Popup = RL.Popup
-    Icon = RL.Icon
-
-    GoogleLayer = GL.GoogleLayer
-
-    this.setState({ showMap: true })
   }
 
   mapRef = createRef()
@@ -81,7 +57,7 @@ export default class LeafletWrapper extends Component {
       { key: 'marker3', position: [51.49, -0.05], children: 'My third popup', icon: IconMarker },
     ]
 
-    return this.state.showMap ? (
+    return isBrowser ? (
       <div>
         <Map
           center={position}
