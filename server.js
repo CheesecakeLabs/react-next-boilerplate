@@ -1,6 +1,7 @@
 const { join } = require('path')
 const { parse } = require('url')
 
+const session = require('express-session')
 const express = require('express')
 const next = require('next')
 const cookieParser = require('cookie-parser')
@@ -34,27 +35,14 @@ app.prepare().then(() => {
   // Server Proxy
   server.use(proxy())
 
-  server.get('/token', (req, res) => {
-    if ('cookie' in req.headers) {
-      const cookieParts = req.headers.cookie.split('; ')
-      const authorization = cookieParts
-        .map(cookie => {
-          const cookieParts = cookie.split('=')
-          if (cookieParts.length && cookieParts[0] === 'csrftoken') {
-            return cookieParts[1]
-          }
-          return false
-        })
-        .filter(cookie => cookie !== false)
-      if (authorization.length) {
-        res.send(authorization[0])
-        return
-      }
-    }
-    res.status(204).send()
-  })
+  // Create a session between server and client side.
+  server.use(
+    session({ secret: process.env.SESSION_SECRET, resave: true, saveUninitialized: false })
+  )
 
+  // Route's handler from next-js
   server.use(handler)
+
   server.listen(PORT, err => {
     if (err) throw err
     console.log(`> Ready on http://localhost:${PORT}`)
