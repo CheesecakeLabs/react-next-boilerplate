@@ -4,8 +4,6 @@ import PropTypes from 'prop-types'
 import MarkerList from '../../molecules/MarkerList'
 import { isBrowser, GoogleLayer, Map, TileLayer } from '../../../utils/LeafletElements'
 
-import styles from './styles.css'
-
 const road = 'ROADMAP'
 
 class LeafletWrapper extends Component {
@@ -19,22 +17,27 @@ class LeafletWrapper extends Component {
     }
   }
 
-  mapRef = createRef()
+  setPosition = () => [this.props.lat, this.props.lng]
 
   handleClick = () => {
     this.mapRef.current.leafletElement.locate()
   }
 
-  setPosition = () => [this.props.lat, this.props.lng]
+  mapRef = createRef()
 
   render() {
+    const mapDimensions = {
+      width: this.props.width,
+      height: this.props.height,
+    }
+
     return isBrowser ? (
       <div>
         <Map
           center={this.setPosition()}
           zoom={this.props.zoom}
           onClick={this.handleClick}
-          className={styles.map}
+          style={mapDimensions}
         >
           <TileLayer
             attribution="&amp;copy <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
@@ -58,12 +61,16 @@ LeafletWrapper.propTypes = {
   zoom: PropTypes.number,
   hasGoogleLayer: PropTypes.bool,
   markers: PropTypes.arrayOf(PropTypes.object),
+  width: PropTypes.number,
+  height: PropTypes.number,
 }
 
 LeafletWrapper.defaultProps = {
   zoom: 13,
   hasGoogleLayer: false,
   markers: [],
+  width: 500,
+  height: 300,
 }
 
 export default LeafletWrapper
