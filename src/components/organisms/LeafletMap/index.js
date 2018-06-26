@@ -1,28 +1,17 @@
 import React, { createRef, Component } from 'react'
+import PropTypes from 'prop-types'
 
 import markerIcon from '_images/icon.png'
 
-import { isBrowser, GoogleLayer, Icon, Map, TileLayer, Marker, Popup } from '../leafletLibs'
+import MarkerList from '../../molecules/MarkerList'
+import { isBrowser, GoogleLayer, Icon, Map, TileLayer } from '../../../utils/LeafletElements'
 
 import styles from './styles.css'
 
 let IconMarker
 const road = 'ROADMAP'
 
-const PopupMarker = ({ children, position, icon }) => (
-  <Marker position={position} icon={icon}>
-    <Popup>
-      <span>{children}</span>
-    </Popup>
-  </Marker>
-)
-
-const MarkersList = ({ markers }) => {
-  const items = markers.map(({ key, ...props }) => <PopupMarker key={key} {...props} />)
-  return <div style={{ display: 'none' }}>{items}</div>
-}
-
-export default class LeafletWrapper extends Component {
+class LeafletWrapper extends Component {
   state = {
     isBrowser,
   }
@@ -49,18 +38,19 @@ export default class LeafletWrapper extends Component {
     this.mapRef.current.leafletElement.locate()
   }
 
-  render() {
-    const position = [this.props.lat, this.props.lng]
-    const markers = [
-      { key: 'marker1', position: [51.5, -0.1], children: 'My first popup', icon: IconMarker },
-      { key: 'marker2', position: [51.51, -0.1], children: 'My second popup', icon: IconMarker },
-      { key: 'marker3', position: [51.49, -0.05], children: 'My third popup', icon: IconMarker },
-    ]
+  setPosition = () => [this.props.lat, this.props.lng]
 
+  setMarkers = () => [
+    { key: 'marker1', position: [51.5, -0.1], icon: new Icon.Default() },
+    { key: 'marker2', position: [51.51, -0.1], title: 'My second popup', icon: IconMarker },
+    { key: 'marker3', position: [51.49, -0.05], title: 'My third popup', icon: IconMarker },
+  ]
+
+  render() {
     return isBrowser ? (
       <div>
         <Map
-          center={position}
+          center={this.setPosition()}
           zoom={this.props.zoom}
           onClick={this.handleClick}
           className={styles.map}
@@ -69,9 +59,10 @@ export default class LeafletWrapper extends Component {
             attribution="&amp;copy <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
-          <MarkersList markers={markers} />
-
-          <GoogleLayer googlekey="AIzaSyBdgTtj8NTssQCF9LJl-TfX4xbP4qUoMeI" maptype={road} />
+          {this.props.markers.length > 0 && <MarkerList markers={this.setMarkers()} />}
+          {this.props.hasGoogleLayer && (
+            <GoogleLayer googlekey={process.env.GOOGLE_MAPS_API_KEY} maptype={road} />
+          )}
         </Map>
       </div>
     ) : (
@@ -79,3 +70,19 @@ export default class LeafletWrapper extends Component {
     )
   }
 }
+
+LeafletWrapper.propTypes = {
+  lat: PropTypes.number.isRequired,
+  lng: PropTypes.number.isRequired,
+  zoom: PropTypes.number,
+  hasGoogleLayer: PropTypes.bool,
+  markers: PropTypes.arrayOf(PropTypes.object),
+}
+
+LeafletWrapper.defaultProps = {
+  zoom: 13,
+  hasGoogleLayer: false,
+  markers: [],
+}
+
+export default LeafletWrapper
