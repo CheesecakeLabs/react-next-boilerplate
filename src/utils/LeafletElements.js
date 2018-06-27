@@ -4,6 +4,6 @@ const RL = isBrowser ? require('react-leaflet') : undefined
 const GL = isBrowser ? require('react-leaflet-google') : undefined
 const LT = isBrowser ? require('leaflet') : undefined
 
-export const { Map, TileLayer, Marker, Popup } = RL || {}
+export const { Map, TileLayer, Marker, Popup, LayersControl } = RL || {}
 export const { GoogleLayer } = GL || {}
 export const { Icon } = LT || {}
