@@ -16,6 +16,8 @@ export default class DefaultDocument extends Document {
             rel="stylesheet"
           />
           <link rel="stylesheet" href="/_next/static/style.css" />
+          {/* Mapbox stylesheet */}
+          <link href="https://api.mapbox.com/mapbox-gl-js/v0.42.0/mapbox-gl.css" rel="stylesheet" />
           {/* Leaflet CSS setup */}
           <link
             rel="stylesheet"
