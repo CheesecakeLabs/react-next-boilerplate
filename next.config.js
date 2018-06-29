@@ -14,7 +14,7 @@ const nextConfiguration = {
   webpack: (config, options) => {
     const entryFactory = config.entry
     const { isServer } = options
-    config.plugins.push(new webpack.EnvironmentPlugin(process.env))
+    config.plugins = [...config.plugins, new webpack.EnvironmentPlugin(process.env)]
     if (!isServer) {
       const newConfig = {
         ...config,
