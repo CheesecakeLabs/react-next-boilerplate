@@ -5,7 +5,7 @@ import PopupMarker from '_atoms/PopupMarker'
 
 const MarkerList = ({ markers }) => {
   const items = markers.map(({ key, ...props }) => <PopupMarker key={key} {...props} />)
-  return <div style={{ display: 'none' }}>{items}</div>
+  return <div>{items}</div>
 }
 
 MarkerList.propTypes = {
