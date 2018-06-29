@@ -1,5 +1,6 @@
-import markerIcon from '../../../images/marker-icon.png'
-import { isBrowser, Icon } from '../../../utils/LeafletElements'
+import { isBrowser, Icon } from '_utils/LeafletElements'
+
+import markerIcon from '_images/marker-icon.png'
 
 export const CustomIconMarker = () => {
   if (isBrowser) {

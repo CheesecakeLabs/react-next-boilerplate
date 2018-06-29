@@ -10,6 +10,7 @@ module.exports = {
       _organisms: path.resolve(__dirname, 'src', 'components', 'organisms'),
       _images: path.resolve(__dirname, 'src', 'images'),
       _pages: path.resolve(__dirname, 'src', 'pages'),
+      _utils: path.resolve(__dirname, 'src', 'utils'),
     },
   },
 }
