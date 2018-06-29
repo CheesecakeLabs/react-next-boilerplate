@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import PopupMarker from '../../atoms/PopupMarker'
+import PopupMarker from '_atoms/PopupMarker'
 
 const MarkerList = ({ markers }) => {
   const items = markers.map(({ key, ...props }) => <PopupMarker key={key} {...props} />)

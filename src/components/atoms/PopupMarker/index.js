@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-
-import { isBrowser, Marker, Popup, Icon } from '../../../utils/LeafletElements'
+import { isBrowser, Marker, Popup, Icon } from '_utils/LeafletElements'
 
 const PopupMarker = ({ title, position, icon }) =>
   isBrowser ? (
@@ -19,12 +18,11 @@ const PopupMarker = ({ title, position, icon }) =>
 PopupMarker.propTypes = {
   title: PropTypes.string,
   position: PropTypes.arrayOf(PropTypes.number).isRequired,
-  icon: PropTypes.instanceOf(Icon),
+  icon: PropTypes.instanceOf(Icon).isRequired,
 }
 
 PopupMarker.defaultProps = {
   title: '',
-  // icon: new Icon.Default(),
 }
 
 export default PopupMarker

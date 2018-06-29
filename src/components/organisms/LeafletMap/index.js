@@ -1,15 +1,9 @@
 import React, { createRef, Component } from 'react'
 import PropTypes from 'prop-types'
+import { isBrowser, GoogleLayer, Map, TileLayer, LayersControl } from '_utils/LeafletElements'
 
 import Mapbox from '../MapboxMap'
 import MarkerList from '../../molecules/MarkerList'
-import {
-  isBrowser,
-  GoogleLayer,
-  Map,
-  TileLayer,
-  LayersControl,
-} from '../../../utils/LeafletElements'
 
 const road = 'ROADMAP'
 
