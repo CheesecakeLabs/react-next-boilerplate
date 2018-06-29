@@ -8,16 +8,6 @@ import MarkerList from '../../molecules/MarkerList'
 const road = 'ROADMAP'
 
 class LeafletWrapper extends Component {
-  state = {
-    isBrowser,
-  }
-
-  componentDidMount() {
-    if (isBrowser) {
-      this.setState({ isBrowser })
-    }
-  }
-
   setPosition = () => [this.props.lat, this.props.lng]
 
   mapRef = createRef()
@@ -27,10 +17,7 @@ class LeafletWrapper extends Component {
   }
 
   render() {
-    let BaseLayer = null
-    if (isBrowser) {
-      BaseLayer = LayersControl.BaseLayer
-    }
+    const BaseLayer = isBrowser ? LayersControl.BaseLayer : null
     const mapDimensions = {
       width: this.props.width,
       height: this.props.height,
