@@ -24,7 +24,7 @@ class LeafletWrapper extends Component {
     }
 
     return isBrowser ? (
-      <div>
+      <Fragment>
         {!this.props.showMapbox ? (
           <Map
             center={this.setPosition()}
@@ -61,7 +61,7 @@ class LeafletWrapper extends Component {
         ) : (
           <Mapbox />
         )}
-      </div>
+      </Fragment>
     ) : (
       <div>Loading map</div>
     )
