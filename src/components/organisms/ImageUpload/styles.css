@@ -1,0 +1,25 @@
+.image_upload__container {
+  width: 50%;
+  height: 200px;
+  border: 2px solid #E5E5E5;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 200ms ease;
+
+  &:hover {
+    background-color: #e2e2e2;
+  }
+
+  &:active {
+    opacity: 0.5;
+  }
+
+  p {
+    color: #777;
+    font-size: 15px;
+    line-height: 22px;
+  }
+}

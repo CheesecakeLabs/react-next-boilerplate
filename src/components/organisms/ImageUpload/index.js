@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 
 import PropTypes from 'prop-types'
+import styles from './styles.css'
+import uploadIcon from '_images/upload-icon.png'
 
 class ImageUpload extends Component {
   state = {
@@ -65,7 +67,7 @@ class ImageUpload extends Component {
     const { accept } = this.props
     const { selectedFile } = this.state
 
-    const $imagePreview = null
+    let $imagePreview = null
     if (selectedFile) {
       $imagePreview = <img src={selectedFile} />
     }
@@ -78,8 +80,11 @@ class ImageUpload extends Component {
           accept={accept}
           ref={fileInput => (this.fileInput = fileInput)}
         />
-        <button onClick={() => this.fileInput.click()}>Pick File</button>
         {/* <button onClick={this.fileUploadHandler}>Upload your Image</button> */}
+        <div className={styles.image_upload__container} onClick={() => this.fileInput.click()}>
+          <img src={uploadIcon} alt="Image upload icon" />
+          <p>Drag and drop a file here or click</p>
+        </div>
         {this.renderErrors()}
         {$imagePreview}
       </div>
