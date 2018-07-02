@@ -3,12 +3,22 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import styles from './styles.css'
 import uploadIcon from '_images/upload-icon.png'
+import ImagePreviewModal from '_molecules/ImagePreviewModal'
 
 class ImageUpload extends Component {
   state = {
     selectedFile: null,
     notAcceptedFileSize: null,
     notAcceptedFileDimensions: null,
+    showImagePreview: false,
+  }
+
+  showImagePreview = imageFile => {
+    this.setState({ selectedFile: imageFile, showImagePreview: true })
+  }
+
+  hideImagePreview = () => {
+    this.setState({ showImagePreview: false })
   }
 
   fileSelectedHandler = event => {
@@ -20,10 +30,15 @@ class ImageUpload extends Component {
       image.src = event.target.result
       image.onload = () => {
         this.validateImageDimensions(file.size, image.height, image.width)
-        this.setState({ selectedFile: image.src })
+
+        if (this.props.withPreview) {
+          this.showImagePreview(image.src)
+        } else {
+          this.setState({ selectedFile: image.src })
+        }
       }
     }
-
+    event.target.value = null
     reader.readAsDataURL(file)
   }
 
@@ -63,14 +78,28 @@ class ImageUpload extends Component {
     }
   }
 
+  openImagePreview = () => {
+    const { selectedFile } = this.state
+    if (this.props.withPreview && selectedFile !== null) {
+      return (
+        <ImagePreviewModal
+          show={this.state.showImagePreview}
+          handleClose={this.hideImagePreview}
+          image={selectedFile}
+        />
+      )
+    }
+  }
+
   render() {
-    const { accept } = this.props
+    const { accept, withPreview } = this.props
     const { selectedFile } = this.state
 
     let $imagePreview = null
     if (selectedFile) {
       $imagePreview = <img src={selectedFile} />
     }
+
     return (
       <div>
         <input
@@ -86,7 +115,7 @@ class ImageUpload extends Component {
           <p>Drag and drop a file here or click</p>
         </div>
         {this.renderErrors()}
-        {$imagePreview}
+        {this.openImagePreview()}
       </div>
     )
   }
