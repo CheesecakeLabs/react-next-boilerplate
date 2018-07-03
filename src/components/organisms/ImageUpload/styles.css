@@ -8,6 +8,7 @@
   align-items: center;
   cursor: pointer;
   transition: all 200ms ease;
+  border-radius: 6px;
 
   &:hover {
     background-color: #e2e2e2;
