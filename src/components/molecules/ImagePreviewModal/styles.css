@@ -20,6 +20,7 @@
     border: 1px solid #888;
     width: 70%;
     height: 70%;
+    border-radius: 5px;
 
     img {
       width: 200px;

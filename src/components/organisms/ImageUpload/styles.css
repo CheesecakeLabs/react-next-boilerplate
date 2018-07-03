@@ -9,6 +9,7 @@
   cursor: pointer;
   transition: all 200ms ease;
   border-radius: 6px;
+  padding: 20px;
 
   &:hover {
     background-color: #e2e2e2;
