@@ -6,6 +6,10 @@ export default class DefaultDocument extends Document {
     return (
       <html lang="en">
         <Head>
+          <link
+            rel="stylesheet"
+            href="https://unpkg.com/react-image-crop@4.0.1/dist/ReactCrop.css"
+          />
           <link rel="stylesheet" href="/_next/static/style.css" />
         </Head>
         <body>

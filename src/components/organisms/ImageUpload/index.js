@@ -1,9 +1,12 @@
 import React, { Component } from 'react'
-
 import PropTypes from 'prop-types'
-import styles from './styles.css'
+
 import uploadIcon from '_images/upload-icon.png'
 import ImagePreviewModal from '_molecules/ImagePreviewModal'
+
+import 'react-image-crop/dist/ReactCrop.css'
+
+import styles from './styles.css'
 
 class ImageUpload extends Component {
   state = {
@@ -67,32 +70,6 @@ class ImageUpload extends Component {
     this.setState({ notAcceptedFileSize, notAcceptedFileDimensions, notAcceptedFileExtension })
   }
 
-  renderErrors = () => {
-    return (
-      <div>
-        {this.state.notAcceptedFileSize && (
-          <div>
-            Your file has {this.state.notAcceptedFileSize}. Max size is {this.props.maxFileSize} and
-            Min size is {this.props.minFileSize}
-          </div>
-        )}
-
-        {this.state.notAcceptedFileDimensions && (
-          <div>
-            Your file has height {this.state.notAcceptedFileDimensions.height} and width{' '}
-            {this.state.notAcceptedFileDimensions.width}. Max Height {this.props.maxHeight} and min
-            Height {this.props.minHeight}. Max Width {this.props.maxWidth} and min Width{' '}
-            {this.props.minWidth}.
-          </div>
-        )}
-
-        {this.state.notAcceptedFileExtension && (
-          <div>{this.state.notAcceptedFileExtension} is not a supported file extension.</div>
-        )}
-      </div>
-    )
-  }
-
   openImagePreview = () => {
     const {
       selectedFile,
@@ -108,14 +85,39 @@ class ImageUpload extends Component {
           hasErrors={notAcceptedFileSize || notAcceptedFileDimensions || notAcceptedFileExtension}
           renderErrors={this.renderErrors()}
           image={selectedFile}
+          withCrop
         />
       )
     }
+    return null
   }
 
+  renderErrors = () => (
+    <div>
+      {this.state.notAcceptedFileSize && (
+        <div>
+          Your file has {this.state.notAcceptedFileSize}. Max size is {this.props.maxFileSize} and
+          Min size is {this.props.minFileSize}
+        </div>
+      )}
+
+      {this.state.notAcceptedFileDimensions && (
+        <div>
+          Your file has height {this.state.notAcceptedFileDimensions.height} and width{' '}
+          {this.state.notAcceptedFileDimensions.width}. Max Height {this.props.maxHeight} and min
+          Height {this.props.minHeight}. Max Width {this.props.maxWidth} and min Width{' '}
+          {this.props.minWidth}.
+        </div>
+      )}
+
+      {this.state.notAcceptedFileExtension && (
+        <div>{this.state.notAcceptedFileExtension} is not a supported file extension.</div>
+      )}
+    </div>
+  )
+
   render() {
-    const { accept, label, buttonText, withPreview } = this.props
-    const { selectedFile } = this.state
+    const { accept, label, buttonText } = this.props
 
     return (
       <div>
@@ -129,7 +131,7 @@ class ImageUpload extends Component {
         />
 
         <div className={styles.image_upload__container} onClick={() => this.fileInput.click()}>
-          <img src={uploadIcon} alt="Image upload icon" />
+          <img src={uploadIcon} alt="Icon upload" />
           <p>{label}</p>
           <button>{buttonText}</button>
         </div>
@@ -151,6 +153,7 @@ ImageUpload.propTypes = {
   withCrop: PropTypes.bool,
   label: PropTypes.string,
   buttonText: PropTypes.string,
+  acceptedImgExtensions: PropTypes.arrayOf(PropTypes.string),
 }
 
 ImageUpload.defaultProps = {
@@ -166,7 +169,7 @@ ImageUpload.defaultProps = {
   label:
     'Max file size 15kb, accepted png, jpg, max width: 500px and max height 500px. Accepted: jpg, jpeg, png, gif',
   buttonText: 'Choose image',
-  acceptedImgExtensions: ['.jpg'],
+  acceptedImgExtensions: ['.jpg', '.png'],
 }
 
 export default ImageUpload

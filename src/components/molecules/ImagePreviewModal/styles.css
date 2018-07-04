@@ -22,9 +22,13 @@
     height: 70%;
     border-radius: 5px;
 
+    .image__wrapper {
+      max-width: 200px;
+    }
+
     img {
-      width: 200px;
-      height: 200px;
+      width: 100%;
+      height: 100%;
       object-fit: contain;
     }
 
