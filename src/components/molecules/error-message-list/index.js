@@ -7,7 +7,7 @@ const ErrorMessageList = ({ errors }) =>
   errors.map((errorMessage, index) => <ErrorMessage text={errorMessage} key={index} />)
 
 ErrorMessageList.propTypes = {
-  errors: PropTypes.arrayOf.toString.isRequired,
+  errors: PropTypes.arrayOf(PropTypes.string).isRequired,
 }
 
 export default ErrorMessageList

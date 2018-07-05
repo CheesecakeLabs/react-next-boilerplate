@@ -81,6 +81,7 @@ class ImageUpload extends Component {
           selectedFile={selectedFile}
           invalidProperties={this.renderErrors()}
           isAValidFile={this.renderErrors().length <= 0}
+          crop={this.props.crop}
         />
       )
     }
@@ -142,6 +143,13 @@ ImageUpload.propTypes = {
   label: PropTypes.string,
   buttonText: PropTypes.string,
   acceptedImgExtensions: PropTypes.arrayOf(PropTypes.string),
+  crop: PropTypes.shape({
+    aspect: PropTypes.number,
+    x: PropTypes.number,
+    y: PropTypes.number,
+    width: PropTypes.number,
+    height: PropTypes.number,
+  }),
 }
 
 ImageUpload.defaultProps = {
@@ -158,6 +166,7 @@ ImageUpload.defaultProps = {
     'Max file size 15kb, accepted png, jpg, max width: 500px and max height 500px. Accepted: jpg, jpeg, png, gif',
   buttonText: 'Choose image',
   acceptedImgExtensions: ['.jpg', '.png'],
+  crop: undefined,
 }
 
 export default ImageUpload

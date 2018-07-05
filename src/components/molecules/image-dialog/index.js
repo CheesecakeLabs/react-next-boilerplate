@@ -22,7 +22,7 @@ const ImageDialog = ({ withCrop, ...props }) => (
 ImageDialog.propTypes = {
   withCrop: PropTypes.bool.isRequired,
   selectedFile: PropTypes.string.isRequired,
-  invalidProperties: PropTypes.arrayOf.string,
+  invalidProperties: PropTypes.arrayOf(PropTypes.string),
 }
 
 ImageDialog.defaultProps = {

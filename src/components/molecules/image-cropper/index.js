@@ -5,24 +5,14 @@ import 'react-image-crop/dist/ReactCrop.css'
 
 class ImageCropper extends Component {
   state = {
-    crop: {
-      x: 10,
-      y: 10,
-      aspect: 16 / 9,
-      width: 80,
-      height: 80,
-    },
+    crop: {},
   }
 
   onImageLoaded = image => {
     this.setState({
       crop: makeAspectCrop(
         {
-          x: 10,
-          y: 10,
-          aspect: 16 / 9,
-          width: 80,
-          height: 80,
+          ...this.props.crop,
         },
         image.width / image.height
       ),
@@ -51,6 +41,17 @@ class ImageCropper extends Component {
 
 ImageCropper.propTypes = {
   selectedFile: PropTypes.string.isRequired,
+  crop: PropTypes.shape({
+    aspect: PropTypes.number,
+    x: PropTypes.number,
+    y: PropTypes.number,
+    width: PropTypes.number,
+    height: PropTypes.number,
+  }),
+}
+
+ImageCropper.defaultProps = {
+  crop: undefined,
 }
 
 export default ImageCropper
