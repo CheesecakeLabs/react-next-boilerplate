@@ -2,9 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
 import uploadIcon from '_images/upload-icon.png'
-import ImagePreviewModal from '_molecules/ImagePreviewModal'
-
-import 'react-image-crop/dist/ReactCrop.css'
+import ImageDialog from '_molecules/image-dialog'
 
 import styles from './styles.css'
 
@@ -71,50 +69,40 @@ class ImageUpload extends Component {
   }
 
   openImagePreview = () => {
-    const {
-      selectedFile,
-      notAcceptedFileSize,
-      notAcceptedFileDimensions,
-      notAcceptedFileExtension,
-    } = this.state
+    const { selectedFile } = this.state
     if (this.props.withPreview && selectedFile !== null) {
       return (
-        <ImagePreviewModal
-          show={this.state.showImagePreview}
-          handleClose={this.hideImagePreview}
-          hasErrors={notAcceptedFileSize || notAcceptedFileDimensions || notAcceptedFileExtension}
-          renderErrors={this.renderErrors()}
-          image={selectedFile}
-          withCrop
+        <ImageDialog
+          withCrop={this.props.withCrop}
+          isOpen={this.state.showImagePreview}
+          onCancelClick={this.hideImagePreview}
+          title="preview da imagem"
+          cancelText="Cancel"
+          selectedFile={selectedFile}
+          invalidProperties={this.renderErrors()}
+          isAValidFile={this.renderErrors().length <= 0}
         />
       )
     }
     return null
   }
 
-  renderErrors = () => (
-    <div>
-      {this.state.notAcceptedFileSize && (
-        <div>
-          Your file has {this.state.notAcceptedFileSize}. Max size is {this.props.maxFileSize} and
-          Min size is {this.props.minFileSize}
-        </div>
-      )}
+  renderErrors = () => {
+    let invalidProperties = []
+    if (this.state.notAcceptedFileSize) {
+      invalidProperties = [...invalidProperties, 'file size is too big']
+    }
 
-      {this.state.notAcceptedFileDimensions && (
-        <div>
-          Your file has height {this.state.notAcceptedFileDimensions.height} and width{' '}
-          {this.state.notAcceptedFileDimensions.width}. Max Height {this.props.maxHeight} and min
-          Height {this.props.minHeight}. Max Width {this.props.maxWidth} and min Width{' '}
-          {this.props.minWidth}.
-        </div>
-      )}
+    if (this.state.notAcceptedFileDimensions) {
+      invalidProperties = [...invalidProperties, 'invalid file size dimension']
+    }
 
-      {this.state.notAcceptedFileExtension && (
-        <div>{this.state.notAcceptedFileExtension} is not a supported file extension.</div>
-      )}
-    </div>
-  )
+    if (this.state.notAcceptedFileExtension) {
+      invalidProperties = [...invalidProperties, 'is not a supported file extension']
+    }
+
+    return invalidProperties
+  }
 
   render() {
     const { accept, label, buttonText } = this.props
