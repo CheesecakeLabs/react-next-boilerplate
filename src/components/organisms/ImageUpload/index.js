@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 
 import uploadIcon from '_images/upload-icon.png'
 import ImageDialog from '_molecules/image-dialog'
+import WebcamCapture from '_molecules/webcam-capture'
 
 import styles from './styles.css'
 
@@ -13,6 +14,14 @@ class ImageUpload extends Component {
     notAcceptedFileDimensions: null,
     notAcceptedFileExtension: null,
     showImagePreview: false,
+  }
+
+  onImageSelectedOrCaptured = imageSrc => {
+    if (this.props.withPreview) {
+      this.setImagePreviewState(imageSrc)
+    } else {
+      this.setState({ selectedFile: imageSrc })
+    }
   }
 
   setImagePreviewState = imageFile => {
@@ -33,11 +42,7 @@ class ImageUpload extends Component {
       const imgExtension = `.${file.type.split('/').pop()}`
       image.onload = () => {
         this.validateImageProperties(file.size, image.height, image.width, imgExtension)
-        if (this.props.withPreview) {
-          this.setImagePreviewState(image.src)
-        } else {
-          this.setState({ selectedFile: image.src })
-        }
+        this.onImageSelectedOrCaptured(image.src)
       }
     }
     event.target.value = null
@@ -106,7 +111,7 @@ class ImageUpload extends Component {
   }
 
   render() {
-    const { accept, label, buttonText } = this.props
+    const { accept, label, buttonText, userMediaEnabled } = this.props
 
     return (
       <div>
@@ -119,10 +124,13 @@ class ImageUpload extends Component {
           multiple={false}
         />
 
-        <div className={styles.image_upload__container} onClick={() => this.fileInput.click()}>
+        <div className={styles.image_upload__container}>
           <img src={uploadIcon} alt="Icon upload" />
           <p>{label}</p>
-          <button>{buttonText}</button>
+          {userMediaEnabled && (
+            <WebcamCapture onImageCapturedFromWebcam={this.onImageSelectedOrCaptured} />
+          )}
+          <button onClick={() => this.fileInput.click()}>{buttonText}</button>
         </div>
         {this.openImagePreview()}
       </div>
@@ -150,6 +158,7 @@ ImageUpload.propTypes = {
     width: PropTypes.number,
     height: PropTypes.number,
   }),
+  userMediaEnabled: PropTypes.bool,
 }
 
 ImageUpload.defaultProps = {
@@ -164,9 +173,10 @@ ImageUpload.defaultProps = {
   withCrop: false,
   label:
     'Max file size 15kb, accepted png, jpg, max width: 500px and max height 500px. Accepted: jpg, jpeg, png, gif',
-  buttonText: 'Choose image',
+  buttonText: 'Choose image from computer',
   acceptedImgExtensions: ['.jpg', '.png'],
   crop: undefined,
+  userMediaEnabled: true,
 }
 
 export default ImageUpload
