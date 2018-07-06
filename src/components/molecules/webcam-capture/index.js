@@ -15,20 +15,15 @@ class WebcamCapture extends Component {
   }
 
   render() {
-    const videoConstraints = {
-      width: 1280,
-      height: 720,
-      facingMode: 'user',
-    }
-
+    const { height, width, scrennshotFormat, videoConstraints } = this.props.userMedia
     return (
       <div className={styles.webcam_wrapper}>
         <Webcam
           audio={false}
-          height={120}
-          width={220}
+          height={height}
+          width={width}
           ref={this.setRef}
-          screenshotFormat="image/png"
+          screenshotFormat={scrennshotFormat}
           videoConstraints={videoConstraints}
         />
         <button onClick={this.capture}>Capture photo</button>
@@ -39,6 +34,29 @@ class WebcamCapture extends Component {
 
 WebcamCapture.propTypes = {
   onImageCapturedFromWebcam: PropTypes.func.isRequired,
+  userMedia: PropTypes.shape({
+    height: PropTypes.number,
+    width: PropTypes.number,
+    scrennshotFormat: PropTypes.string,
+    videoConstraints: PropTypes.shape({
+      width: PropTypes.number,
+      height: PropTypes.number,
+      facingMode: PropTypes.string,
+    }),
+  }),
+}
+
+WebcamCapture.defaultProps = {
+  userMedia: {
+    height: 120,
+    width: 220,
+    format: 'image/png',
+    videoConstraints: {
+      width: 1280,
+      height: 720,
+      facingMode: 'user',
+    },
+  },
 }
 
 export default WebcamCapture

@@ -111,7 +111,7 @@ class ImageUpload extends Component {
   }
 
   render() {
-    const { accept, label, buttonText, userMediaEnabled } = this.props
+    const { accept, label, buttonText, userMediaEnabled, userMedia } = this.props
 
     return (
       <div>
@@ -128,7 +128,10 @@ class ImageUpload extends Component {
           <img src={uploadIcon} alt="Icon upload" />
           <p>{label}</p>
           {userMediaEnabled && (
-            <WebcamCapture onImageCapturedFromWebcam={this.onImageSelectedOrCaptured} />
+            <WebcamCapture
+              onImageCapturedFromWebcam={this.onImageSelectedOrCaptured}
+              userMedia={userMedia}
+            />
           )}
           <button onClick={() => this.fileInput.click()}>{buttonText}</button>
         </div>
@@ -159,6 +162,16 @@ ImageUpload.propTypes = {
     height: PropTypes.number,
   }),
   userMediaEnabled: PropTypes.bool,
+  userMedia: PropTypes.shape({
+    height: PropTypes.number,
+    width: PropTypes.number,
+    scrennshotFormat: PropTypes.string,
+    videoConstraints: PropTypes.shape({
+      width: PropTypes.number,
+      height: PropTypes.number,
+      facingMode: PropTypes.string,
+    }),
+  }),
 }
 
 ImageUpload.defaultProps = {
@@ -177,6 +190,7 @@ ImageUpload.defaultProps = {
   acceptedImgExtensions: ['.jpg', '.png'],
   crop: undefined,
   userMediaEnabled: true,
+  userMedia: undefined,
 }
 
 export default ImageUpload
