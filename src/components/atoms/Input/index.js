@@ -22,7 +22,7 @@ const Input = ({
     placeholder,
     required,
     value,
-    onChange: handleChange
+    onChange: handleChange,
   }
   return multiline ? <textarea {...props} /> : <input {...props} type={type} />
 }
