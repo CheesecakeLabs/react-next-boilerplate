@@ -17,6 +17,7 @@
     "@zeit/next-source-maps": "0.0.2",
     "dotenv": "^6.0.0",
     "express": "^4.16.3",
+    "fetches": "^0.2.2",
     "glob": "^7.1.2",
     "next": "^6",
     "next-compose-plugins": "^1.0.3",
@@ -28,6 +29,7 @@
     "prop-types": "^15.6.1",
     "react": "^16.3.0",
     "react-dom": "^16.3.0",
+    "react-fetches": "^2.0.0-3",
     "react-image-crop": "^4.0.1",
     "react-webcam": "^1.0.1"
   },

@@ -1,11 +1,16 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import { connect } from 'react-fetches'
 
 import uploadIcon from '_images/upload-icon.png'
 import ImageDialog from '_molecules/image-dialog'
 import WebcamCapture from '_molecules/webcam-capture'
 
 import styles from './styles.css'
+
+const mapDispatchToProps = (http, dispatch) => ({
+  uploadImage: dispatch(http.post('upload/avatar')),
+})
 
 class ImageUpload extends Component {
   state = {
@@ -14,6 +19,7 @@ class ImageUpload extends Component {
     notAcceptedFileDimensions: null,
     notAcceptedFileExtension: null,
     showImagePreview: false,
+    imageUpload: '',
   }
 
   onImageSelectedOrCaptured = imageSrc => {
@@ -26,6 +32,16 @@ class ImageUpload extends Component {
 
   setImagePreviewState = imageFile => {
     this.setState({ selectedFile: imageFile, showImagePreview: true })
+  }
+
+  uploadImage = () => {
+    const { selectedFile } = this.state
+    this.props.uploadImage({ file: selectedFile }).then(({ data }) => {
+      this.setState(prevState => ({
+        imageUpload: data,
+        showImagePreview: false,
+      }))
+    })
   }
 
   hideImagePreview = () => {
@@ -81,6 +97,7 @@ class ImageUpload extends Component {
           withCrop={this.props.withCrop}
           isOpen={this.state.showImagePreview}
           onCancelClick={this.hideImagePreview}
+          onContinueClick={this.uploadImage}
           title="preview da imagem"
           cancelText="Cancel"
           selectedFile={selectedFile}
@@ -187,10 +204,13 @@ ImageUpload.defaultProps = {
   label:
     'Max file size 15kb, accepted png, jpg, max width: 500px and max height 500px. Accepted: jpg, jpeg, png, gif',
   buttonText: 'Choose image from computer',
-  acceptedImgExtensions: ['.jpg', '.png'],
+  acceptedImgExtensions: ['.jpg', '.jpeg', '.png'],
   crop: undefined,
   userMediaEnabled: true,
   userMedia: undefined,
 }
 
-export default ImageUpload
+export default connect(
+  null,
+  mapDispatchToProps
+)(ImageUpload)
