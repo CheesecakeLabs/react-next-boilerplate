@@ -85,7 +85,7 @@ class ImageUpload extends Component {
           cancelText="Cancel"
           selectedFile={selectedFile}
           invalidProperties={this.renderErrors()}
-          isAValidFile={this.renderErrors().length <= 0}
+          disableContinueButton={this.renderErrors().length > 0}
           crop={this.props.crop}
         />
       )

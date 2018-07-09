@@ -10,6 +10,7 @@ const Dialog = ({
   title,
   onContinueClick,
   onCancelClick,
+  disableContinueButton,
   continueText,
   cancelText,
   children,
@@ -21,7 +22,11 @@ const Dialog = ({
           <h1>{title}</h1>
           <div className={styles.image__wrapper}>{children}</div>
           <div className={styles.image_preview__modal_buttons}>
-            {/* <Button text={continueText} onClick={onContinueClick}/> */}
+            <Button
+              text={continueText}
+              disabled={disableContinueButton}
+              onClick={onContinueClick}
+            />
             <Button text={cancelText} onClick={onCancelClick} />
           </div>
         </div>
@@ -35,6 +40,7 @@ Dialog.propTypes = {
   title: PropTypes.string,
   onContinueClick: PropTypes.func,
   onCancelClick: PropTypes.func,
+  disableContinueButton: PropTypes.bool,
   continueText: PropTypes.string,
   cancelText: PropTypes.string,
   children: PropTypes.node.isRequired,
@@ -45,8 +51,9 @@ Dialog.defaultProps = {
   title: '',
   onContinueClick: () => {},
   onCancelClick: () => {},
-  continueText: '',
-  cancelText: '',
+  disableContinueButton: false,
+  continueText: 'Continue',
+  cancelText: 'Cancel',
 }
 
 export default Dialog
