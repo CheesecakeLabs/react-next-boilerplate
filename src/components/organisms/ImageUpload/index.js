@@ -9,7 +9,9 @@ import WebcamCapture from '_molecules/webcam-capture'
 import styles from './styles.css'
 
 const mapDispatchToProps = (http, dispatch) => ({
-  uploadImage: dispatch(http.post('upload/avatar')),
+  uploadImage: dispatch(http.post('upload/avatar'), {
+    headers: { 'content-type': 'multipart/form-data' },
+  }),
 })
 
 class ImageUpload extends Component {
@@ -36,7 +38,7 @@ class ImageUpload extends Component {
 
   uploadImage = () => {
     const { selectedFile } = this.state
-    this.props.uploadImage({ file: selectedFile }).then(({ data }) => {
+    this.props.uploadImage({ file: selectedFile }).then(({ data, error }) => {
       this.setState(prevState => ({
         imageUpload: data,
         showImagePreview: false,
@@ -128,7 +130,7 @@ class ImageUpload extends Component {
   }
 
   render() {
-    const { accept, label, buttonText, userMediaEnabled, userMedia } = this.props
+    const { accept, description, buttonText, userMediaEnabled, userMedia } = this.props
 
     return (
       <div>
@@ -143,7 +145,7 @@ class ImageUpload extends Component {
 
         <div className={styles.image_upload__container}>
           <img src={uploadIcon} alt="Icon upload" />
-          <p>{label}</p>
+          <p>{description}</p>
           {userMediaEnabled && (
             <WebcamCapture
               onImageCapturedFromWebcam={this.onImageSelectedOrCaptured}
@@ -168,7 +170,7 @@ ImageUpload.propTypes = {
   accept: PropTypes.string,
   withPreview: PropTypes.bool,
   withCrop: PropTypes.bool,
-  label: PropTypes.string,
+  description: PropTypes.string,
   buttonText: PropTypes.string,
   acceptedImgExtensions: PropTypes.arrayOf(PropTypes.string),
   crop: PropTypes.shape({
@@ -201,7 +203,7 @@ ImageUpload.defaultProps = {
   accept: 'image/*',
   withPreview: true,
   withCrop: false,
-  label:
+  description:
     'Max file size 15kb, accepted png, jpg, max width: 500px and max height 500px. Accepted: jpg, jpeg, png, gif',
   buttonText: 'Choose image from computer',
   acceptedImgExtensions: ['.jpg', '.jpeg', '.png'],
