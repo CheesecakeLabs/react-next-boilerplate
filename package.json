@@ -7,7 +7,8 @@
     "test": "test",
     "dev": "node server.js",
     "build": "next build src",
-    "start": "NODE_ENV=production node server.js"
+    "start": "NODE_ENV=production node server.js",
+    "storybook": "start-storybook -p 6000 -c storybook"
   },
   "author": "Daniel Leite de Oliveira <dleitee@gmail.com> (https://github.com/dleitee)",
   "license": "ISC",
@@ -27,7 +28,9 @@
     "react-dom": "^16.3.0"
   },
   "devDependencies": {
+    "@storybook/react": "^3.4.8",
     "autoprefixer": "^8.2.0",
+    "babel-core": "^6.26.3",
     "babel-eslint": "^8.2.3",
     "eslint": "^4.19.1",
     "eslint-config-cheesecakelabs": "^2.0.3",
