@@ -8,7 +8,7 @@
     "dev": "node server.js",
     "build": "next build src",
     "start": "NODE_ENV=production node server.js",
-    "storybook": "start-storybook -p 6000 -c storybook"
+    "storybook": "start-storybook -p 9009 -c storybook"
   },
   "author": "Daniel Leite de Oliveira <dleitee@gmail.com> (https://github.com/dleitee)",
   "license": "ISC",
