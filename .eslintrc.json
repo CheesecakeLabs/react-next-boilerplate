@@ -7,5 +7,21 @@
       }
     }
   },
+  "rules": {
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": [
+          "**/stories.js",
+          "**/*.dev.js",
+          "**/*.test.js",
+          "server.js",
+          "postcss.config.js",
+          "webpack.config.*",
+          "storybook/*"
+        ]
+      }
+    ]
+  },
   "globals": {}
 }
