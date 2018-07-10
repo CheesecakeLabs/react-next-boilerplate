@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-fetches'
 
-import uploadIcon from '_images/upload-icon.png'
 import ImageDialog from '_molecules/image-dialog'
 import WebcamCapture from '_molecules/webcam-capture'
 
@@ -145,7 +144,6 @@ class ImageUpload extends Component {
         />
 
         <div className={styles.image_upload__container}>
-          <img src={uploadIcon} alt="Icon upload" />
           <p>{description}</p>
           {userMediaEnabled && (
             <WebcamCapture
