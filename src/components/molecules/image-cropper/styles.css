@@ -1,0 +1,10 @@
+.image_cropper__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.image_cropped {
+  height: 200px;
+}
