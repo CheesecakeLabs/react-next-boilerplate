@@ -113,17 +113,18 @@ class ImageUpload extends Component {
   }
 
   renderErrors = () => {
+    const { invalidFileSizeText, invalidFileDimensionsText, invalidFileExtension } = this.props
     let invalidProperties = []
     if (this.state.notAcceptedFileSize) {
-      invalidProperties = [...invalidProperties, 'file size is too big']
+      invalidProperties = [...invalidProperties, invalidFileSizeText]
     }
 
     if (this.state.notAcceptedFileDimensions) {
-      invalidProperties = [...invalidProperties, 'invalid file size dimension']
+      invalidProperties = [...invalidProperties, invalidFileDimensionsText]
     }
 
     if (this.state.notAcceptedFileExtension) {
-      invalidProperties = [...invalidProperties, 'is not a supported file extension']
+      invalidProperties = [...invalidProperties, invalidFileExtension]
     }
 
     return invalidProperties
@@ -173,6 +174,9 @@ ImageUpload.propTypes = {
   description: PropTypes.string,
   buttonText: PropTypes.string,
   acceptedImgExtensions: PropTypes.arrayOf(PropTypes.string),
+  invalidFileSizeText: PropTypes.string,
+  invalidFileDimensionsText: PropTypes.string,
+  invalidFileExtension: PropTypes.string,
   crop: PropTypes.shape({
     aspect: PropTypes.number,
     x: PropTypes.number,
@@ -207,6 +211,9 @@ ImageUpload.defaultProps = {
     'Max file size 15kb, accepted png, jpg, max width: 500px and max height 500px. Accepted: jpg, jpeg, png, gif',
   buttonText: 'Choose image from computer',
   acceptedImgExtensions: ['.jpg', '.jpeg', '.png'],
+  invalidFileSizeText: 'File size is too big',
+  invalidFileDimensionsText: 'Invalid file size dimension',
+  invalidFileExtension: 'It is not a supported file extension',
   crop: undefined,
   userMediaEnabled: true,
   userMedia: undefined,
