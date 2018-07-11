@@ -17,7 +17,7 @@ class WebcamCapture extends Component {
   render() {
     const { height, width, scrennshotFormat, videoConstraints } = this.props.userMedia
     return (
-      <div className={styles.webcam_wrapper}>
+      <div className={styles.webcamContainer}>
         <Webcam
           audio={false}
           height={height}

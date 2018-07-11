@@ -65,7 +65,7 @@ class ImageCropper extends Component {
 
     return (
       <div>
-        <div className={styles.image_cropper__container}>
+        <div className={styles.container}>
           <ReactCrop
             src={this.props.selectedFile}
             crop={this.state.crop}
@@ -75,7 +75,7 @@ class ImageCropper extends Component {
             keepSelection
           />
           {croppedBase64Image && (
-            <img className={styles.image_cropped} src={croppedBase64Image} alt="lalla" />
+            <img className={styles.image} src={croppedBase64Image} alt="cropper" />
           )}
         </div>
       </div>

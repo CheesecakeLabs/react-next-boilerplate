@@ -143,8 +143,8 @@ class ImageUpload extends Component {
           multiple={false}
         />
 
-        <div className={styles.image_upload__container}>
-          <p>{description}</p>
+        <div className={styles.imageContainer}>
+          <p className={styles.description}>{description}</p>
           {userMediaEnabled && (
             <WebcamCapture
               onImageCapturedFromWebcam={this.onImageSelectedOrCaptured}

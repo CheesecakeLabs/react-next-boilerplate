@@ -17,11 +17,11 @@ const Dialog = ({
 }) => (
   <div>
     {!isOpen ? null : (
-      <div className={styles.image_preview__modal}>
-        <div className={styles.image_preview__modal_content}>
+      <div className={styles.dialog}>
+        <div className={styles.content}>
           <h1>{title}</h1>
-          <div className={styles.image__wrapper}>{children}</div>
-          <div className={styles.image_preview__modal_buttons}>
+          <div className={styles.body}>{children}</div>
+          <div className={styles.footer}>
             <Button
               text={continueText}
               disabled={disableContinueButton}

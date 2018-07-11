@@ -1,4 +1,4 @@
-.image_upload__container {
+.imageContainer {
   width: 50%;
   height: 200px;
   border: 2px solid #E5E5E5;
@@ -18,10 +18,10 @@
   &:active {
     opacity: 0.5;
   }
+}
 
-  p {
-    color: #777;
-    font-size: 15px;
-    line-height: 22px;
-  }
+.description {
+  color: #777;
+  font-size: 15px;
+  line-height: 22px;
 }
