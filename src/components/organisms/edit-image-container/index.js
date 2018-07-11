@@ -4,6 +4,11 @@ import { connect } from 'react-fetches'
 
 import ImageDialog from '_molecules/image-dialog'
 import WebcamCapture from '_molecules/webcam-capture'
+import RoundedImage from '_molecules/rounded-image'
+
+import EditImage from '_organisms/edit-image'
+
+import Card from '_atoms/card'
 
 import styles from './styles.css'
 
@@ -13,7 +18,7 @@ const mapDispatchToProps = (http, dispatch) => ({
   }),
 })
 
-class ImageUpload extends Component {
+class EditImageContainer extends Component {
   state = {
     selectedFile: null,
     notAcceptedFileSize: null,
@@ -134,32 +139,18 @@ class ImageUpload extends Component {
 
     return (
       <div>
-        <input
-          style={{ display: 'none' }}
-          type="file"
-          onChange={this.fileSelectedHandler}
-          accept={accept}
-          ref={fileInput => (this.fileInput = fileInput)}
-          multiple={false}
-        />
-
-        <div className={styles.imageContainer}>
-          <p className={styles.description}>{description}</p>
-          {userMediaEnabled && (
-            <WebcamCapture
-              onImageCapturedFromWebcam={this.onImageSelectedOrCaptured}
-              userMedia={userMedia}
-            />
-          )}
-          <button onClick={() => this.fileInput.click()}>{buttonText}</button>
-        </div>
+        <Card>
+          <EditImage fileSelectedHandler={this.fileSelectedHandler} acceptFile={accept}>
+            <RoundedImage />
+          </EditImage>
+        </Card>
         {this.openImagePreview()}
       </div>
     )
   }
 }
 
-ImageUpload.propTypes = {
+EditImageContainer.propTypes = {
   minWidth: PropTypes.number,
   maxWidth: PropTypes.number,
   minHeight: PropTypes.number,
@@ -195,7 +186,7 @@ ImageUpload.propTypes = {
   }),
 }
 
-ImageUpload.defaultProps = {
+EditImageContainer.defaultProps = {
   minWidth: 0,
   maxWidth: 500,
   minHeight: 0,
@@ -220,4 +211,4 @@ ImageUpload.defaultProps = {
 export default connect(
   null,
   mapDispatchToProps
-)(ImageUpload)
+)(EditImageContainer)
