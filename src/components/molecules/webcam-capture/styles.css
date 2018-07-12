@@ -1,10 +1,5 @@
 .webcamContainer {
-  position: relative;
-
-  button {
-    position: absolute;
-    bottom: 10px;
-    left: 50%;
-    transform: translate(-50%);
-  }
+  display: flex;
+  justify-content: center;align-items: center;
+  flex-direction: column;
 }

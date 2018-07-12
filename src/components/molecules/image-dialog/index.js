@@ -2,14 +2,14 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import Image from '_atoms/image'
-import ImageCropDialog from '_molecules/image-crop-dialog'
+import DialogEditImage from '_molecules/dialog-edit-image'
 import Dialog from '_molecules/dialog'
 import ErrorMessageList from '_molecules/error-message-list'
 
 const ImageDialog = ({ withCrop, ...props }) => (
   <div>
     {withCrop ? (
-      <ImageCropDialog invalidProperties={props.invalidProperties} {...props} />
+      <DialogEditImage invalidProperties={props.invalidProperties} {...props} />
     ) : (
       <Dialog {...props}>
         <ErrorMessageList errors={props.invalidProperties} />

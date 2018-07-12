@@ -1,3 +1,5 @@
 .errorMessage {
-  color: red
+  color: #f1615c;
+  font: 14px 'Source Sans Pro', sans-serif;
+  margin: 5px;
 }

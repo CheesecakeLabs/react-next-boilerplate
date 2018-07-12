@@ -5,7 +5,7 @@ import 'react-image-crop/dist/ReactCrop.css'
 
 import styles from './styles.css'
 
-class ImageCropper extends Component {
+class ImageCrop extends Component {
   state = {
     crop: {},
     pixelCrop: {},
@@ -82,7 +82,7 @@ class ImageCropper extends Component {
   }
 }
 
-ImageCropper.propTypes = {
+ImageCrop.propTypes = {
   selectedFile: PropTypes.string.isRequired,
   crop: PropTypes.shape({
     aspect: PropTypes.number,
@@ -93,8 +93,8 @@ ImageCropper.propTypes = {
   }),
 }
 
-ImageCropper.defaultProps = {
+ImageCrop.defaultProps = {
   crop: undefined,
 }
 
-export default ImageCropper
+export default ImageCrop

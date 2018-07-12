@@ -11,28 +11,26 @@ const DialogCaptureImage = ({
   userMediaEnabled,
   invalidProperties,
   ...props
-}) => {
-  return (
-    <Dialog {...props}>
-      <ErrorMessageList errors={invalidProperties} />
-      <input
-        style={{ display: 'none' }}
-        type="file"
-        onChange={fileSelectedHandler}
-        accept={accept}
-        ref={fileInput => (this.fileInput = fileInput)}
-        multiple={false}
-      />
+}) => (
+  <Dialog {...props}>
+    <ErrorMessageList errors={invalidProperties} />
+    <input
+      style={{ display: 'none' }}
+      type="file"
+      onChange={fileSelectedHandler}
+      accept={accept}
+      ref={fileInput => (this.fileInput = fileInput)}
+      multiple={false}
+    />
 
-      <div>
-        {userMediaEnabled && (
-          <WebcamCapture onImageCapturedFromWebcam={this.onImageSelectedOrCaptured} />
-        )}
-        <button onClick={() => this.fileInput.click()}>Choose image from computer</button>
-      </div>
-    </Dialog>
-  )
-}
+    <div>
+      {userMediaEnabled && (
+        <WebcamCapture onImageCapturedFromWebcam={this.onImageSelectedOrCaptured} />
+      )}
+      <button onClick={() => this.fileInput.click()}>Choose image from computer</button>
+    </div>
+  </Dialog>
+)
 
 DialogCaptureImage.propTypes = {
   fileSelectedHandler: PropTypes.func.isRequired,

@@ -3,18 +3,18 @@ import PropTypes from 'prop-types'
 
 import 'react-image-crop/dist/ReactCrop.css'
 
-import ImageCropper from '_molecules/image-cropper'
+import ImageCrop from '_molecules/image-crop'
 import Dialog from '_molecules/dialog'
 import ErrorMessageList from '_molecules/error-message-list'
 
-const ImageCropDialog = ({ invalidProperties, selectedFile, crop, ...props }) => (
+const DialogEditImage = ({ invalidProperties, selectedFile, crop, ...props }) => (
   <Dialog {...props}>
     <ErrorMessageList errors={invalidProperties} />
-    <ImageCropper selectedFile={selectedFile} crop={crop} />
+    <ImageCrop selectedFile={selectedFile} crop={crop} />
   </Dialog>
 )
 
-ImageCropDialog.propTypes = {
+DialogEditImage.propTypes = {
   selectedFile: PropTypes.string.isRequired,
   invalidProperties: PropTypes.arrayOf(PropTypes.string),
   crop: PropTypes.shape({
@@ -26,9 +26,9 @@ ImageCropDialog.propTypes = {
   }),
 }
 
-ImageCropDialog.defaultProps = {
+DialogEditImage.defaultProps = {
   invalidProperties: [],
   crop: undefined,
 }
 
-export default ImageCropDialog
+export default DialogEditImage

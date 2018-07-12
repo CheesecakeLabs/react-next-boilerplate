@@ -19,22 +19,22 @@
   margin: auto;
   padding: 20px;
   border: 1px solid #888;
-  width: 70%;
-  height: 70%;
+  width: auto;
+  height: auto;
   border-radius: 5px;
 }
 
 .body {
-  max-width: 200px;
+  text-align: center;
+}
+
+.title {
+  font: 600 20px 'Source Sans Pro', sans-serif;
+  color: #676767;
 }
 
 img {
   width: 100%;
   height: 100%;
   object-fit: contain;
-}
-
-.footer {
-  display: block;
-  align-self: flex-end;
 }
