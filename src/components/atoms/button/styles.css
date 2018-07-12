@@ -1,4 +1,8 @@
 .button {
-  background-color: blue;
+  background-color: #007aff;
   color: white;
+  width: 174px;
+  border: none;
+  padding: 6px;
+  margin-top: 10px;
 }

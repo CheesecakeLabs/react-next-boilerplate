@@ -60,8 +60,6 @@ class ImageCrop extends Component {
   }
 
   render() {
-    const { croppedBase64Image } = this.state
-
     return (
       <div>
         <div className={styles.container}>
@@ -73,9 +71,6 @@ class ImageCrop extends Component {
             onChange={this.onCropChange}
             keepSelection
           />
-          {croppedBase64Image && (
-            <img className={styles.image} src={croppedBase64Image} alt="cropper" />
-          )}
         </div>
       </div>
     )

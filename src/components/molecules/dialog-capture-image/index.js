@@ -4,12 +4,14 @@ import PropTypes from 'prop-types'
 import WebcamCapture from '_molecules/webcam-capture'
 import Dialog from '_molecules/dialog'
 import ErrorMessageList from '_molecules/error-message-list'
+import Button from '_atoms/button'
 
 const DialogCaptureImage = ({
   fileSelectedHandler,
   accept,
   userMediaEnabled,
   invalidProperties,
+  onImageSelectedOrCaptured,
   ...props
 }) => (
   <Dialog {...props}>
@@ -24,10 +26,8 @@ const DialogCaptureImage = ({
     />
 
     <div>
-      {userMediaEnabled && (
-        <WebcamCapture onImageCapturedFromWebcam={this.onImageSelectedOrCaptured} />
-      )}
-      <button onClick={() => this.fileInput.click()}>Choose image from computer</button>
+      {userMediaEnabled && <WebcamCapture onImageCapturedFromWebcam={onImageSelectedOrCaptured} />}
+      <Button text="Upload photo" onClick={() => this.fileInput.click()} />
     </div>
   </Dialog>
 )
@@ -37,10 +37,12 @@ DialogCaptureImage.propTypes = {
   accept: PropTypes.string.isRequired,
   userMediaEnabled: PropTypes.bool.isRequired,
   invalidProperties: PropTypes.arrayOf(PropTypes.string),
+  onImageSelectedOrCaptured: PropTypes.func,
 }
 
 DialogCaptureImage.defaultProps = {
   invalidProperties: [],
+  onImageSelectedOrCaptured: () => {},
 }
 
 export default DialogCaptureImage

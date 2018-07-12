@@ -5,18 +5,32 @@ import 'react-image-crop/dist/ReactCrop.css'
 
 import ImageCrop from '_molecules/image-crop'
 import Dialog from '_molecules/dialog'
-import ErrorMessageList from '_molecules/error-message-list'
+import Image from '_atoms/image'
+import Button from '_atoms/button'
 
-const DialogEditImage = ({ invalidProperties, selectedFile, crop, ...props }) => (
+const DialogPreviewImage = ({
+  invalidProperties,
+  selectedFile,
+  crop,
+  withCrop,
+  onCancelClick,
+  ...props
+}) => (
   <Dialog {...props}>
-    <ErrorMessageList errors={invalidProperties} />
-    <ImageCrop selectedFile={selectedFile} crop={crop} />
+    {withCrop ? (
+      <ImageCrop selectedFile={selectedFile} crop={crop} />
+    ) : (
+      <Image image={selectedFile} />
+    )}
+
+    <Button text="Close" onClick={onCancelClick} />
   </Dialog>
 )
 
-DialogEditImage.propTypes = {
+DialogPreviewImage.propTypes = {
   selectedFile: PropTypes.string.isRequired,
   invalidProperties: PropTypes.arrayOf(PropTypes.string),
+  withCrop: PropTypes.bool,
   crop: PropTypes.shape({
     aspect: PropTypes.number,
     x: PropTypes.number,
@@ -26,9 +40,10 @@ DialogEditImage.propTypes = {
   }),
 }
 
-DialogEditImage.defaultProps = {
+DialogPreviewImage.defaultProps = {
   invalidProperties: [],
+  withCrop: false,
   crop: undefined,
 }
 
-export default DialogEditImage
+export default DialogPreviewImage

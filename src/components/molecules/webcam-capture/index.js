@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import Webcam from 'react-webcam'
 import PropTypes from 'prop-types'
 
+import Button from '_atoms/button'
+
 import styles from './styles.css'
 
 class WebcamCapture extends Component {
@@ -26,7 +28,7 @@ class WebcamCapture extends Component {
           screenshotFormat={scrennshotFormat}
           videoConstraints={videoConstraints}
         />
-        <button onClick={this.capture}>Capture photo</button>
+        <Button text="Capture" onClick={this.capture} />
       </div>
     )
   }

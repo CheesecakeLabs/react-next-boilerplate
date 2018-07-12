@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-fetches'
 
-import ImageDialog from '_molecules/image-dialog'
 import DialogCaptureImage from '_molecules/dialog-capture-image'
 import RoundedImage from '_molecules/rounded-image'
+import DialogPreviewImage from '_molecules/dialog-preview-image'
 
 import styles from './styles.css'
 
@@ -20,7 +20,7 @@ class EditableImage extends Component {
     notAcceptedFileSize: null,
     notAcceptedFileDimensions: null,
     notAcceptedFileExtension: null,
-    showImagePreview: false,
+    showImagePreviewOrEdition: false,
     imageUploadResponse: '',
     showDialogToGetImage: false,
   }
@@ -40,7 +40,7 @@ class EditableImage extends Component {
   setImagePreviewState = imageFile => {
     this.setState({
       selectedFile: imageFile,
-      showImagePreview: !this.imageHasAnInvalidField(),
+      showImagePreviewOrEdition: !this.imageHasAnInvalidField(),
     })
   }
 
@@ -73,13 +73,14 @@ class EditableImage extends Component {
     return notAcceptedFileSize || notAcceptedFileDimensions || notAcceptedFileExtension
   }
 
-  openImagePreview = () => {
-    const { selectedFile, showImagePreview } = this.state
-    if (showImagePreview) {
+  openImagePreviewOrEdition = () => {
+    const { selectedFile, showImagePreviewOrEdition } = this.state
+
+    if (showImagePreviewOrEdition) {
       return (
-        <ImageDialog
+        <DialogPreviewImage
           withCrop={this.props.withCrop}
-          isOpen={this.state.showImagePreview}
+          isOpen={this.state.showImagePreviewOrEdition}
           onCancelClick={this.hideImagePreviewDialog}
           onContinueClick={this.uploadImage}
           title="preview da imagem"
@@ -95,24 +96,22 @@ class EditableImage extends Component {
   }
 
   selectedOrTakeAPhoto = () => {
-    const { showDialogToGetImage, selectedFile, showImagePreview } = this.state
+    const { showDialogToGetImage, selectedFile, showImagePreviewOrEdition } = this.state
 
-    if (!showImagePreview && showDialogToGetImage) {
+    if (!showImagePreviewOrEdition && showDialogToGetImage) {
       return (
         <DialogCaptureImage
           {...this.props}
-          isOpen={showDialogToGetImage}
-          onCancelClick={this.hideGetImageDialog}
-          onContinueClick={this.uploadImage}
-          title="Selected or take a photo"
           fileSelectedHandler={this.fileSelectedHandler}
+          isOpen={showDialogToGetImage}
+          title="Selected or take a photo"
           selectedFile={selectedFile}
           invalidProperties={this.renderErrors()}
-        >
-          <p>teste</p>
-        </DialogCaptureImage>
+          onImageSelectedOrCaptured={this.onImageSelectedOrCaptured}
+        />
       )
     }
+
     return null
   }
 
@@ -121,7 +120,7 @@ class EditableImage extends Component {
   }
 
   hideImagePreviewDialog = () => {
-    this.setState({ showImagePreview: false })
+    this.setState({ showImagePreviewOrEdition: false })
   }
 
   uploadImage = () => {
@@ -129,7 +128,7 @@ class EditableImage extends Component {
     this.props.uploadImage({ file: selectedFile }).then(({ data, error }) => {
       this.setState(prevState => ({
         imageUploadResponse: data,
-        showImagePreview: false,
+        showImagePreviewOrEdition: false,
       }))
     })
   }
@@ -176,7 +175,7 @@ class EditableImage extends Component {
           <RoundedImage />
         </div>
         {this.selectedOrTakeAPhoto()}
-        {this.openImagePreview()}
+        {this.openImagePreviewOrEdition()}
       </div>
     )
   }
