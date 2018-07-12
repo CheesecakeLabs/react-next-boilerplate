@@ -3,12 +3,8 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-fetches'
 
 import ImageDialog from '_molecules/image-dialog'
-import WebcamCapture from '_molecules/webcam-capture'
+import DialogCaptureImage from '_molecules/dialog-capture-image'
 import RoundedImage from '_molecules/rounded-image'
-
-import EditImage from '_organisms/edit-image'
-
-import Card from '_atoms/card'
 
 import styles from './styles.css'
 
@@ -18,14 +14,15 @@ const mapDispatchToProps = (http, dispatch) => ({
   }),
 })
 
-class EditImageContainer extends Component {
+class EditableImage extends Component {
   state = {
     selectedFile: null,
     notAcceptedFileSize: null,
     notAcceptedFileDimensions: null,
     notAcceptedFileExtension: null,
     showImagePreview: false,
-    imageUpload: '',
+    imageUploadResponse: '',
+    showDialogToGetImage: false,
   }
 
   onImageSelectedOrCaptured = imageSrc => {
@@ -36,39 +33,15 @@ class EditImageContainer extends Component {
     }
   }
 
+  setGetImageDialogState = () => {
+    this.setState({ showDialogToGetImage: true })
+  }
+
   setImagePreviewState = imageFile => {
-    this.setState({ selectedFile: imageFile, showImagePreview: true })
-  }
-
-  uploadImage = () => {
-    const { selectedFile } = this.state
-    this.props.uploadImage({ file: selectedFile }).then(({ data, error }) => {
-      this.setState(prevState => ({
-        imageUpload: data,
-        showImagePreview: false,
-      }))
+    this.setState({
+      selectedFile: imageFile,
+      showImagePreview: !this.imageHasAnInvalidField(),
     })
-  }
-
-  hideImagePreview = () => {
-    this.setState({ showImagePreview: false })
-  }
-
-  fileSelectedHandler = event => {
-    const reader = new FileReader()
-    const file = event.target.files[0]
-
-    reader.onload = event => {
-      const image = new Image()
-      image.src = event.target.result
-      const imgExtension = `.${file.type.split('/').pop()}`
-      image.onload = () => {
-        this.validateImageProperties(file.size, image.height, image.width, imgExtension)
-        this.onImageSelectedOrCaptured(image.src)
-      }
-    }
-    event.target.value = null
-    reader.readAsDataURL(file)
   }
 
   isAInvalidFileSize = size => {
@@ -95,14 +68,19 @@ class EditImageContainer extends Component {
     this.setState({ notAcceptedFileSize, notAcceptedFileDimensions, notAcceptedFileExtension })
   }
 
+  imageHasAnInvalidField = () => {
+    const { notAcceptedFileSize, notAcceptedFileDimensions, notAcceptedFileExtension } = this.state
+    return notAcceptedFileSize || notAcceptedFileDimensions || notAcceptedFileExtension
+  }
+
   openImagePreview = () => {
-    const { selectedFile } = this.state
-    if (this.props.withPreview && selectedFile !== null) {
+    const { selectedFile, showImagePreview } = this.state
+    if (showImagePreview) {
       return (
         <ImageDialog
           withCrop={this.props.withCrop}
           isOpen={this.state.showImagePreview}
-          onCancelClick={this.hideImagePreview}
+          onCancelClick={this.hideImagePreviewDialog}
           onContinueClick={this.uploadImage}
           title="preview da imagem"
           cancelText="Cancel"
@@ -114,6 +92,63 @@ class EditImageContainer extends Component {
       )
     }
     return null
+  }
+
+  selectedOrTakeAPhoto = () => {
+    const { showDialogToGetImage, selectedFile, showImagePreview } = this.state
+
+    if (!showImagePreview && showDialogToGetImage) {
+      return (
+        <DialogCaptureImage
+          {...this.props}
+          isOpen={showDialogToGetImage}
+          onCancelClick={this.hideGetImageDialog}
+          onContinueClick={this.uploadImage}
+          title="Selected or take a photo"
+          fileSelectedHandler={this.fileSelectedHandler}
+          selectedFile={selectedFile}
+          invalidProperties={this.renderErrors()}
+        >
+          <p>teste</p>
+        </DialogCaptureImage>
+      )
+    }
+    return null
+  }
+
+  hideGetImageDialog = () => {
+    this.setState({ showDialogToGetImage: false })
+  }
+
+  hideImagePreviewDialog = () => {
+    this.setState({ showImagePreview: false })
+  }
+
+  uploadImage = () => {
+    const { selectedFile } = this.state
+    this.props.uploadImage({ file: selectedFile }).then(({ data, error }) => {
+      this.setState(prevState => ({
+        imageUploadResponse: data,
+        showImagePreview: false,
+      }))
+    })
+  }
+
+  fileSelectedHandler = event => {
+    const reader = new FileReader()
+    const file = event.target.files[0]
+
+    reader.onload = event => {
+      const image = new Image()
+      image.src = event.target.result
+      const imgExtension = `.${file.type.split('/').pop()}`
+      image.onload = () => {
+        this.validateImageProperties(file.size, image.height, image.width, imgExtension)
+        this.onImageSelectedOrCaptured(image.src)
+      }
+    }
+    event.target.value = null
+    reader.readAsDataURL(file)
   }
 
   renderErrors = () => {
@@ -135,22 +170,19 @@ class EditImageContainer extends Component {
   }
 
   render() {
-    const { accept, description, buttonText, userMediaEnabled, userMedia } = this.props
-
     return (
       <div>
-        <Card>
-          <EditImage fileSelectedHandler={this.fileSelectedHandler} acceptFile={accept}>
-            <RoundedImage />
-          </EditImage>
-        </Card>
+        <div onClick={this.setGetImageDialogState} className={styles.imagePlaceholder}>
+          <RoundedImage />
+        </div>
+        {this.selectedOrTakeAPhoto()}
         {this.openImagePreview()}
       </div>
     )
   }
 }
 
-EditImageContainer.propTypes = {
+EditableImage.propTypes = {
   minWidth: PropTypes.number,
   maxWidth: PropTypes.number,
   minHeight: PropTypes.number,
@@ -186,7 +218,7 @@ EditImageContainer.propTypes = {
   }),
 }
 
-EditImageContainer.defaultProps = {
+EditableImage.defaultProps = {
   minWidth: 0,
   maxWidth: 500,
   minHeight: 0,
@@ -211,4 +243,4 @@ EditImageContainer.defaultProps = {
 export default connect(
   null,
   mapDispatchToProps
-)(EditImageContainer)
+)(EditableImage)

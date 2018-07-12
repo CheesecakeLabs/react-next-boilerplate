@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
 
 import logo from '_images/logo.png'
-import EditImageContainer from '_organisms/edit-image-container'
+import EditableImage from '_organisms/editable-image'
 
 import styles from './styles.css'
 
@@ -15,7 +15,7 @@ const CKLBoilerplate = () => (
     <marquee className={styles.text}>React Boilerplate</marquee>
     <hr />
 
-    <EditImageContainer />
+    <EditableImage />
   </Fragment>
 )
 

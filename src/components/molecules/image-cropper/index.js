@@ -55,7 +55,6 @@ class ImageCropper extends Component {
       pixelCrop.height
     )
 
-    // As Base64 string
     const base64Image = canvas.toDataURL('image/jpeg')
     this.setState({ croppedBase64Image: base64Image })
   }
