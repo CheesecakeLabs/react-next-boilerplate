@@ -21,6 +21,7 @@
   border: 1px solid #888;
   width: auto;
   height: auto;
+  max-height: 300px;
   border-radius: 5px;
 }
 

@@ -2,9 +2,5 @@
   display: flex;
   justify-content: center;
   align-items: center;
-
-}
-
-.image {
-  height: 200px;
+  max-width: 250px;
 }
