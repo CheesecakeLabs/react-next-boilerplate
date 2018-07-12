@@ -1,29 +1,53 @@
 import PropTypes from 'prop-types'
-import React from 'react'
+import React, { Fragment } from 'react'
 import Input from '_atoms/Input'
 
-const FormField = ({ className, children, field, label, errorMessage, handleChange }) => (
-  <div className={className}>
-    {children ? children : <label htmlFor={field}>{label}</label>}
-    <Input id={field} name={field} handleChange={handleChange}/>
+const FormField = ({
+  className,
+  type,
+  field,
+  multiline,
+  required,
+  value,
+  validations,
+  errorMessage,
+  handleChange
+}) => (
+  <Fragment>
+    <Input
+      className={className}
+      type={type}
+      id={field}
+      name={field}
+      multiline={multiline}
+      required={required}
+      value={value}
+      handleChange={handleChange}
+    />
     {errorMessage && <p>{errorMessage}</p>}
-  </div>
+  </Fragment>
 )
 
 FormField.propTypes = {
   className: PropTypes.string,
-  children: PropTypes.element,
+  type: PropTypes.string,
   field: PropTypes.string.isRequired,
-  label: PropTypes.string,
+  multiline: PropTypes.bool,
+  required: PropTypes.bool,
+  value: PropTypes.string,
+  validations: PropTypes.array,
   errorMessage: PropTypes.string,
   handleChange: PropTypes.func.isRequired,
 }
 
 FormField.defaultProps = {
   className: undefined,
-  children: undefined,
+  type: 'text',
   field: null,
-  label: undefined,
+  multiline: false,
+  required: false,
+  value: '',
+  validations: [],
   errorMessage: '',
   handleChange: null,
 }
