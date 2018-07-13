@@ -1,0 +1,13 @@
+.input {
+  outline: 0;
+  transition: all .3s ease-in-out;
+  color: #323232;
+  border: 1px solid #979797;
+  border-radius: 3px;
+  padding: .6rem .8rem;
+  font-family: 'Source Sans Pro', Arial, sans-serif;
+
+  &:focus {
+    border-color: #000000;
+  }
+}
