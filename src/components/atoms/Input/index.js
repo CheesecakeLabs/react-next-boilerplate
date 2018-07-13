@@ -1,11 +1,15 @@
 import PropTypes from 'prop-types'
 import React from 'react'
+import classNames from 'classnames'
 
-const Input = ({ className, type, id, name, multiline, required, value, handleChange }) => {
+import styles from './styles.css'
+
+const Input = ({ className, type, id, name, multiline, placeholder, required, value, handleChange }) => {
   const props = {
-    className,
+    className: classNames(styles.input, className),
     id,
     name,
+    placeholder,
     required,
     value,
     onChange: handleChange
@@ -20,6 +24,7 @@ Input.propTypes = {
   type: PropTypes.string,
   id: PropTypes.string,
   name: PropTypes.string,
+  placeholder: PropTypes.string,
   multiline: PropTypes.bool,
   required: PropTypes.bool,
   value: PropTypes.string,
@@ -31,6 +36,7 @@ Input.defaultProps = {
   type: 'text',
   id: undefined,
   name: undefined,
+  placeholder: undefined,
   multiline: false,
   required: false,
   value: '',
