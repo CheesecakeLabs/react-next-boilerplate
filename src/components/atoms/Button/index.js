@@ -6,9 +6,9 @@ import ButtonIcon from '../Button-icon'
 import styles from './styles.css'
 
 const Button = ({ onClick, text }) => (
-  <button className="button" onClick={onClick}>
-    <ButtonIcon />
-    <p className="buttonText">{text}</p>
+  <button className={styles.button} onClick={onClick}>
+    <ButtonIcon text={text} />
+    <p className={styles.buttonText}>{text}</p>
   </button>
 )
 
