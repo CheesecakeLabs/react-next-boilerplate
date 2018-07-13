@@ -6,18 +6,18 @@ import profilePlaceholdor from '_images/profile-placeholder.png'
 
 import styles from './styles.css'
 
-const RoundedImage = ({ image }) => (
-  <div className={styles.profileImage}>
+const Avatar = ({ image }) => (
+  <div className={styles.avatarBackground}>
     <Image image={image} />
   </div>
 )
 
-RoundedImage.propTypes = {
+Avatar.propTypes = {
   image: PropTypes.string,
 }
 
-RoundedImage.defaultProps = {
+Avatar.defaultProps = {
   image: profilePlaceholdor,
 }
 
-export default RoundedImage
+export default Avatar

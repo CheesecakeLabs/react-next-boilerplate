@@ -1,0 +1,15 @@
+.button {
+  display: inline-flex;
+  height: 60px;
+  width: 60px;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  padding: 0;
+  align-items: center;
+  justify-content: center;
+
+  &:focus {
+    outline: 0;
+  }
+}

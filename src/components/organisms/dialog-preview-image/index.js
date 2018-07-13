@@ -6,24 +6,14 @@ import 'react-image-crop/dist/ReactCrop.css'
 import ImageCrop from '_molecules/image-crop'
 import Dialog from '_molecules/dialog'
 import Image from '_atoms/image'
-import Button from '_atoms/button'
 
-const DialogPreviewImage = ({
-  invalidProperties,
-  selectedFile,
-  crop,
-  withCrop,
-  onCancelClick,
-  ...props
-}) => (
+const DialogPreviewImage = ({ invalidProperties, selectedFile, crop, withCrop, ...props }) => (
   <Dialog {...props}>
     {withCrop ? (
       <ImageCrop selectedFile={selectedFile} crop={crop} />
     ) : (
       <Image image={selectedFile} />
     )}
-
-    <Button text="Close" onClick={onCancelClick} />
   </Dialog>
 )
 

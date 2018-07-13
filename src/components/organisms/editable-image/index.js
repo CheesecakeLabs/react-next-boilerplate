@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-fetches'
 
-import DialogCaptureImage from '_molecules/dialog-capture-image'
-import RoundedImage from '_molecules/rounded-image'
-import DialogPreviewImage from '_molecules/dialog-preview-image'
+import DialogCaptureImage from '_organisms/dialog-capture-image'
+import DialogPreviewImage from '_organisms/dialog-preview-image'
+import Avatar from '_molecules/avatar'
 
 import styles from './styles.css'
 
@@ -108,6 +108,7 @@ class EditableImage extends Component {
           selectedFile={selectedFile}
           invalidProperties={this.renderErrors()}
           onImageSelectedOrCaptured={this.onImageSelectedOrCaptured}
+          onCancelClick={this.hideGetImageDialog}
         />
       )
     }
@@ -172,7 +173,7 @@ class EditableImage extends Component {
     return (
       <div>
         <div onClick={this.setGetImageDialogState} className={styles.imagePlaceholder}>
-          <RoundedImage />
+          <Avatar />
         </div>
         {this.selectedOrTakeAPhoto()}
         {this.openImagePreviewOrEdition()}
@@ -219,11 +220,11 @@ EditableImage.propTypes = {
 
 EditableImage.defaultProps = {
   minWidth: 0,
-  maxWidth: 500,
+  maxWidth: 5000000,
   minHeight: 0,
-  maxHeight: 500,
+  maxHeight: 500000,
   minFileSize: 0,
-  maxFileSize: 15000,
+  maxFileSize: 150000000,
   accept: 'image/*',
   withPreview: true,
   withCrop: false,

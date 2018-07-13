@@ -1,0 +1,11 @@
+.avatarBackground {
+  width: 100px;
+  height: 100px;
+  margin: auto;
+  background-color: #d8d8d8;
+  border-radius: 50%;
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

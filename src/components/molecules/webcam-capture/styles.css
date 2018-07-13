@@ -4,3 +4,7 @@
   align-items: center;
   flex-direction: column;
 }
+
+.ReactCrop__crop-selection {
+  border-radius: 50%;
+}

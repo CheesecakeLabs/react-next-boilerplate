@@ -1,5 +1,5 @@
 .errorMessage {
   color: #f1615c;
-  font: 14px 'Source Sans Pro', sans-serif;
+  font: 14px var(--font-default), sans-serif;
   margin: 5px;
 }
