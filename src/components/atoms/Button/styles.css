@@ -6,12 +6,12 @@
     justify-content: center;
     border-radius: 4px;
     border: none;
+    outline: none;
 }
 
-.buttonIcon {
-    width: 16px;
-    height:100%;
-    vertical-align: middle;
+.button:active {
+    background-color: #005ec4;
+    transition-duration: 0.2s;
 }
 
 .buttonText {
