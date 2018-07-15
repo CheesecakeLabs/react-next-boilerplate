@@ -31,7 +31,7 @@
 }
 
 .title {
-  font: 600 15px var(--font-default), sans-serif;
+  font: 600 15px var(--font-default);
   color: #676767;
   margin-top: 0;
 }
