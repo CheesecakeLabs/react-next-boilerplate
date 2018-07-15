@@ -25,3 +25,9 @@
   font-size: 15px;
   line-height: 22px;
 }
+
+.avatarShape {
+  border-radius: 50%;
+  width: inherit;
+  height: inherit;
+}

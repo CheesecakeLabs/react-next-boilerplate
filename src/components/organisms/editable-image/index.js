@@ -124,12 +124,12 @@ class EditableImage extends Component {
     this.setState({ showImagePreviewOrEdition: false })
   }
 
-  uploadImage = () => {
-    const { selectedFile } = this.state
-    this.props.uploadImage({ file: selectedFile }).then(({ data, error }) => {
-      this.setState(prevState => ({
+  uploadImage = image => {
+    this.props.uploadImage({ file: image }).then(({ data, error }) => {
+      this.setState(() => ({
         imageUploadResponse: data,
         showImagePreviewOrEdition: false,
+        showDialogToGetImage: false,
       }))
     })
   }
@@ -170,10 +170,11 @@ class EditableImage extends Component {
   }
 
   render() {
+    const { imageUploadResponse } = this.state
     return (
       <div>
         <div onClick={this.setGetImageDialogState} className={styles.imagePlaceholder}>
-          <Avatar />
+          <Avatar image={imageUploadResponse.url} className={styles.avatarShape} />
         </div>
         {this.selectedOrTakeAPhoto()}
         {this.openImagePreviewOrEdition()}

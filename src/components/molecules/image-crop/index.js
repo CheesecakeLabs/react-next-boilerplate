@@ -9,7 +9,6 @@ class ImageCrop extends Component {
   state = {
     crop: {},
     pixelCrop: {},
-    croppedBase64Image: '',
     originalImage: null,
   }
 
@@ -29,15 +28,17 @@ class ImageCrop extends Component {
     })
   }
 
-  // onCropComplete = (crop, pixelCrop) => {}
-
-  onCropChange = (crop, pixelCrop) => {
+  onCropComplete = (crop, pixelCrop) => {
     this.setState({ crop, pixelCrop })
     this.getCroppedImage()
   }
 
+  onCropChange = (crop, pixelCrop) => {
+    this.setState({ crop, pixelCrop })
+  }
+
   getCroppedImage = () => {
-    const { pixelCrop, originalImage, croppedBase64Image } = this.state
+    const { pixelCrop, originalImage } = this.state
     const canvas = document.createElement('canvas')
     canvas.width = pixelCrop.width
     canvas.height = pixelCrop.height
@@ -56,7 +57,7 @@ class ImageCrop extends Component {
     )
 
     const base64Image = canvas.toDataURL('image/jpeg')
-    this.setState({ croppedBase64Image: base64Image })
+    this.props.onImageCropped(base64Image)
   }
 
   render() {
@@ -79,6 +80,7 @@ class ImageCrop extends Component {
 
 ImageCrop.propTypes = {
   selectedFile: PropTypes.string.isRequired,
+  onImageCropped: PropTypes.func,
   crop: PropTypes.shape({
     aspect: PropTypes.number,
     x: PropTypes.number,
@@ -90,6 +92,7 @@ ImageCrop.propTypes = {
 
 ImageCrop.defaultProps = {
   crop: undefined,
+  onImageCropped: undefined,
 }
 
 export default ImageCrop
