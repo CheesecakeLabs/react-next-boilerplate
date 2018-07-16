@@ -32,12 +32,14 @@ class DialogPreviewImage extends Component {
     } = this.props
     return (
       <Dialog isOpen={isOpen} title={title} onCancelClick={onCancelClick}>
-        {withCrop ? (
-          <ImageCrop selectedFile={selectedFile} crop={crop} onImageCropped={this.setNewImage} />
-        ) : (
-          <Image className={styles.imagePreview} image={selectedFile} />
-        )}
-        <Button text="Save" onClick={() => onContinueClick(newImage)} />
+        <div className={styles.content}>
+          {withCrop ? (
+            <ImageCrop selectedFile={selectedFile} crop={crop} onImageCropped={this.setNewImage} />
+          ) : (
+            <Image className={styles.imagePreview} image={selectedFile} />
+          )}
+          <Button text="Save" onClick={() => onContinueClick(newImage)} />
+        </div>
       </Dialog>
     )
   }
