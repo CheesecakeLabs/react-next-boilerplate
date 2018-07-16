@@ -3,10 +3,10 @@ import PropTypes from 'prop-types'
 
 import styles from './styles.css'
 
-const ErrorMessage = ({ text }) => <p className={styles.errorMessage}>{text}</p>
+const ErrorMessage = ({ children }) => <p className={styles.errorMessage}>{children}</p>
 
 ErrorMessage.propTypes = {
-  text: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
 }
 
 export default ErrorMessage
