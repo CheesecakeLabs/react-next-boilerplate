@@ -2,22 +2,18 @@ import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 
 class Form extends Component {
-  constructor(props) {
-    super(props)
-  }
-
   onSubmit = ev => {
     ev.preventDefault()
     this.props.handleSubmit(ev)
   }
 
   render = () => {
-    const { className, children, responseTest } = this.props
+    const { className, children } = this.props
 
     return (
       <form className={className} onSubmit={this.onSubmit}>
         {children}
-        <input type="submit" value="submit"/>
+        <input type="submit" value="submit" />
       </form>
     )
   }
