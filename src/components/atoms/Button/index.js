@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import ButtonIcon from '../Button-icon'
+import ButtonIcon from '../button-icon'
 
 import styles from './styles.css'
 
