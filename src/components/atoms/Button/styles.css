@@ -17,8 +17,7 @@
 .buttonText {
     color: white;
     font-size: 14px;
-    height: 100%;
-    vertical-align: middle; 
+    align-items: center;
     font-family: 'Source Sans Pro', sans-serif;
     margin: auto 0;
     padding: 0 30px;
