@@ -15,10 +15,10 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #fefefe;
+  background-color: var(--color-white);
   margin: auto;
   padding: 20px;
-  border: 1px solid #888;
+  border: 1px solid var(--color-default-gray);
   width: auto;
   height: auto;
   max-height: 300px;
@@ -32,7 +32,7 @@
 
 .title {
   font: 600 15px var(--font-default);
-  color: #676767;
+  color: var(--color-dove-gray);
   margin-top: 20px;
 }
 

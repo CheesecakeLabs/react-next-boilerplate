@@ -12,7 +12,7 @@
   padding: 20px;
 
   &:hover {
-    background-color: #e2e2e2;
+    background-color: var(--color-mercury-gray);
   }
 
   &:active {
@@ -21,7 +21,7 @@
 }
 
 .description {
-  color: #777;
+  color: var(--color-bolder-gray);
   font-size: 15px;
   line-height: 22px;
 }

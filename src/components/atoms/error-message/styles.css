@@ -1,5 +1,5 @@
 .errorMessage {
-  color: #f1615c;
+  color: var(--color-carnation-red);
   font: 14px var(--font-default);
   margin: 5px;
 }

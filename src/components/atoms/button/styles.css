@@ -1,6 +1,6 @@
 .button {
-  background-color: #007aff;
-  color: white;
+  background-color: var(--color-azure-blue);
+  color: var(--color-white);
   width: 174px;
   border: none;
   padding: 6px;
