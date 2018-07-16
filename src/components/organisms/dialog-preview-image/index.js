@@ -38,7 +38,7 @@ class DialogPreviewImage extends Component {
           ) : (
             <Image className={styles.imagePreview} image={selectedFile} />
           )}
-          <Button text="Save" onClick={() => onContinueClick(newImage)} />
+          <Button onClick={() => onContinueClick(newImage)}>Save</Button>
         </div>
       </Dialog>
     )

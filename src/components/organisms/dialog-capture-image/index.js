@@ -35,7 +35,7 @@ const DialogCaptureImage = ({
           userMedia={userMedia}
         />
       )}
-      <Button text="Upload photo" onClick={() => this.fileInput.click()} />
+      <Button onClick={() => this.fileInput.click()}>Upload photo</Button>
     </div>
   </Dialog>
 )

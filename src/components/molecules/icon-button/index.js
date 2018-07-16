@@ -3,13 +3,14 @@ import PropTypes from 'prop-types'
 import classNames from 'classnames/bind'
 
 import Icon from '_atoms/icon'
+import Button from '_atoms/button'
 
 import styles from './styles.css'
 
 const IconButton = ({ className, iconClassName, onClick, icon }) => (
-  <button className={classNames(styles.button, className)} onClick={onClick}>
+  <Button className={classNames(styles.button, className)} onClick={onClick}>
     <Icon className={classNames(styles.icon, iconClassName)} icon={icon} />
-  </button>
+  </Button>
 )
 
 IconButton.propTypes = {

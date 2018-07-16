@@ -28,7 +28,7 @@ class WebcamCapture extends Component {
           screenshotFormat={scrennshotFormat}
           videoConstraints={videoConstraints}
         />
-        <Button text="Capture" onClick={this.capture} />
+        <Button onClick={this.capture}>Capture</Button>
       </div>
     )
   }
