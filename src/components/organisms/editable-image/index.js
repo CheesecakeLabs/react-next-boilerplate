@@ -1,6 +1,11 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-fetches'
+import {
+  isAInvalidFileSize,
+  isAInvalidDimension,
+  isAInvalidExtension,
+} from '_utils/file-validations'
 
 import DialogCaptureImage from '_organisms/dialog-capture-image'
 import DialogPreviewImage from '_organisms/dialog-preview-image'
@@ -44,27 +49,31 @@ class EditableImage extends Component {
     })
   }
 
-  isAInvalidFileSize = size => {
-    const { minFileSize, maxFileSize } = this.props
-    return size < minFileSize || size > maxFileSize
-  }
-
-  isAInvalidDimension = (height, width) => {
-    const { minHeight, maxHeight, minWidth, maxWidth } = this.props
-    return height < minHeight || height > maxHeight || width < minWidth || width > maxWidth
-  }
-
-  isAInvalidExtension = extension => {
-    const validExtensions = [...this.props.acceptedImgExtensions]
-    return !validExtensions.includes(extension)
-  }
-
   validateImageProperties = (size, height, width, extension) => {
-    const notAcceptedFileSize = this.isAInvalidFileSize(size) ? size : null
-    const notAcceptedFileDimensions = this.isAInvalidDimension(height, width)
+    const {
+      minFileSize,
+      maxFileSize,
+      minHeight,
+      maxHeight,
+      minWidth,
+      maxWidth,
+      acceptedImgExtensions,
+    } = this.props
+
+    const notAcceptedFileSize = isAInvalidFileSize(size, minFileSize, maxFileSize) ? size : null
+    const notAcceptedFileDimensions = isAInvalidDimension(
+      height,
+      width,
+      minHeight,
+      maxHeight,
+      minWidth,
+      maxWidth
+    )
       ? { height, width }
       : null
-    const notAcceptedFileExtension = this.isAInvalidExtension(extension) ? extension : null
+    const notAcceptedFileExtension = isAInvalidExtension(extension, acceptedImgExtensions)
+      ? extension
+      : null
     this.setState({ notAcceptedFileSize, notAcceptedFileDimensions, notAcceptedFileExtension })
   }
 
@@ -102,6 +111,7 @@ class EditableImage extends Component {
           title="Selected or take a photo"
           accept={this.props.accept}
           userMediaEnabled={this.props.userMediaEnabled}
+          userMedia={this.props.userMedia}
           fileSelectedHandler={this.fileSelectedHandler}
           invalidProperties={this.renderErrors()}
           onImageSelectedOrCaptured={this.onImageSelectedOrCaptured}
@@ -171,7 +181,10 @@ class EditableImage extends Component {
     return (
       <div>
         <div onClick={this.setGetImageDialogState} className={styles.imagePlaceholder}>
-          <Avatar image={imageUploadResponse.url} className={styles.avatarShape} />
+          <Avatar
+            image={imageUploadResponse.url}
+            className={imageUploadResponse.url ? styles.avatarShape : null}
+          />
         </div>
         {this.selectedOrTakeAPhoto()}
         {this.openImagePreviewOrEdition()}
@@ -190,8 +203,6 @@ EditableImage.propTypes = {
   accept: PropTypes.string,
   withPreview: PropTypes.bool,
   withCrop: PropTypes.bool,
-  description: PropTypes.string,
-  buttonText: PropTypes.string,
   acceptedImgExtensions: PropTypes.arrayOf(PropTypes.string),
   invalidFileSizeText: PropTypes.string,
   invalidFileDimensionsText: PropTypes.string,
@@ -218,17 +229,14 @@ EditableImage.propTypes = {
 
 EditableImage.defaultProps = {
   minWidth: 0,
-  maxWidth: 5000000,
+  maxWidth: 500,
   minHeight: 0,
   maxHeight: 500000,
   minFileSize: 0,
-  maxFileSize: 150000000,
+  maxFileSize: 150,
   accept: 'image/*',
   withPreview: true,
   withCrop: false,
-  description:
-    'Max file size 15kb, accepted png, jpg, max width: 500px and max height 500px. Accepted: jpg, jpeg, png, gif',
-  buttonText: 'Choose image from computer',
   acceptedImgExtensions: ['.jpg', '.jpeg', '.png'],
   invalidFileSizeText: 'File size is too big',
   invalidFileDimensionsText: 'Invalid file size dimension',

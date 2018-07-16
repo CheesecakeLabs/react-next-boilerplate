@@ -15,6 +15,7 @@ const DialogCaptureImage = ({
   userMediaEnabled,
   invalidProperties,
   onImageSelectedOrCaptured,
+  userMedia,
 }) => (
   <Dialog isOpen={isOpen} title={title} onCancelClick={onCancelClick}>
     <ErrorMessageList errors={invalidProperties} />
@@ -28,7 +29,12 @@ const DialogCaptureImage = ({
     />
 
     <div>
-      {userMediaEnabled && <WebcamCapture onImageCapturedFromWebcam={onImageSelectedOrCaptured} />}
+      {userMediaEnabled && (
+        <WebcamCapture
+          onImageCapturedFromWebcam={onImageSelectedOrCaptured}
+          userMedia={userMedia}
+        />
+      )}
       <Button text="Upload photo" onClick={() => this.fileInput.click()} />
     </div>
   </Dialog>
@@ -41,6 +47,16 @@ DialogCaptureImage.propTypes = {
   fileSelectedHandler: PropTypes.func.isRequired,
   accept: PropTypes.string.isRequired,
   userMediaEnabled: PropTypes.bool.isRequired,
+  userMedia: PropTypes.shape({
+    height: PropTypes.number,
+    width: PropTypes.number,
+    scrennshotFormat: PropTypes.string,
+    videoConstraints: PropTypes.shape({
+      width: PropTypes.number,
+      height: PropTypes.number,
+      facingMode: PropTypes.string,
+    }),
+  }),
   invalidProperties: PropTypes.arrayOf(PropTypes.string),
   onImageSelectedOrCaptured: PropTypes.func,
 }
@@ -49,6 +65,7 @@ DialogCaptureImage.defaultProps = {
   isOpen: false,
   title: undefined,
   invalidProperties: [],
+  userMedia: undefined,
   onCancelClick: () => {},
   onImageSelectedOrCaptured: () => {},
 }
