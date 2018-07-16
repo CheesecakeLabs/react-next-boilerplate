@@ -6,6 +6,7 @@
   border-radius: 3px;
   padding: .6rem .8rem;
   font-family: 'Source Sans Pro', Arial, sans-serif;
+  font-size: .9rem;
 
   &:focus {
     border-color: #000000;
