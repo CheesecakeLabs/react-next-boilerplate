@@ -1,6 +1,8 @@
 import PropTypes from 'prop-types'
 import React, { Fragment } from 'react'
 
+import styles from './styles.css'
+
 import Input from '_atoms/Input'
 
 const FormField = ({
@@ -25,7 +27,7 @@ const FormField = ({
       value={value}
       handleChange={handleChange}
     />
-    {errorMessage && <p>{errorMessage}</p>}
+  {errorMessage && <p className={styles.error}>{errorMessage}</p>}
   </Fragment>
 )
 
