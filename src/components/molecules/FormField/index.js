@@ -1,37 +1,62 @@
 import PropTypes from 'prop-types'
-import React, { Fragment } from 'react'
+import React, { Component, Fragment } from 'react'
+
+import validate from '_utils/validate-inputs'
+import Input from '_atoms/Input'
 
 import styles from './styles.css'
 
-import Input from '_atoms/Input'
+class FormField extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      errorValidation: '',
+    }
+    this.validate = validate(props.validations, props.customValidations)
+  }
 
-const FormField = ({
-  className,
-  type,
-  field,
-  multiline,
-  required,
-  value,
-  validations,
-  errorMessage,
-  handleChange,
-}) => (
-  <Fragment>
-    <Input
-      className={className}
-      type={type}
-      id={field}
-      name={field}
-      multiline={multiline}
-      required={required}
-      value={value}
-      handleChange={handleChange}
-    />
-  {errorMessage && <p className={styles.error}>{errorMessage}</p>}
-  </Fragment>
-)
+  componentDidMount = () => {
+    this.applyValidation(this.props.value)
+  }
 
-const validationTypes = [PropTypes.string, PropTypes.arrayOf(PropTypes.string), PropTypes.object]
+  applyValidation = value => {
+    this.setState({
+      errorValidation: this.validate(value),
+    })
+  }
+
+  handleChange = ev => {
+    this.applyValidation(ev.target.value)
+    return this.props.handleChange(ev)
+  }
+
+  render() {
+    const { className, type, field, multiline, required, value, errorMessage } = this.props
+    const visibleError = this.state.errorValidation || errorMessage || null
+
+    return (
+      <Fragment>
+        <Input
+          className={className}
+          type={type}
+          id={field}
+          name={field}
+          multiline={multiline}
+          required={required}
+          value={value}
+          handleChange={this.handleChange}
+        />
+        {visibleError && <p className={styles.error}>{visibleError}</p>}
+      </Fragment>
+    )
+  }
+}
+
+const validationTypes = [PropTypes.string, PropTypes.arrayOf(PropTypes.string)]
+const customValidationTypes = {
+  rule: PropTypes.regexp,
+  message: PropTypes.string,
+}
 
 FormField.propTypes = {
   className: PropTypes.string,
@@ -41,6 +66,7 @@ FormField.propTypes = {
   required: PropTypes.bool,
   value: PropTypes.string,
   validations: PropTypes.oneOfType(validationTypes),
+  customValidations: PropTypes.shape(customValidationTypes),
   errorMessage: PropTypes.string,
   handleChange: PropTypes.func.isRequired,
 }
@@ -53,6 +79,7 @@ FormField.defaultProps = {
   required: false,
   value: '',
   validations: [],
+  customValidations: undefined,
   errorMessage: '',
   handleChange: null,
 }
