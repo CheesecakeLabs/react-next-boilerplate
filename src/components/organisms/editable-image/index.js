@@ -79,16 +79,13 @@ class EditableImage extends Component {
     if (showImagePreviewOrEdition) {
       return (
         <DialogPreviewImage
-          withCrop={this.props.withCrop}
           isOpen={this.state.showImagePreviewOrEdition}
-          onCancelClick={this.hideImagePreviewDialog}
-          onContinueClick={this.uploadImage}
-          title="preview da imagem"
-          cancelText="Cancel"
+          title="Image Preview"
+          withCrop={this.props.withCrop}
           selectedFile={selectedFile}
-          invalidProperties={this.renderErrors()}
-          disableContinueButton={this.renderErrors().length > 0}
           crop={this.props.crop}
+          onContinueClick={this.uploadImage}
+          onCancelClick={this.hideImagePreviewDialog}
         />
       )
     }
@@ -96,16 +93,16 @@ class EditableImage extends Component {
   }
 
   selectedOrTakeAPhoto = () => {
-    const { showDialogToGetImage, selectedFile, showImagePreviewOrEdition } = this.state
+    const { showDialogToGetImage, showImagePreviewOrEdition } = this.state
 
     if (!showImagePreviewOrEdition && showDialogToGetImage) {
       return (
         <DialogCaptureImage
-          {...this.props}
-          fileSelectedHandler={this.fileSelectedHandler}
           isOpen={showDialogToGetImage}
           title="Selected or take a photo"
-          selectedFile={selectedFile}
+          accept={this.props.accept}
+          userMediaEnabled={this.props.userMediaEnabled}
+          fileSelectedHandler={this.fileSelectedHandler}
           invalidProperties={this.renderErrors()}
           onImageSelectedOrCaptured={this.onImageSelectedOrCaptured}
           onCancelClick={this.hideGetImageDialog}

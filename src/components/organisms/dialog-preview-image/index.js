@@ -20,15 +20,16 @@ class DialogPreviewImage extends Component {
   render() {
     const { newImage } = this.state
     const {
-      invalidProperties,
+      isOpen,
+      title,
+      onCancelClick,
       selectedFile,
       crop,
       withCrop,
       onContinueClick,
-      ...props
     } = this.props
     return (
-      <Dialog {...props}>
+      <Dialog isOpen={isOpen} title={title} onCancelClick={onCancelClick}>
         {withCrop ? (
           <ImageCrop selectedFile={selectedFile} crop={crop} onImageCropped={this.setNewImage} />
         ) : (
@@ -41,10 +42,12 @@ class DialogPreviewImage extends Component {
 }
 
 DialogPreviewImage.propTypes = {
-  selectedFile: PropTypes.string.isRequired,
-  invalidProperties: PropTypes.arrayOf(PropTypes.string),
-  onContinueClick: PropTypes.func,
+  isOpen: PropTypes.bool,
   withCrop: PropTypes.bool,
+  title: PropTypes.string,
+  selectedFile: PropTypes.string.isRequired,
+  onCancelClick: PropTypes.func,
+  onContinueClick: PropTypes.func,
   crop: PropTypes.shape({
     aspect: PropTypes.number,
     x: PropTypes.number,
@@ -55,10 +58,12 @@ DialogPreviewImage.propTypes = {
 }
 
 DialogPreviewImage.defaultProps = {
-  invalidProperties: [],
-  onContinueClick: () => {},
+  isOpen: false,
   withCrop: false,
   crop: undefined,
+  title: undefined,
+  onCancelClick: () => {},
+  onContinueClick: () => {},
 }
 
 export default DialogPreviewImage

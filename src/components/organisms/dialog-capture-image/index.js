@@ -7,14 +7,16 @@ import ErrorMessageList from '_molecules/error-message-list'
 import Button from '_atoms/button'
 
 const DialogCaptureImage = ({
+  isOpen,
+  title,
+  onCancelClick,
   fileSelectedHandler,
   accept,
   userMediaEnabled,
   invalidProperties,
   onImageSelectedOrCaptured,
-  ...props
 }) => (
-  <Dialog {...props}>
+  <Dialog isOpen={isOpen} title={title} onCancelClick={onCancelClick}>
     <ErrorMessageList errors={invalidProperties} />
     <input
       style={{ display: 'none' }}
@@ -33,6 +35,9 @@ const DialogCaptureImage = ({
 )
 
 DialogCaptureImage.propTypes = {
+  isOpen: PropTypes.bool,
+  title: PropTypes.string,
+  onCancelClick: PropTypes.func,
   fileSelectedHandler: PropTypes.func.isRequired,
   accept: PropTypes.string.isRequired,
   userMediaEnabled: PropTypes.bool.isRequired,
@@ -41,7 +46,10 @@ DialogCaptureImage.propTypes = {
 }
 
 DialogCaptureImage.defaultProps = {
+  isOpen: false,
+  title: undefined,
   invalidProperties: [],
+  onCancelClick: () => {},
   onImageSelectedOrCaptured: () => {},
 }
 
