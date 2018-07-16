@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types'
 import React, { Fragment } from 'react'
+
 import Input from '_atoms/Input'
 
 const FormField = ({
@@ -11,7 +12,7 @@ const FormField = ({
   value,
   validations,
   errorMessage,
-  handleChange
+  handleChange,
 }) => (
   <Fragment>
     <Input
@@ -28,6 +29,8 @@ const FormField = ({
   </Fragment>
 )
 
+const validationTypes = [PropTypes.string, PropTypes.arrayOf(PropTypes.string), PropTypes.object]
+
 FormField.propTypes = {
   className: PropTypes.string,
   type: PropTypes.string,
@@ -35,7 +38,7 @@ FormField.propTypes = {
   multiline: PropTypes.bool,
   required: PropTypes.bool,
   value: PropTypes.string,
-  validations: PropTypes.array,
+  validations: PropTypes.oneOfType(validationTypes),
   errorMessage: PropTypes.string,
   handleChange: PropTypes.func.isRequired,
 }
