@@ -8,6 +8,8 @@ import Dialog from '_molecules/dialog'
 import Image from '_atoms/image'
 import Button from '_atoms/button'
 
+import styles from './styles.css'
+
 class DialogPreviewImage extends Component {
   state = {
     newImage: this.props.selectedFile,
@@ -33,7 +35,7 @@ class DialogPreviewImage extends Component {
         {withCrop ? (
           <ImageCrop selectedFile={selectedFile} crop={crop} onImageCropped={this.setNewImage} />
         ) : (
-          <Image image={selectedFile} />
+          <Image className={styles.imagePreview} image={selectedFile} />
         )}
         <Button text="Save" onClick={() => onContinueClick(newImage)} />
       </Dialog>
