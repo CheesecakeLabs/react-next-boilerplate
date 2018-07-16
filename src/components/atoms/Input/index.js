@@ -4,7 +4,17 @@ import classNames from 'classnames'
 
 import styles from './styles.css'
 
-const Input = ({ className, type, id, name, multiline, placeholder, required, value, handleChange }) => {
+const Input = ({
+  className,
+  type,
+  id,
+  name,
+  multiline,
+  placeholder,
+  required,
+  value,
+  handleChange,
+}) => {
   const props = {
     className: classNames(styles.input, className),
     id,
@@ -14,9 +24,7 @@ const Input = ({ className, type, id, name, multiline, placeholder, required, va
     value,
     onChange: handleChange
   }
-  return multiline ?
-    <textarea {...props} /> :
-    <input {...props} type={type} />
+  return multiline ? <textarea {...props} /> : <input {...props} type={type} />
 }
 
 Input.propTypes = {
