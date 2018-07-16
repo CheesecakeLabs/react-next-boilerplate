@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import WebcamCapture from '_molecules/webcam-capture'
 import Dialog from '_molecules/dialog'
 import ErrorMessageList from '_molecules/error-message-list'
+import ErrorMessage from '_atoms/error-message'
 import Button from '_atoms/button'
 
 const DialogCaptureImage = ({
@@ -18,7 +19,9 @@ const DialogCaptureImage = ({
   userMedia,
 }) => (
   <Dialog isOpen={isOpen} title={title} onCancelClick={onCancelClick}>
-    <ErrorMessageList errors={invalidProperties} />
+    <ErrorMessageList>
+      {invalidProperties.map(error => <ErrorMessage>{error}</ErrorMessage>)}
+    </ErrorMessageList>
     <input
       style={{ display: 'none' }}
       type="file"
@@ -27,7 +30,6 @@ const DialogCaptureImage = ({
       ref={fileInput => (this.fileInput = fileInput)}
       multiple={false}
     />
-
     <div>
       {userMediaEnabled && (
         <WebcamCapture

@@ -3,11 +3,10 @@ import PropTypes from 'prop-types'
 
 import ErrorMessage from '_atoms/error-message'
 
-const ErrorMessageList = ({ errors }) =>
-  errors.map((errorMessage, index) => <ErrorMessage key={index}>{errorMessage}</ErrorMessage>)
+const ErrorMessageList = ({ children }) => <ErrorMessage>{children}</ErrorMessage>
 
 ErrorMessageList.propTypes = {
-  errors: PropTypes.arrayOf(PropTypes.string).isRequired,
+  children: PropTypes.node.isRequired,
 }
 
 export default ErrorMessageList
