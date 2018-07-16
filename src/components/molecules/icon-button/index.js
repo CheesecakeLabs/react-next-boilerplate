@@ -7,9 +7,9 @@ import Button from '_atoms/button'
 
 import styles from './styles.css'
 
-const IconButton = ({ className, iconClassName, onClick, icon }) => (
+const IconButton = ({ className, iconClassName, onClick, icon, alt }) => (
   <Button className={classNames(styles.button, className)} onClick={onClick}>
-    <Icon className={classNames(styles.icon, iconClassName)} icon={icon} />
+    <Icon className={classNames(styles.icon, iconClassName)} icon={icon} alt={alt} />
   </Button>
 )
 
@@ -18,6 +18,7 @@ IconButton.propTypes = {
   icon: PropTypes.string.isRequired,
   className: PropTypes.string,
   iconClassName: PropTypes.string,
+  alt: PropTypes.string.isRequired,
 }
 
 IconButton.defaultProps = {

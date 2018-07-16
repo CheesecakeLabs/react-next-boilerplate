@@ -36,7 +36,7 @@ class DialogPreviewImage extends Component {
           {withCrop ? (
             <ImageCrop selectedFile={selectedFile} crop={crop} onImageCropped={this.setNewImage} />
           ) : (
-            <Image className={styles.imagePreview} image={selectedFile} />
+            <Image className={styles.imagePreview} image={selectedFile} alt="profile preview" />
           )}
           <Button onClick={() => onContinueClick(newImage)}>Save</Button>
         </div>

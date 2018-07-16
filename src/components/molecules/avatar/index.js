@@ -8,7 +8,7 @@ import styles from './styles.css'
 
 const Avatar = ({ className, image }) => (
   <div className={styles.avatarBackground}>
-    <Image image={image} className={className} />
+    <Image image={image} className={className} alt="profile image" />
   </div>
 )
 

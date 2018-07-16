@@ -16,6 +16,7 @@ const Dialog = ({ isOpen, title, onCancelClick, children }) => (
             iconClassName={styles.iconClose}
             onClick={onCancelClick}
             icon={close}
+            alt="Close button"
           />
           <p className={styles.title}>{title}</p>
           <div className={styles.body}>{children}</div>
