@@ -6,19 +6,19 @@ import profilePlaceholdor from '_images/profile-placeholder.png'
 
 import styles from './styles.css'
 
-const Avatar = ({ className, image }) => (
+const Avatar = ({ className, avatarURL }) => (
   <div className={styles.avatarBackground}>
-    <Image src={image} className={className} alt="profile image" />
+    <Image src={avatarURL} className={className} alt="profile image" />
   </div>
 )
 
 Avatar.propTypes = {
-  image: PropTypes.string,
+  avatarURL: PropTypes.string,
   className: PropTypes.string,
 }
 
 Avatar.defaultProps = {
-  image: profilePlaceholdor,
+  avatarURL: profilePlaceholdor,
   className: undefined,
 }
 

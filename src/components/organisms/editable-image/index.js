@@ -182,7 +182,7 @@ class EditableImage extends Component {
       <div>
         <div onClick={this.setGetImageDialogState} className={styles.imagePlaceholder}>
           <Avatar
-            image={imageUploadResponse.url}
+            avatarURL={imageUploadResponse.url}
             className={imageUploadResponse.url ? styles.avatarShape : null}
           />
         </div>
