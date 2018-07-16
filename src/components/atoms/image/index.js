@@ -4,12 +4,12 @@ import classNames from 'classnames/bind'
 
 import styles from './styles.css'
 
-const Image = ({ className, image, alt }) => (
-  <img className={classNames(styles.button, className)} src={image} alt={alt} />
+const Image = ({ className, src, alt }) => (
+  <img className={classNames(styles.button, className)} src={src} alt={alt} />
 )
 
 Image.propTypes = {
-  image: PropTypes.string.isRequired,
+  src: PropTypes.string.isRequired,
   className: PropTypes.string,
   alt: PropTypes.string.isRequired,
 }
