@@ -13,6 +13,14 @@ module.exports = (baseConfig, env, defaultConfig) => {
           modules: true,
         },
       },
+      {
+        loader: 'postcss-loader',
+        options: {
+          config: {
+            path: path.resolve(__dirname, '..'),
+          },
+        },
+      },
     ],
   }
   const config = defaultConfig
