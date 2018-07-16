@@ -1,24 +1,25 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import ButtonIcon from '../button-icon'
+import Icon from '_atoms/icon'
 
 import styles from './styles.css'
 
-const Button = ({ onClick, text }) => (
+const Button = ({ onClick, iconURL, children }) => (
   <button className={styles.button} onClick={onClick}>
-    <ButtonIcon text={text} />
-    <p className={styles.buttonText}>{text}</p>
+    {iconURL && <Icon src={iconURL} text="button icon" />}
+    <p className={styles.buttonText}>{children}</p>
   </button>
 )
 
 Button.propTypes = {
   onClick: PropTypes.func,
-  text: PropTypes.string,
+  iconURL: PropTypes.string,
+  children: PropTypes.node.isRequired,
 }
 
 Button.defaultProps = {
+  iconURL: undefined,
   onClick: () => {},
-  text: undefined,
 }
 export default Button

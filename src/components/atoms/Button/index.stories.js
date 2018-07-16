@@ -1,8 +1,12 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
 
+import loginIcon from '_images/login-icon.svg'
+
 import Button from './index'
 
 storiesOf('Button', module).add('Button', () => (
-  <Button text="Login" onClick={() => console.info('test')} />
+  <Button iconURL={loginIcon} onClick={() => console.info('test')}>
+    Login
+  </Button>
 ))
