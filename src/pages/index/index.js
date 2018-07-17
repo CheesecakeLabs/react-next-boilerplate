@@ -15,7 +15,7 @@ const CKLBoilerplate = () => (
     <marquee className={styles.text}>React Boilerplate</marquee>
     <hr />
 
-    <EditableImage />
+    <EditableImage withCrop />
   </Fragment>
 )
 
