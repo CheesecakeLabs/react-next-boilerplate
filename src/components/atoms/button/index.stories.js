@@ -5,7 +5,11 @@ import loginIcon from '_images/login-icon.svg'
 
 import Button from './index'
 
-storiesOf('Button', module).add('Button', () => (
+storiesOf('Button', module).add('with text', () => (
+  <Button onClick={() => console.info('test')}>Login</Button>
+))
+
+storiesOf('Button', module).add('with icon', () => (
   <Button iconURL={loginIcon} onClick={() => console.info('test')}>
     Login
   </Button>
