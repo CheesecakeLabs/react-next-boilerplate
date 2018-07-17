@@ -20,7 +20,9 @@ const DialogCaptureImage = ({
 }) => (
   <Dialog isOpen={isOpen} title={title} onCancelClick={onCancelClick}>
     <ErrorMessageList>
-      {invalidProperties.map(error => <ErrorMessage>{error}</ErrorMessage>)}
+      {invalidProperties.map((error, index) => (
+        <ErrorMessage key={index.toString()}>{error}</ErrorMessage>
+      ))}
     </ErrorMessageList>
     <input
       style={{ display: 'none' }}
