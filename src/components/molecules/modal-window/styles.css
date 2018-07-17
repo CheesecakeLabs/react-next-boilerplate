@@ -1,0 +1,21 @@
+.window {
+    width: 220px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: auto;
+    padding: 15px 13px;
+    background: white;
+    border-radius: 2px;
+    box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.16);
+} 
+
+.modalText {
+  align-self: flex-start;
+  font-family: SourceSansPro;
+  font-size: 16px;
+  font-weight: 300;
+  color: #D0D0D0;
+  margin-top: 0;
+}
