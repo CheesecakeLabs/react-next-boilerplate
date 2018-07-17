@@ -14,3 +14,5 @@ storiesOf('Button', module).add('with icon', () => (
     Login
   </Button>
 ))
+
+storiesOf('Button', module).add('is disabled', () => <Button isDisabled>Login</Button>)

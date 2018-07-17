@@ -9,6 +9,7 @@
     border: none;
     outline: none;
     transition: all 200ms ease;
+    cursor: pointer;
 
     &:active {
         background-color: #005ec4;
@@ -21,4 +22,9 @@
     font-family: 'Source Sans Pro', sans-serif;
     margin: auto 0;
     padding: 0 30px;
+}
+
+.disabled {
+    background-color: #C4CDD5;
+    cursor: not-allowed;
 }
