@@ -87,13 +87,15 @@ class EditableImage extends Component {
 
   openImagePreviewOrEdition = () => {
     const { selectedFile, showImagePreviewOrEdition } = this.state
+    const { withCrop, crop, cropShape } = this.props
     return (
       <DialogPreviewImage
         isOpen={showImagePreviewOrEdition}
         title="Image Preview"
-        withCrop={this.props.withCrop}
+        withCrop={withCrop}
         selectedFile={selectedFile}
-        crop={this.props.crop}
+        crop={crop}
+        cropShape={cropShape}
         onContinueClick={this.uploadImage}
         onCancelClick={this.hideImagePreviewDialog}
       />
@@ -240,6 +242,7 @@ EditableImage.propTypes = {
     width: PropTypes.number,
     height: PropTypes.number,
   }),
+  cropShape: PropTypes.string,
   userMediaEnabled: PropTypes.bool,
   userMedia: PropTypes.shape({
     height: PropTypes.number,
@@ -268,6 +271,7 @@ EditableImage.defaultProps = {
   invalidFileDimensionsText: 'Invalid file size dimension',
   invalidFileExtension: 'It is not a supported file extension',
   crop: undefined,
+  cropShape: 'square',
   userMediaEnabled: true,
   userMedia: undefined,
 }

@@ -1,9 +1,15 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import ReactCrop, { makeAspectCrop, getPixelCrop } from 'react-image-crop'
+import classNames from 'classnames'
 import 'react-image-crop/dist/ReactCrop.css'
 
 import styles from './styles.css'
+
+const SHAPES = {
+  circle: styles.circle,
+  square: styles.square,
+}
 
 class ImageCrop extends Component {
   state = {
@@ -13,9 +19,14 @@ class ImageCrop extends Component {
   }
 
   onImageLoaded = image => {
+    let { cropShape, crop } = this.props
+    //when the shape is a circle the aspect should be 1
+    if (cropShape === 'circle') {
+      crop = { ...crop, aspect: 1 }
+    }
     const cropProperties = makeAspectCrop(
       {
-        ...this.props.crop,
+        ...crop,
       },
       image.width / image.height
     )
@@ -61,9 +72,10 @@ class ImageCrop extends Component {
   }
 
   render() {
+    const { cropShape } = this.props
     return (
       <div>
-        <div className={styles.container}>
+        <div className={classNames(styles.container, SHAPES[cropShape])}>
           <ReactCrop
             src={this.props.selectedFile}
             crop={this.state.crop}
@@ -79,7 +91,7 @@ class ImageCrop extends Component {
 }
 
 ImageCrop.propTypes = {
-  selectedFile: PropTypes.string.isRequired,
+  selectedFile: PropTypes.string,
   onImageCropped: PropTypes.func,
   crop: PropTypes.shape({
     aspect: PropTypes.number,
@@ -88,11 +100,14 @@ ImageCrop.propTypes = {
     width: PropTypes.number,
     height: PropTypes.number,
   }),
+  cropShape: PropTypes.oneOf(['circle', 'square']),
 }
 
 ImageCrop.defaultProps = {
+  selectedFile: undefined,
   crop: undefined,
   onImageCropped: undefined,
+  cropShape: 'square',
 }
 
 export default ImageCrop

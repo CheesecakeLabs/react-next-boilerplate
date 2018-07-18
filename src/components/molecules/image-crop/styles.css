@@ -4,3 +4,9 @@
   align-items: center;
   max-width: 250px;
 }
+
+.circle {
+  :global .ReactCrop__crop-selection {
+    border-radius: 50%;
+  }
+}

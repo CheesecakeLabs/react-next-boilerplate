@@ -31,3 +31,16 @@ storiesOf('Molecules/ImageCrop', module)
       }}
     />
   ))
+  .add('circle shape', () => (
+    <ImageCrop
+      selectedFile={cklLogo}
+      crop={{
+        aspect: 1,
+        x: 10,
+        y: 10,
+        width: 80,
+        height: 80,
+      }}
+      cropShape="circle"
+    />
+  ))

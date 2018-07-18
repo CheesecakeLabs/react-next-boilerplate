@@ -27,6 +27,7 @@ class DialogPreviewImage extends Component {
       onCancelClick,
       selectedFile,
       crop,
+      cropShape,
       withCrop,
       onContinueClick,
     } = this.props
@@ -34,7 +35,12 @@ class DialogPreviewImage extends Component {
       <Dialog isOpen={isOpen} title={title} onCancelClick={onCancelClick}>
         <div className={styles.content}>
           {withCrop ? (
-            <ImageCrop selectedFile={selectedFile} crop={crop} onImageCropped={this.setNewImage} />
+            <ImageCrop
+              selectedFile={selectedFile}
+              crop={crop}
+              cropShape={cropShape}
+              sonImageCropped={this.setNewImage}
+            />
           ) : (
             <Image className={styles.imagePreview} src={selectedFile} alt="profile preview" />
           )}
@@ -59,12 +65,14 @@ DialogPreviewImage.propTypes = {
     width: PropTypes.number,
     height: PropTypes.number,
   }),
+  cropShape: PropTypes.oneOf(['circle', 'square']),
 }
 
 DialogPreviewImage.defaultProps = {
   isOpen: false,
   withCrop: false,
   crop: undefined,
+  cropShape: 'square',
   title: undefined,
   selectedFile: undefined,
   onCancelClick: () => {},
