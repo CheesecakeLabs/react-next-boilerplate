@@ -34,7 +34,7 @@ class EditableImage extends Component {
     if (this.props.withPreview) {
       this.setImagePreviewState(imageSrc)
     } else {
-      this.setState({ selectedFile: imageSrc })
+      this.uploadImage(imageSrc)
     }
   }
 
@@ -84,43 +84,34 @@ class EditableImage extends Component {
 
   openImagePreviewOrEdition = () => {
     const { selectedFile, showImagePreviewOrEdition } = this.state
-
-    if (showImagePreviewOrEdition) {
-      return (
-        <DialogPreviewImage
-          isOpen={this.state.showImagePreviewOrEdition}
-          title="Image Preview"
-          withCrop={this.props.withCrop}
-          selectedFile={selectedFile}
-          crop={this.props.crop}
-          onContinueClick={this.uploadImage}
-          onCancelClick={this.hideImagePreviewDialog}
-        />
-      )
-    }
-    return null
+    return (
+      <DialogPreviewImage
+        isOpen={showImagePreviewOrEdition}
+        title="Image Preview"
+        withCrop={this.props.withCrop}
+        selectedFile={selectedFile}
+        crop={this.props.crop}
+        onContinueClick={this.uploadImage}
+        onCancelClick={this.hideImagePreviewDialog}
+      />
+    )
   }
 
   selectedOrTakeAPhoto = () => {
     const { showDialogToGetImage, showImagePreviewOrEdition } = this.state
-
-    if (!showImagePreviewOrEdition && showDialogToGetImage) {
-      return (
-        <DialogCaptureImage
-          isOpen={showDialogToGetImage}
-          title="Selected or take a photo"
-          accept={this.props.accept}
-          userMediaEnabled={this.props.userMediaEnabled}
-          userMedia={this.props.userMedia}
-          fileSelectedHandler={this.fileSelectedHandler}
-          invalidProperties={this.renderErrors()}
-          onImageSelectedOrCaptured={this.onImageSelectedOrCaptured}
-          onCancelClick={this.hideGetImageDialog}
-        />
-      )
-    }
-
-    return null
+    return (
+      <DialogCaptureImage
+        isOpen={!showImagePreviewOrEdition && showDialogToGetImage}
+        title="Selected or take a photo"
+        accept={this.props.accept}
+        userMediaEnabled={this.props.userMediaEnabled}
+        userMedia={this.props.userMedia}
+        fileSelectedHandler={this.fileSelectedHandler}
+        invalidProperties={this.renderErrors()}
+        onImageSelectedOrCaptured={this.onImageSelectedOrCaptured}
+        onCancelClick={this.hideGetImageDialog}
+      />
+    )
   }
 
   hideGetImageDialog = () => {
@@ -133,6 +124,7 @@ class EditableImage extends Component {
 
   uploadImage = image => {
     this.props.uploadImage({ file: image }).then(({ data, error }) => {
+      //TODO ADD LOADER
       this.setState(() => ({
         imageUploadResponse: data,
         showImagePreviewOrEdition: false,
@@ -180,7 +172,11 @@ class EditableImage extends Component {
     const { imageUploadResponse } = this.state
     return (
       <div>
-        <div onClick={this.setGetImageDialogState} className={styles.imagePlaceholder}>
+        <div
+          onClick={this.setGetImageDialogState}
+          className={styles.imagePlaceholder}
+          role="presentation"
+        >
           <Avatar
             avatarURL={imageUploadResponse.url}
             className={imageUploadResponse.url ? styles.avatarShape : null}
