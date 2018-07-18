@@ -1,14 +1,20 @@
 import validations from './validations'
 
-export default function validateRules(selectedValidations, ...newValidations) {
-  const reqValidations = { ...validations, ...newValidations }
+export default function validateRules({ isRequired, fieldType, fieldRules, customRules }) {
+  const reqValidations = { ...validations, ...customRules }
 
   return function validate(value) {
-    if (!value && selectedValidations.indexOf('required') < 0) return undefined
+    if (!isRequired && !value) return null
 
-    const firstError = selectedValidations.find(
-      validation => !reqValidations[validation].rule.test(value)
-    )
-    return reqValidations[firstError] ? reqValidations[firstError].message : undefined
+    const testValidation = (...selected) =>
+      selected.find(
+        validation => reqValidations[validation] && !reqValidations[validation].rule.test(value)
+      )
+
+    const testRequired = isRequired && testValidation('required')
+    const testType = fieldType && testValidation(fieldType)
+    const firstError = testRequired || testType || testValidation(fieldRules)
+
+    return reqValidations[firstError] ? reqValidations[firstError].message : null
   }
 }
