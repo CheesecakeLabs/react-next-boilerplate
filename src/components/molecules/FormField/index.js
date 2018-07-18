@@ -39,13 +39,26 @@ class FormField extends Component {
   }
 
   render() {
-    const { className, type, field, multiline, required, value, errorMessage } = this.props
+    const { className, label, type, field, multiline, required, value, errorMessage } = this.props
     const visibleError = this.state.errorValidation || errorMessage || null
+
+    const labelChildren = required && <span>*</span>
+    const labelProps = { htmlFor: field }
+
+    const labelComponent =
+      label && label.type ? (
+        React.cloneElement(label, labelProps, label.props.children, labelChildren)
+      ) : (
+        <label htmlFor={field}>
+          {label} {labelChildren}
+        </label>
+      )
 
     return (
       <div className={classNames(styles.field, className)}>
+        {labelComponent}
         <Input
-          className={className}
+          className={styles.input}
           type={type}
           id={field}
           name={field}
@@ -60,6 +73,7 @@ class FormField extends Component {
   }
 }
 
+const labelTypes = [PropTypes.string, PropTypes.element]
 const validationTypes = [PropTypes.string, PropTypes.arrayOf(PropTypes.string)]
 const customValidationTypes = {
   rule: PropTypes.regexp,
@@ -68,6 +82,7 @@ const customValidationTypes = {
 
 FormField.propTypes = {
   className: PropTypes.string,
+  label: PropTypes.oneOfType(labelTypes),
   type: PropTypes.string,
   field: PropTypes.string.isRequired,
   multiline: PropTypes.bool,
@@ -82,6 +97,7 @@ FormField.propTypes = {
 
 FormField.defaultProps = {
   className: undefined,
+  label: undefined,
   type: 'text',
   field: null,
   multiline: false,
