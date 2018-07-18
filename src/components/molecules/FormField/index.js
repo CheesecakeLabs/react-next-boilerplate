@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types'
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
+import classNames from 'classnames'
 
 import validate from '_utils/validate-inputs'
 import Input from '_atoms/Input'
@@ -12,7 +13,13 @@ class FormField extends Component {
     this.state = {
       errorValidation: '',
     }
-    this.validate = validate(props.validations, props.customValidations)
+    this.validate = validate({
+      isRequired: props.required,
+      fieldType: props.type,
+      fieldRules: props.validations,
+      customRules: props.customValidations,
+    })
+    this.handleFormValidation = props.handleFormValidation
   }
 
   componentDidMount = () => {
@@ -20,9 +27,10 @@ class FormField extends Component {
   }
 
   applyValidation = value => {
-    this.setState({
-      errorValidation: this.validate(value),
-    })
+    const validation = this.validate(value)
+
+    this.setState({ errorValidation: validation })
+    this.handleFormValidation(this.props.field, !validation)
   }
 
   handleChange = ev => {
@@ -35,7 +43,7 @@ class FormField extends Component {
     const visibleError = this.state.errorValidation || errorMessage || null
 
     return (
-      <Fragment>
+      <div className={classNames(styles.field, className)}>
         <Input
           className={className}
           type={type}
@@ -47,7 +55,7 @@ class FormField extends Component {
           handleChange={this.handleChange}
         />
         {visibleError && <p className={styles.error}>{visibleError}</p>}
-      </Fragment>
+      </div>
     )
   }
 }
@@ -69,6 +77,7 @@ FormField.propTypes = {
   customValidations: PropTypes.shape(customValidationTypes),
   errorMessage: PropTypes.string,
   handleChange: PropTypes.func.isRequired,
+  handleFormValidation: PropTypes.func,
 }
 
 FormField.defaultProps = {
@@ -82,6 +91,7 @@ FormField.defaultProps = {
   customValidations: undefined,
   errorMessage: '',
   handleChange: null,
+  handleFormValidation: () => {},
 }
 
 export default FormField
