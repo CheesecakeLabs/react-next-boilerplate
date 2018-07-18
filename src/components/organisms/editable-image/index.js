@@ -10,6 +10,8 @@ import {
 import DialogCaptureImage from '_organisms/dialog-capture-image'
 import DialogPreviewImage from '_organisms/dialog-preview-image'
 import Avatar from '_molecules/avatar'
+import Loader from '_atoms/loader'
+import Overlay from '_atoms/overlay'
 
 import styles from './styles.css'
 
@@ -28,6 +30,7 @@ class EditableImage extends Component {
     showImagePreviewOrEdition: false,
     imageUploadResponse: '',
     showDialogToGetImage: false,
+    showLoader: false,
   }
 
   onImageSelectedOrCaptured = imageSrc => {
@@ -137,14 +140,24 @@ class EditableImage extends Component {
   }
 
   uploadImage = image => {
+    this.setState({ showLoader: true })
     this.props.uploadImage({ file: image }).then(({ data, error }) => {
-      //TODO ADD LOADER
       this.setState(() => ({
         imageUploadResponse: data,
         showImagePreviewOrEdition: false,
         showDialogToGetImage: false,
+        showLoader: false,
       }))
     })
+  }
+
+  showImageUploadLoader = () => {
+    const { showLoader } = this.state
+    return (
+      <Overlay show={showLoader}>
+        <Loader />
+      </Overlay>
+    )
   }
 
   fileSelectedHandler = event => {
@@ -200,6 +213,7 @@ class EditableImage extends Component {
         {userMediaEnabled && this.selectedOrTakeAPhoto()}
         {!userMediaEnabled && this.selectedPhotoFromComputer()}
         {this.openImagePreviewOrEdition()}
+        {this.showImageUploadLoader()}
       </div>
     )
   }
@@ -245,7 +259,7 @@ EditableImage.defaultProps = {
   minHeight: 0,
   maxHeight: 500000,
   minFileSize: 0,
-  maxFileSize: 150,
+  maxFileSize: 1500000000,
   accept: 'image/*',
   withPreview: true,
   withCrop: false,
