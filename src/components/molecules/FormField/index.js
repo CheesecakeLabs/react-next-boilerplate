@@ -43,6 +43,7 @@ FormField.propTypes = {
   validations: PropTypes.oneOfType(validationTypes),
   errorMessage: PropTypes.string,
   handleChange: PropTypes.func.isRequired,
+  handleFormValidation: PropTypes.func,
 }
 
 FormField.defaultProps = {
@@ -55,6 +56,7 @@ FormField.defaultProps = {
   validations: [],
   errorMessage: '',
   handleChange: null,
+  handleFormValidation: () => {},
 }
 
 export default FormField

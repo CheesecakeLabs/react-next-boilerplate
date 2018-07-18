@@ -14,15 +14,15 @@ class Form extends Component {
     this.props.handleSubmit(ev)
   }
 
-  isSubmitValid = (fieldName, isChildValid = false) => {
+  handleFormValidation = (fieldName, isChildValid = false) => {
     const childStatus = { [fieldName]: isChildValid }
-    this.setState(oldState => ({ isSubmitValid: { ...oldState.isSubmitValid, childStatus } }))
+    this.setState(oldState => ({ isSubmitValid: { ...oldState.isSubmitValid, ...childStatus } }))
   }
 
   render = () => {
     const { className, children } = this.props
     const formProps = {
-      isSubmitValid: this.isSubmitValid,
+      handleFormValidation: this.handleFormValidation,
     }
     const formChildren = Children.map(children, child => cloneElement(child, formProps))
 
