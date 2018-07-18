@@ -49,7 +49,7 @@ DialogPreviewImage.propTypes = {
   isOpen: PropTypes.bool,
   withCrop: PropTypes.bool,
   title: PropTypes.string,
-  selectedFile: PropTypes.string.isRequired,
+  selectedFile: PropTypes.string,
   onCancelClick: PropTypes.func,
   onContinueClick: PropTypes.func,
   crop: PropTypes.shape({
@@ -66,6 +66,7 @@ DialogPreviewImage.defaultProps = {
   withCrop: false,
   crop: undefined,
   title: undefined,
+  selectedFile: undefined,
   onCancelClick: () => {},
   onContinueClick: () => {},
 }

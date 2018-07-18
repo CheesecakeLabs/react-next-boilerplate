@@ -9,12 +9,13 @@ const Image = ({ className, src, alt }) => (
 )
 
 Image.propTypes = {
-  src: PropTypes.string.isRequired,
+  src: PropTypes.string,
   className: PropTypes.string,
   alt: PropTypes.string.isRequired,
 }
 
 Image.defaultProps = {
+  src: undefined,
   className: undefined,
 }
 

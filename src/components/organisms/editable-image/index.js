@@ -114,6 +114,20 @@ class EditableImage extends Component {
     )
   }
 
+  selectedPhotoFromComputer = () => {
+    const { accept } = this.props
+    return (
+      <input
+        style={{ display: 'none' }}
+        type="file"
+        onChange={this.fileSelectedHandler}
+        accept={accept}
+        ref={fileInput => (this.fileInput = fileInput)}
+        multiple={false}
+      />
+    )
+  }
+
   hideGetImageDialog = () => {
     this.setState({ showDialogToGetImage: false })
   }
@@ -170,10 +184,11 @@ class EditableImage extends Component {
 
   render() {
     const { imageUploadResponse } = this.state
+    const { userMediaEnabled } = this.props
     return (
       <div>
         <div
-          onClick={this.setGetImageDialogState}
+          onClick={userMediaEnabled ? this.setGetImageDialogState : () => this.fileInput.click()}
           className={styles.imagePlaceholder}
           role="presentation"
         >
@@ -182,7 +197,8 @@ class EditableImage extends Component {
             className={imageUploadResponse.url ? styles.avatarShape : null}
           />
         </div>
-        {this.selectedOrTakeAPhoto()}
+        {userMediaEnabled && this.selectedOrTakeAPhoto()}
+        {!userMediaEnabled && this.selectedPhotoFromComputer()}
         {this.openImagePreviewOrEdition()}
       </div>
     )
