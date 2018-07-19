@@ -69,23 +69,21 @@ class FormField extends Component {
   }
 }
 
-const labelTypes = [PropTypes.string, PropTypes.element]
-const validationTypes = [PropTypes.string, PropTypes.arrayOf(PropTypes.string)]
 const customValidationTypes = {
-  rule: PropTypes.regexp,
+  rule: PropTypes.instanceOf(RegExp),
   message: PropTypes.string,
 }
 
 FormField.propTypes = {
   className: PropTypes.string,
-  label: PropTypes.oneOfType(labelTypes),
+  label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
   type: PropTypes.string,
   field: PropTypes.string.isRequired,
   multiline: PropTypes.bool,
   required: PropTypes.bool,
   value: PropTypes.string,
-  validations: PropTypes.oneOfType(validationTypes),
-  customValidations: PropTypes.shape(customValidationTypes),
+  validations: PropTypes.oneOfType([PropTypes.string, PropTypes.arrayOf(PropTypes.string)]),
+  customValidations: PropTypes.arrayOf(PropTypes.shape(customValidationTypes)),
   errorMessage: PropTypes.string,
   handleChange: PropTypes.func.isRequired,
   handleFormValidation: PropTypes.func,
@@ -101,7 +99,7 @@ FormField.defaultProps = {
   value: '',
   validations: [],
   customValidations: undefined,
-  errorMessage: '',
+  errorMessage: undefined,
   handleChange: null,
   handleFormValidation: () => {},
 }
