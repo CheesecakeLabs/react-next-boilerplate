@@ -9,3 +9,17 @@
   transition: .3s;
   box-sizing: border-box;
 }
+
+.closeNavWrapper {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.iconButton {
+  height: 60px;
+  width: 60px;
+}
+
+.icon {
+  height: 22px;
+}
