@@ -1,0 +1,12 @@
+.navItem {
+  font-size: 14px;
+  line-height: 16.1px;
+  padding: 20px 0px;
+  text-align: left;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+.link {
+  text-decoration: none;
+  color: white;
+}
