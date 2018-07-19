@@ -1,13 +1,20 @@
 .sidenav {
   position: fixed;
   top: 0;
-  left: 0;
   width: 260px;
   height: 100%;
   z-index: 1;
   background-color: #39609E;
   transition: .3s;
   box-sizing: border-box;
+}
+
+.opened {
+  left: 0;
+}
+
+.closed {
+  left: -260px;
 }
 
 .closeNavWrapper {

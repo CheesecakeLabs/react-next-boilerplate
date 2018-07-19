@@ -1,4 +1,6 @@
 import React from 'react'
+import classNames from 'classnames'
+import PropTypes from 'prop-types'
 
 import NavigationItems from '_molecules/navigation-items'
 import NavigationItem from '_atoms/navigation-item'
@@ -7,17 +9,21 @@ import closeIcon from '_images/close.svg'
 
 import styles from './styles.css'
 
-const Sidenav = () => (
-  <div className={styles.sidenav}>
+const Sidenav = ({ isOpen, onCloseClick }) => (
+  <div
+    className={classNames(
+      styles.sidenav,
+      { [styles.opened]: isOpen },
+      { [styles.closed]: !isOpen }
+    )}
+  >
     <nav>
       <div className={styles.closeNavWrapper}>
         <IconButton
           iconURL={closeIcon}
           className={styles.iconButton}
           classNameIcon={styles.icon}
-          onClick={() => {
-            console.log('close side nav')
-          }}
+          onClick={onCloseClick}
         />
       </div>
       <NavigationItems>
@@ -30,5 +36,15 @@ const Sidenav = () => (
     </nav>
   </div>
 )
+
+Sidenav.propTypes = {
+  isOpen: PropTypes.bool,
+  onCloseClick: PropTypes.func,
+}
+
+Sidenav.defaultProps = {
+  isOpen: false,
+  onCloseClick: undefined,
+}
 
 export default Sidenav
