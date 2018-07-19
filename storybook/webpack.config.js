@@ -31,6 +31,7 @@ module.exports = (baseConfig, env, defaultConfig) => {
     _organisms: path.resolve(__dirname, '..', 'src', 'components', 'organisms'),
     _images: path.resolve(__dirname, '..', 'src', 'images'),
     _pages: path.resolve(__dirname, '..', 'src', 'pages'),
+    _utils: path.resolve(__dirname, '..', 'src', 'utils'),
   }
   config.module.rules = config.module.rules.map(rule => (rule.test.test('.css') ? cssRule : rule))
   return config
