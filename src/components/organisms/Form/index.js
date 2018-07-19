@@ -21,9 +21,7 @@ class Form extends Component {
 
   render = () => {
     const { className, children } = this.props
-    const formProps = {
-      handleFormValidation: this.handleFormValidation,
-    }
+    const formProps = { handleFormValidation: this.handleFormValidation }
     const formChildren = Children.map(children, child => cloneElement(child, formProps))
 
     return (
@@ -35,12 +33,10 @@ class Form extends Component {
   }
 }
 
-const elementTypes = [PropTypes.element, PropTypes.arrayOf(PropTypes.element)]
-
 Form.propTypes = {
   className: PropTypes.string,
   handleSubmit: PropTypes.func.isRequired,
-  children: PropTypes.oneOfType(elementTypes).isRequired,
+  children: PropTypes.oneOfType(PropTypes.element, PropTypes.arrayOf(PropTypes.element)).isRequired,
 }
 
 Form.defaultProps = {
