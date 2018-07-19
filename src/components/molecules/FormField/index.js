@@ -22,10 +22,6 @@ class FormField extends Component {
     this.handleFormValidation = props.handleFormValidation
   }
 
-  componentDidMount = () => {
-    this.applyValidation(this.props.value)
-  }
-
   applyValidation = value => {
     const validation = this.validate(value)
 
