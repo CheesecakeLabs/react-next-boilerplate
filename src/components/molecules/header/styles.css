@@ -1,0 +1,13 @@
+.header {
+  height: 60px;
+  width: 100%;
+  background: #007aff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+}
