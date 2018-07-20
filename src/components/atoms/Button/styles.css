@@ -1,0 +1,35 @@
+.button {
+    background-color: #007aff;
+    /* width: auto; */
+    display: inline-flex;
+    padding: 10px 30px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 2px;
+    border: none;
+    outline: none;
+    margin: auto;
+    transition: all 200ms ease;
+
+    &:active {
+        background-color: #005ec4;
+    }
+}
+
+.block {
+    display: flex;
+    width: 100%;
+    margin-bottom: 10px;
+
+    &:last-child{
+        margin-bottom: 0;
+    }
+}
+
+.buttonText {
+    color: white;
+    font-size: 14px;
+    font-family: 'Source Sans Pro', sans-serif;
+    margin: auto 0;
+    padding: 0 30px;
+}
