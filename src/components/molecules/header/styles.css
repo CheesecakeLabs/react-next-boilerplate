@@ -1,7 +1,7 @@
 .header {
   height: 60px;
   width: 100%;
-  background: #39609E;
+  background: var(--color-primary);
   position: fixed;
   top: 0;
   left: 0;
@@ -10,4 +10,10 @@
   justify-content: space-between;
   align-items: center;
   box-sizing: border-box;
+}
+
+@media(min-width: 769px) {
+  .header {
+    display: none;
+  }
 }

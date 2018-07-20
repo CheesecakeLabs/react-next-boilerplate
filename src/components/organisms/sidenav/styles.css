@@ -4,9 +4,12 @@
   width: 260px;
   height: 100%;
   z-index: 1;
-  background-color: #39609E;
+  background-color: var(--color-primary);
   transition: .3s;
   box-sizing: border-box;
+  @media(min-width: 769px) {
+    box-shadow: 1px 0 10px 0 var(--color-primary-light);
+  }
 }
 
 .opened {
@@ -15,11 +18,33 @@
 
 .closed {
   left: -260px;
+
+  @media(min-width: 769px) {
+    left: 0;
+    width: 70px;
+
+    .menuItemStyle {
+      white-space: nowrap;
+      opacity: 0;
+      transform: translate(-200px);
+    }
+  }
 }
 
-.closeNavWrapper {
-  display: flex;
-  justify-content: flex-end;
+.navHeaderMobileOnly {
+  display: none;
+  @media(max-width: 768px) {
+    display: flex;
+    justify-content: flex-end;
+  }
+}
+
+.navHeaderDesktopOnly {
+  display: none;
+  @media(min-width: 769px) {
+    display: flex;
+    justify-content: flex-end;
+  }
 }
 
 .iconButton {
@@ -29,4 +54,10 @@
 
 .icon {
   height: 22px;
+}
+
+.menuItemStyle {
+  transition: .5s;
+  opacity: 1;
+  transform: translateX(0)
 }
