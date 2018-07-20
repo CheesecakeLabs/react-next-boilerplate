@@ -10,3 +10,9 @@ storiesOf('Button', module).add('Button', () => (
     Login
   </Button>
 ))
+
+storiesOf('Button', module).add('Button block', () => (
+  <Button iconURL={loginIcon} onClick={() => console.info('test')} isBlock>
+    Login
+  </Button>
+))
