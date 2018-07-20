@@ -7,6 +7,12 @@
 }
 
 .link {
+  display: flex;
+  align-items: center;
   text-decoration: none;
   color: white;
+}
+
+.icon {
+  margin-right: 15px;
 }
