@@ -1,0 +1,8 @@
+.modalFooter {
+  display: flex;
+}
+
+.modalText {
+    margin: 0;
+    width: 100%;
+  }
