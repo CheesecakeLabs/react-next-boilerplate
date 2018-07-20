@@ -1,0 +1,11 @@
+.modalBody {
+  display: flex;
+}
+
+.modalText {
+    align-self: flex-start;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 13px;
+    font-weight: 200;
+    color: #666666;
+  }
