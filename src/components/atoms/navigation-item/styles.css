@@ -4,6 +4,10 @@
   padding: 20px 24px;
   text-align: left;
   font-family: 'Source Sans Pro', sans-serif;
+
+  &:hover {
+    background-color: var(--color-primary-dark);
+  }
 }
 
 .link {
