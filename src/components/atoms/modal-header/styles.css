@@ -1,0 +1,16 @@
+.modalHeader{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.modalTitle {
+    align-self: flex-start;  
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+    margin: 0;
+    color: black;
+    width: 90%;
+    word-wrap: break-word;
+}
