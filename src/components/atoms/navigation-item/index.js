@@ -5,11 +5,11 @@ import Icon from '_atoms/icon'
 
 import styles from './styles.css'
 
-const NavigationItem = ({ icon, link, children }) => (
+const NavigationItem = ({ icon, link, style, children }) => (
   <li className={styles.navItem}>
     <a className={styles.link} href={link}>
       {icon ? <Icon className={styles.icon} src={icon} /> : undefined}
-      <span>{children}</span>
+      <span className={style}>{children}</span>
     </a>
   </li>
 )
