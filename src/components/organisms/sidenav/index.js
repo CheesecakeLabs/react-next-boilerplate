@@ -6,6 +6,7 @@ import NavigationItems from '_molecules/navigation-items'
 import NavigationItem from '_atoms/navigation-item'
 import IconButton from '_atoms/icon-button'
 import closeIcon from '_images/close.svg'
+import settingsIcon from '_images/settings.png'
 
 import styles from './styles.css'
 
@@ -27,9 +28,15 @@ const Sidenav = ({ isOpen, onCloseClick }) => (
         />
       </div>
       <NavigationItems>
-        <NavigationItem link="teste">Resumo</NavigationItem>
-        <NavigationItem link="teste">Relatório de vendas</NavigationItem>
-        <NavigationItem link="teste">Relatótio de recebíveis</NavigationItem>
+        <NavigationItem link="teste" icon={settingsIcon}>
+          Resumo
+        </NavigationItem>
+        <NavigationItem link="teste" icon={settingsIcon}>
+          Relatório de vendas
+        </NavigationItem>
+        <NavigationItem link="teste" icon={settingsIcon}>
+          Relatótio de recebíveis
+        </NavigationItem>
         <NavigationItem link="teste">Configurações</NavigationItem>
         <NavigationItem link="teste">Sair</NavigationItem>
       </NavigationItems>
