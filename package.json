@@ -31,6 +31,7 @@
   },
   "devDependencies": {
     "@storybook/addon-info": "^3.4.8",
+    "@storybook/addon-knobs": "^3.4.8",
     "@storybook/react": "^3.4.8",
     "autoprefixer": "^8.2.0",
     "babel-core": "^6.26.3",
