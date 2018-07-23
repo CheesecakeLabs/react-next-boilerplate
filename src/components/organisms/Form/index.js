@@ -36,7 +36,7 @@ class Form extends Component {
 Form.propTypes = {
   className: PropTypes.string,
   handleSubmit: PropTypes.func.isRequired,
-  children: PropTypes.oneOfType(PropTypes.element, PropTypes.arrayOf(PropTypes.element)).isRequired,
+  children: PropTypes.node.isRequired,
 }
 
 Form.defaultProps = {
