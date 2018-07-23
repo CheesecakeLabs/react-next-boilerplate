@@ -9,6 +9,7 @@ import IconButton from '_atoms/icon-button'
 import Icon from '_atoms/icon'
 import closeIcon from '_images/close.svg'
 import menuIcon from '_images/menu.svg'
+import cklLogo from '_images/ckl-logo.png'
 import settingsIcon from '_images/settings.png'
 
 import styles from './styles.css'
@@ -36,19 +37,19 @@ const Sidenav = ({ isOpen, onCloseClick }) => {
         <div className={styles.navHeaderDesktopOnly}>{headerIcon(menuIcon)}</div>
         <NavigationItems>
           <NavigationItem link="teste" icon={settingsIcon} style={styles.menuItemStyle}>
-            Resumo
+            Menu 1
           </NavigationItem>
           <NavigationItem link="teste" icon={settingsIcon} style={styles.menuItemStyle}>
-            Relatório de vendas
+            Menu 2
           </NavigationItem>
           <NavigationItem link="teste" icon={settingsIcon} style={styles.menuItemStyle}>
-            Relatótio de recebíveis
+            Menu 3
           </NavigationItem>
           <NavigationItem link="teste" icon={settingsIcon} style={styles.menuItemStyle}>
-            Configurações
+            Menu 4
           </NavigationItem>
           <NavigationItem link="teste" icon={settingsIcon} style={styles.menuItemStyle}>
-            Sair
+            Menu 5
           </NavigationItem>
         </NavigationItems>
 
@@ -56,7 +57,7 @@ const Sidenav = ({ isOpen, onCloseClick }) => {
           2018 Todos os direitos reservados
         </NavigationFooter>
         <NavigationFooter className={styles.navFooterForCloseDesktopOnly}>
-          <Icon src={menuIcon} />
+          <Icon src={cklLogo} />
         </NavigationFooter>
       </nav>
     </div>

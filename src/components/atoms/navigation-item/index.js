@@ -22,7 +22,6 @@ NavigationItem.propTypes = {
 }
 
 NavigationItem.defaultProps = {
-  icon: undefined,
   style: undefined,
 }
 
