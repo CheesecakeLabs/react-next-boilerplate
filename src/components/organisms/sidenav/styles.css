@@ -12,18 +12,18 @@
   }
 }
 
-.opened {
-  left: 0;
-}
-
 .navFooter {
   opacity: 1;
   transition: .3s;
 }
 
-.navFooterForCloseDesktopOnly {
+.navFooterClosedOnDesktop {
   opacity: 0;
   transition: .3s;
+}
+
+.opened {
+  left: 0;
 }
 
 .closed {
@@ -39,11 +39,15 @@
       transform: translate(-200px);
     }
 
+    .navHeaderDesktopOnly {
+      justify-content: center;
+    }
+
     .navFooter {
       opacity: 0;
     }
 
-    .navFooterForCloseDesktopOnly {
+    .navFooterClosedOnDesktop {
       opacity: 1;
     }
   }
@@ -68,10 +72,6 @@
 .iconButton {
   height: 60px;
   width: 60px;
-}
-
-.icon {
-  height: 22px;
 }
 
 .menuItemStyle {

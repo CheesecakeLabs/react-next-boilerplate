@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import Logo from '_atoms/logo'
 import IconButton from '_atoms/icon-button'
-import menu from '_images/menu.svg'
+import menu from '_images/menu.png'
 
 import styles from './styles.css'
 
