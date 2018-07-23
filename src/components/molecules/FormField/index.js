@@ -76,7 +76,7 @@ const customValidationTypes = {
 
 FormField.propTypes = {
   className: PropTypes.string,
-  label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+  label: PropTypes.node,
   type: PropTypes.string,
   field: PropTypes.string.isRequired,
   multiline: PropTypes.bool,
