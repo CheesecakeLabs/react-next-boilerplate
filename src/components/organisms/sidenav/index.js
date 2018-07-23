@@ -4,7 +4,9 @@ import PropTypes from 'prop-types'
 
 import NavigationItems from '_molecules/navigation-items'
 import NavigationItem from '_atoms/navigation-item'
+import NavigationFooter from '_atoms/navigation-footer'
 import IconButton from '_atoms/icon-button'
+import Icon from '_atoms/icon'
 import closeIcon from '_images/close.svg'
 import menuIcon from '_images/menu.svg'
 import settingsIcon from '_images/settings.png'
@@ -49,6 +51,13 @@ const Sidenav = ({ isOpen, onCloseClick }) => {
             Sair
           </NavigationItem>
         </NavigationItems>
+
+        <NavigationFooter className={styles.navFooter}>
+          2018 Todos os direitos reservados
+        </NavigationFooter>
+        <NavigationFooter className={styles.navFooterForCloseDesktopOnly}>
+          <Icon src={menuIcon} />
+        </NavigationFooter>
       </nav>
     </div>
   )

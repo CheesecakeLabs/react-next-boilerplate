@@ -16,6 +16,16 @@
   left: 0;
 }
 
+.navFooter {
+  opacity: 1;
+  transition: .3s;
+}
+
+.navFooterForCloseDesktopOnly {
+  opacity: 0;
+  transition: .3s;
+}
+
 .closed {
   left: -260px;
 
@@ -27,6 +37,14 @@
       white-space: nowrap;
       opacity: 0;
       transform: translate(-200px);
+    }
+
+    .navFooter {
+      opacity: 0;
+    }
+
+    .navFooterForCloseDesktopOnly {
+      opacity: 1;
     }
   }
 }
