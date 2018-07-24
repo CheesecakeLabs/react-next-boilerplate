@@ -8,7 +8,12 @@
   font-family: 'Source Sans Pro', Arial, sans-serif;
   font-size: .9rem;
 
-  &:focus {
+  &:hover {
     border-color: #000000;
+  }
+
+  &:focus {
+    box-shadow: 0 0px 2px 2px #91d0d9;
+    border-color: var(--color-focusable-blue);
   }
 }
