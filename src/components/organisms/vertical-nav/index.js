@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 
-import Header from '_molecules/header'
-import Sidenav from '_organisms/sidenav'
+import AppBar from '_molecules/app-bar'
+import Drawer from '_organisms/drawer'
 
-class Navigation extends Component {
+class VerticalNav extends Component {
   state = {
     sidenavIsOpen: false,
   }
@@ -18,11 +18,11 @@ class Navigation extends Component {
     const { sidenavIsOpen } = this.state
     return (
       <div>
-        <Header onMenuClick={this.sideMenuHandler} />
-        <Sidenav onCloseClick={this.sideMenuHandler} isOpen={sidenavIsOpen} />
+        <AppBar onMenuClick={this.sideMenuHandler} />
+        <Drawer onToggleClick={this.sideMenuHandler} isOpen={sidenavIsOpen} />
       </div>
     )
   }
 }
 
-export default Navigation
+export default VerticalNav

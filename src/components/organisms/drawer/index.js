@@ -14,9 +14,9 @@ import Icon from '_atoms/icon'
 
 import styles from './styles.css'
 
-const Sidenav = ({ isOpen, onCloseClick }) => {
+const Drawer = ({ isOpen, onToggleClick }) => {
   const headerIcon = iconURL => (
-    <IconButton iconURL={iconURL} className={styles.iconButton} onClick={onCloseClick} />
+    <IconButton iconURL={iconURL} className={styles.iconButton} onClick={onToggleClick} />
   )
 
   return (
@@ -31,23 +31,22 @@ const Sidenav = ({ isOpen, onCloseClick }) => {
         <div className={styles.navHeaderMobileOnly}>{headerIcon(closeIcon)}</div>
         <div className={styles.navHeaderDesktopOnly}>{headerIcon(menuIcon)}</div>
         <NavigationItems>
-          <NavigationItem link="teste" icon={settingsIcon} style={styles.menuItemStyle}>
+          <NavigationItem link="teste" iconSrc={settingsIcon} className={styles.menuItemStyle}>
             Menu 1
           </NavigationItem>
-          <NavigationItem link="teste" icon={settingsIcon} style={styles.menuItemStyle}>
+          <NavigationItem link="teste" iconSrc={settingsIcon} className={styles.menuItemStyle}>
             Menu 2
           </NavigationItem>
-          <NavigationItem link="teste" icon={settingsIcon} style={styles.menuItemStyle}>
+          <NavigationItem link="teste" iconSrc={settingsIcon} className={styles.menuItemStyle}>
             Menu 3
           </NavigationItem>
-          <NavigationItem link="teste" icon={settingsIcon} style={styles.menuItemStyle}>
+          <NavigationItem link="teste" iconSrc={settingsIcon} className={styles.menuItemStyle}>
             Menu 4
           </NavigationItem>
-          <NavigationItem link="teste" icon={settingsIcon} style={styles.menuItemStyle}>
+          <NavigationItem link="teste" iconSrc={settingsIcon} className={styles.menuItemStyle}>
             Menu 5
           </NavigationItem>
         </NavigationItems>
-
         <NavigationFooter className={styles.navFooter}>
           2018 Todos os direitos reservados
         </NavigationFooter>
@@ -59,14 +58,14 @@ const Sidenav = ({ isOpen, onCloseClick }) => {
   )
 }
 
-Sidenav.propTypes = {
+Drawer.propTypes = {
   isOpen: PropTypes.bool,
-  onCloseClick: PropTypes.func,
+  onToggleClick: PropTypes.func,
 }
 
-Sidenav.defaultProps = {
+Drawer.defaultProps = {
   isOpen: false,
-  onCloseClick: undefined,
+  onToggleClick: undefined,
 }
 
-export default Sidenav
+export default Drawer
