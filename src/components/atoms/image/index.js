@@ -5,7 +5,7 @@ import classNames from 'classnames/bind'
 import styles from './styles.css'
 
 const Image = ({ className, src, alt }) => (
-  <img className={classNames(styles.button, className)} src={src} alt={alt} />
+  <img className={classNames(styles.image, className)} src={src} alt={alt} />
 )
 
 Image.propTypes = {

@@ -39,7 +39,7 @@ class DialogPreviewImage extends Component {
               selectedFile={selectedFile}
               crop={crop}
               cropShape={cropShape}
-              sonImageCropped={this.setNewImage}
+              onImageCropped={this.setNewImage}
             />
           ) : (
             <Image className={styles.imagePreview} src={selectedFile} alt="profile preview" />

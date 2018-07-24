@@ -15,7 +15,7 @@ const DialogCaptureImage = ({
   accept,
   userMediaEnabled,
   invalidProperties,
-  onImageSelectedOrCaptured,
+  onImageSelected,
   userMedia,
 }) => (
   <Dialog isOpen={isOpen} title={title} onCancelClick={onCancelClick}>
@@ -34,10 +34,7 @@ const DialogCaptureImage = ({
     />
     <div>
       {userMediaEnabled && (
-        <WebcamCapture
-          onImageCapturedFromWebcam={onImageSelectedOrCaptured}
-          userMedia={userMedia}
-        />
+        <WebcamCapture onImageCaptured={onImageSelected} userMedia={userMedia} />
       )}
       <Button onClick={() => this.fileInput.click()}>Upload photo</Button>
     </div>
@@ -62,7 +59,7 @@ DialogCaptureImage.propTypes = {
     }),
   }),
   invalidProperties: PropTypes.arrayOf(PropTypes.string),
-  onImageSelectedOrCaptured: PropTypes.func,
+  onImageSelected: PropTypes.func,
 }
 
 DialogCaptureImage.defaultProps = {
@@ -71,7 +68,7 @@ DialogCaptureImage.defaultProps = {
   invalidProperties: [],
   userMedia: undefined,
   onCancelClick: () => {},
-  onImageSelectedOrCaptured: () => {},
+  onImageSelected: () => {},
 }
 
 export default DialogCaptureImage

@@ -13,7 +13,7 @@ class WebcamCapture extends Component {
 
   capture = () => {
     const imageSrc = this.webcam.getScreenshot()
-    this.props.onImageCapturedFromWebcam(imageSrc)
+    this.props.onImageCaptured(imageSrc)
   }
 
   render() {
@@ -35,7 +35,7 @@ class WebcamCapture extends Component {
 }
 
 WebcamCapture.propTypes = {
-  onImageCapturedFromWebcam: PropTypes.func.isRequired,
+  onImageCaptured: PropTypes.func.isRequired,
   userMedia: PropTypes.shape({
     height: PropTypes.number,
     width: PropTypes.number,

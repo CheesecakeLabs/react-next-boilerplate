@@ -113,7 +113,7 @@ class EditableImage extends Component {
         userMedia={this.props.userMedia}
         fileSelectedHandler={this.fileSelectedHandler}
         invalidProperties={this.renderErrors()}
-        onImageSelectedOrCaptured={this.onImageSelectedOrCaptured}
+        onImageSelected={this.onImageSelectedOrCaptured}
         onCancelClick={this.hideGetImageDialog}
       />
     )
