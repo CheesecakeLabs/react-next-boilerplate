@@ -1,4 +1,4 @@
-.header {
+.appBar {
   height: 60px;
   width: 100%;
   background: var(--color-primary);
@@ -14,7 +14,7 @@
 }
 
 @media(min-width: 769px) {
-  .header {
+  .appBar {
     display: none;
   }
 }

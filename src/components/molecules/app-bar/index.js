@@ -7,19 +7,19 @@ import menu from '_images/menu.png'
 
 import styles from './styles.css'
 
-const Header = ({ onMenuClick }) => (
-  <header className={styles.header}>
+const AppBar = ({ onMenuClick }) => (
+  <header className={styles.appBar}>
     <IconButton iconURL={menu} onClick={onMenuClick} />
     <Logo />
   </header>
 )
 
-Header.propTypes = {
+AppBar.propTypes = {
   onMenuClick: PropTypes.func,
 }
 
-Header.defaultProps = {
+AppBar.defaultProps = {
   onMenuClick: () => {},
 }
 
-export default Header
+export default AppBar
