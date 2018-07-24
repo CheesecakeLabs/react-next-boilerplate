@@ -34,8 +34,6 @@ $ yarn dev
 
 ### Image upload component
 
-**Context**
-
 With image upload component is possible to show a preview of the current chosen image from the 💻 or taken from a 📸 . Also is possible to ✂ the image according to aspect ratio, ✅ dimensions on the client side, and upload to a server 🎉🎉🎉
 
 Preview of the docs:

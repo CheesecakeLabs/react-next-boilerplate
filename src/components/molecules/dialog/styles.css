@@ -6,7 +6,7 @@
   background-color: var(--color-white);
   margin: auto;
   padding: 20px;
-  border: 1px solid var(--color-default-gray);
+  border: 1px solid var(--color-primary-dark);
   width: 30%;
   height: auto;
   max-height: 300px;
@@ -31,7 +31,7 @@
 
 .title {
   font: 600 15px var(--font-default);
-  color: var(--color-dove-gray);
+  color: var(--color-gray-dark);
   margin-top: 20px;
 }
 

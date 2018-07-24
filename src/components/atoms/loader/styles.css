@@ -11,10 +11,10 @@
   width: 70px;
   height: 70px;
   margin: 6px;
-  border: 6px solid var(--color-azure-blue);
+  border: 6px solid var(--color-primary);
   border-radius: 50%;
   animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-  border-color: var(--color-azure-blue) transparent transparent transparent;
+  border-color: var(--color-primary) transparent transparent transparent;
 }
 .loaderRing div:nth-child(1) {
   animation-delay: -0.45s;
