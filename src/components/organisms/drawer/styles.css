@@ -26,6 +26,13 @@
   left: 0;
 }
 
+
+.navItem span {
+  transition: .5s;
+  opacity: 1;
+  transform: translateX(0)
+}
+
 .closed {
   left: -260px;
 
@@ -33,7 +40,7 @@
     left: 0;
     width: 70px;
 
-    .menuItemStyle {
+    .navItem span {
       white-space: nowrap;
       opacity: 0;
       transform: translate(-200px);
@@ -72,10 +79,4 @@
 .iconButton {
   height: 60px;
   width: 60px;
-}
-
-.menuItemStyle {
-  transition: .5s;
-  opacity: 1;
-  transform: translateX(0)
 }
