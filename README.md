@@ -40,7 +40,34 @@ The **first** step of our work is done.
 
 ### Second step - Configure the git
 
-[WIP]
+This part is so much important to start a project and you have a mission to sync with your PM about the repository on the Github/Bitbucket.
+
+Be sure that your SSH Keys are configured, if you are not sure, take a look at this [link](https://help.github.com/articles/connecting-to-github-with-ssh/).
+
+If you already have the access to the repository and your SSH keys are configured, let's go ahead.
+
+At the first time, we gonna start our local git repository:
+
+```sh
+$ git init
+```
+
+Then you need to copy the entire URL on Github like the image below:
+
+**ADD AN IMAGE**
+
+With this URL on hands, we are ready to sync our local repository and the remote repository, you just need to apply the command below:
+
+```sh
+$ git remote add origin <repository-url.git>
+# Set a new remote
+$ git remote -v
+# Verify new remote
+origin  <repository-url.git> (fetch)
+origin  <repository-url.git> (push)
+```
+
+Congratulations, you are able to `commit` your changes.
 
 ### Third sted - Replace files
 
