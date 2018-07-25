@@ -43,7 +43,7 @@ class FormField extends Component {
 
     const labelComponent =
       label && label.type ? (
-        React.cloneElement(label, labelProps, label.props.children, labelChildren)
+        React.cloneElement(label, labelProps, label.props.children, ' ', labelChildren)
       ) : (
         <label htmlFor={field}>
           {label} {labelChildren}
