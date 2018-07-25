@@ -4,8 +4,8 @@
 
 .modalText {
     align-self: flex-start;
-    font-family: 'Source Sans Pro', sans-serif;
+    font-family: var(--font-default);
     font-size: 13px;
     font-weight: 200;
-    color: #666666;
+    color: var(--color-light-gray);
   }
