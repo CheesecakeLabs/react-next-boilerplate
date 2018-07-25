@@ -10,7 +10,7 @@ import Icon from '_atoms/icon'
 
 import styles from './styles.css'
 
-const Drawer = ({ isOpen, onToggleClick, children, footerIcon, footerText }) => {
+const Drawer = ({ isOpen, onToggleClick, children, footerIcon, footerText, className }) => {
   const headerIcon = iconURL => (
     <IconButton iconURL={iconURL} className={styles.iconButton} onClick={onToggleClick} />
   )
@@ -19,6 +19,7 @@ const Drawer = ({ isOpen, onToggleClick, children, footerIcon, footerText }) => 
     <div
       className={classNames(
         styles.sidenav,
+        className,
         { [styles.opened]: isOpen },
         { [styles.closed]: !isOpen }
       )}
@@ -42,6 +43,7 @@ Drawer.propTypes = {
   children: PropTypes.node.isRequired,
   footerIcon: PropTypes.string,
   footerText: PropTypes.string,
+  className: PropTypes.string,
 }
 
 Drawer.defaultProps = {
@@ -49,6 +51,7 @@ Drawer.defaultProps = {
   onToggleClick: undefined,
   footerIcon: undefined,
   footerText: undefined,
+  className: undefined,
 }
 
 export default Drawer
