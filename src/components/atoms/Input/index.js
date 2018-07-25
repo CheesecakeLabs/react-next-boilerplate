@@ -7,6 +7,7 @@ import styles from './styles.css'
 const Input = ({
   className,
   type,
+  checked,
   id,
   name,
   multiline,
@@ -17,6 +18,7 @@ const Input = ({
 }) => {
   const props = {
     className: classNames(styles.input, className),
+    checked,
     id,
     name,
     placeholder,
@@ -30,18 +32,20 @@ const Input = ({
 Input.propTypes = {
   className: PropTypes.string,
   type: PropTypes.string,
+  checked: PropTypes.bool,
   id: PropTypes.string,
   name: PropTypes.string,
   placeholder: PropTypes.string,
   multiline: PropTypes.bool,
   required: PropTypes.bool,
-  value: PropTypes.string,
+  value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   handleChange: PropTypes.func.isRequired,
 }
 
 Input.defaultProps = {
   className: undefined,
   type: 'text',
+  checked: false,
   id: undefined,
   name: undefined,
   placeholder: undefined,
