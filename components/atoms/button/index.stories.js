@@ -1,7 +1,7 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
 
-import loginIcon from '_images/login-icon.svg'
+import loginIcon from '_storybook/assets/images/login-icon.svg'
 
 import Button from './index'
 
