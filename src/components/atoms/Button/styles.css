@@ -1,5 +1,5 @@
 .button {
-    background-color: #007aff;
+    background-color: var(--color-light-blue);
     display: inline-flex;
     padding: 10px 30px;
     justify-content: center;
@@ -11,7 +11,7 @@
     transition: all 200ms ease;
 
     &:active {
-        background-color: #005ec4;
+        background-color: var(--color-dark-blue);
     }
 }
 
@@ -26,9 +26,9 @@
 }
 
 .buttonText {
-    color: white;
+    color: var(--color-white);
     font-size: 14px;
-    font-family: 'Source Sans Pro', sans-serif;
+    font-family: var(--font-default);
     margin: auto 0;
     padding: 0 30px;
 }
