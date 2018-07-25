@@ -18,7 +18,6 @@ const Input = ({
 }) => {
   const props = {
     className: classNames(styles.input, className),
-    checked,
     id,
     name,
     placeholder,
@@ -26,7 +25,7 @@ const Input = ({
     value,
     onChange: handleChange,
   }
-  return multiline ? <textarea {...props} /> : <input {...props} type={type} />
+  return multiline ? <textarea {...props} /> : <input {...props} type={type} checked={checked} />
 }
 
 Input.propTypes = {
