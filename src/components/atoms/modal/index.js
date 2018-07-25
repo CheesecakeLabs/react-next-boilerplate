@@ -1,11 +1,11 @@
-import React from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import classNames from 'classnames/bind'
+import classNames from 'classnames'
 import ReactModal from 'react-modal'
 
 import styles from './styles.css'
 
-class Modal extends React.Component {
+class Modal extends Component {
   static propTypes = {
     children: PropTypes.node.isRequired,
   }
@@ -16,13 +16,7 @@ class Modal extends React.Component {
     onClick: () => {},
   }
 
-  constructor() {
-    super()
-
-    this.state = {
-      modalIsOpen: true,
-    }
-  }
+  state = { modalIsOpen: true }
 
   render() {
     const { children } = this.props

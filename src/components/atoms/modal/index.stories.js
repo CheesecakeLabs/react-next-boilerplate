@@ -14,7 +14,7 @@ storiesOf('Modal', module).add('Modal', () => (
   <Modal>
     <ModalHeader>Happy Text</ModalHeader>
     <ModalBody>
-      We'll have a super time. Sometimes you learn more from your mistakes than you do from your
+      we will have a super time. Sometimes you learn more from your mistakes than you do from your
       masterpieces.
     </ModalBody>
     <ModalFooter>
@@ -29,7 +29,7 @@ storiesOf('Modal', module).add('Modal with Two Buttons', () => (
   <Modal>
     <ModalHeader>Happy Text</ModalHeader>
     <ModalBody>
-      We'll have a super time. Sometimes you learn more from your mistakes than you do from your
+      we will have a super time. Sometimes you learn more from your mistakes than you do from your
       masterpieces.
     </ModalBody>
     <ModalFooter>
@@ -47,7 +47,7 @@ storiesOf('Modal', module).add('Modal with an X', () => (
   <Modal>
     <ModalHeader closeIcon={<CloseIcon />}>Super Happy Text</ModalHeader>
     <ModalBody>
-      We'll have a super time. Sometimes you learn more from your mistakes than you do from your
+      we will have a super time. Sometimes you learn more from your mistakes than you do from your
       masterpieces.
     </ModalBody>
     <ModalFooter>
