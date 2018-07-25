@@ -7,7 +7,7 @@ import Input from '_atoms/Input'
 import styles from './styles.css'
 
 const Radio = props => {
-  const { className, currentValue, value, handleChange } = props
+  const { className, currentValue, value } = props
   const isChecked = currentValue === value
   const inputClasses = classNames({
     [className]: true,
@@ -27,7 +27,6 @@ Radio.propTypes = {
   id: PropTypes.string.isRequired,
   currentValue: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
   value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
-  handleChange: PropTypes.func.isRequired,
 }
 
 Radio.defaultProps = {
