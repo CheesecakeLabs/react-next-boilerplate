@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import classNames from 'classnames'
 
 import AppBar from '_molecules/app-bar'
 import Drawer from '_organisms/drawer'
@@ -8,12 +9,16 @@ class VerticalNav extends Component {
   static propTypes = {
     navFooterIcon: PropTypes.string,
     navFooterText: PropTypes.string,
+    appBarClass: PropTypes.string,
+    drawerClass: PropTypes.string,
     children: PropTypes.node.isRequired,
   }
 
   static defaultProps = {
     navFooterIcon: undefined,
     navFooterText: undefined,
+    appBarClass: undefined,
+    drawerClass: undefined,
   }
 
   state = {
@@ -27,16 +32,17 @@ class VerticalNav extends Component {
   }
 
   render() {
-    const { navFooterIcon, navFooterText, children } = this.props
+    const { navFooterIcon, navFooterText, appBarClass, drawerClass, children } = this.props
     const { sidenavIsOpen } = this.state
     return (
       <div>
-        <AppBar onMenuClick={this.sideMenuHandler} />
+        <AppBar onMenuClick={this.sideMenuHandler} className={appBarClass} />
         <Drawer
           onToggleClick={this.sideMenuHandler}
           isOpen={sidenavIsOpen}
           footerIcon={navFooterIcon}
           footerText={navFooterText}
+          className={drawerClass}
         >
           {children}
         </Drawer>
