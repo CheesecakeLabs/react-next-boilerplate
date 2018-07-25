@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 
 import menuIcon from '_images/menu.png'
 import closeIcon from '_images/close.png'
-import NavigationFooter from '_atoms/navigation-footer'
+import NavFooter from '_atoms/nav-footer'
 import IconButton from '_atoms/icon-button'
 import Icon from '_atoms/icon'
 
@@ -28,10 +28,10 @@ const Drawer = ({ isOpen, onToggleClick, children, footerIcon, footerText, class
         <div className={styles.navHeaderMobileOnly}>{headerIcon(closeIcon)}</div>
         <div className={styles.navHeaderDesktopOnly}>{headerIcon(menuIcon)}</div>
         {children}
-        <NavigationFooter className={styles.navFooter}>{footerText}</NavigationFooter>
-        <NavigationFooter className={styles.navFooterClosedOnDesktop}>
+        <NavFooter className={styles.navFooter}>{footerText}</NavFooter>
+        <NavFooter className={styles.navFooterClosedOnDesktop}>
           <Icon src={footerIcon} />
-        </NavigationFooter>
+        </NavFooter>
       </nav>
     </div>
   )

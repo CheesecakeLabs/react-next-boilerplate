@@ -4,17 +4,17 @@ import classNames from 'classnames'
 
 import styles from './styles.css'
 
-const NavigationFooter = ({ children, className }) => (
+const NavFooter = ({ children, className }) => (
   <div className={classNames(styles.navFooter, className)}>{children}</div>
 )
 
-NavigationFooter.propTypes = {
+NavFooter.propTypes = {
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
 }
 
-NavigationFooter.defaultProps = {
+NavFooter.defaultProps = {
   className: undefined,
 }
 
-export default NavigationFooter
+export default NavFooter
