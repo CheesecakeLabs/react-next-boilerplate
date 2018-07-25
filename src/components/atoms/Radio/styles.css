@@ -37,7 +37,6 @@
   }
 
   &:focus {
-    box-shadow: unset;
     border-color: var(--color-focusable-blue);
   }
 }
