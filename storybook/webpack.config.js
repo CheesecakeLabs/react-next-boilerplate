@@ -1,5 +1,7 @@
 const path = require('path')
 
+const extra = require('../webpack.extra.js')
+
 module.exports = (baseConfig, env, defaultConfig) => {
   const cssRule = {
     test: /\.css$/,
@@ -24,6 +26,7 @@ module.exports = (baseConfig, env, defaultConfig) => {
     ],
   }
   const config = defaultConfig
+  config.resolve = extra.resolve
   config.module.rules = config.module.rules.map(rule => (rule.test.test('.css') ? cssRule : rule))
   return config
 }
