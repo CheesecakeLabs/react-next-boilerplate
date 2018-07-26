@@ -10,21 +10,20 @@
     outline: none;
     transition: all 200ms ease;
     cursor: pointer;
+    color: white;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 14px;
 
     &:active {
         background-color: #005ec4;
     }
 }
 
-.buttonText {
-    color: white;
-    font-size: 14px;
-    font-family: 'Source Sans Pro', sans-serif;
-    margin: auto 0;
-    padding: 0 30px;
-}
-
 .disabled {
     background-color: #C4CDD5;
     cursor: not-allowed;
+
+    &:active {
+        background-color: #C4CDD5;
+    }
 }

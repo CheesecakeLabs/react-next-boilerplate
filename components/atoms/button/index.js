@@ -2,29 +2,27 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
-// import Icon from '_components/atoms/icon'
-
 import styles from './styles.css'
 
-const Button = ({ onClick, isDisabled, className, children }) => (
+const Button = ({ onClick, disabled, className, children }) => (
   <button
-    className={classNames(styles.button, className, { [styles.disabled]: isDisabled })}
-    onClick={isDisabled ? undefined : onClick}
-    disabled={isDisabled}
+    className={classNames(styles.button, className, { [styles.disabled]: disabled })}
+    onClick={disabled ? null : onClick}
+    disabled={disabled}
   >
-    <p className={styles.buttonText}>{children}</p>
+    {children}
   </button>
 )
 
 Button.propTypes = {
   onClick: PropTypes.func,
-  isDisabled: PropTypes.bool,
+  disabled: PropTypes.bool,
   className: PropTypes.string,
   children: PropTypes.node.isRequired,
 }
 
 Button.defaultProps = {
-  isDisabled: false,
+  disabled: false,
   className: undefined,
   onClick: () => {},
 }
