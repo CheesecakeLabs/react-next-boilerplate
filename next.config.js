@@ -1,3 +1,5 @@
+const path = require('path')
+
 const glob = require('glob')
 const withPlugins = require('next-compose-plugins')
 const withCSS = require('@zeit/next-css')
@@ -13,8 +15,13 @@ require('dotenv').config()
 const nextConfiguration = {
   webpack: (config, options) => {
     const entryFactory = config.entry
-    const { isServer } = options
+    const { isServer, defaultLoaders } = options
     config.plugins = [...config.plugins, new webpack.EnvironmentPlugin(process.env)]
+    config.module.rules.push({
+      test: /\.+(js|jsx)$/,
+      include: [path.resolve(process.cwd(), 'components')],
+      use: [defaultLoaders.babel],
+    })
     if (!isServer) {
       const newConfig = {
         ...config,
