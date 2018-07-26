@@ -4,6 +4,8 @@ import logo from '_images/logo.png'
 
 import styles from './styles.css'
 
+import Button from '_components/atoms/button'
+
 const CKLBoilerplate = () => (
   <Fragment>
     <div className={styles.logoContainer}>
@@ -13,6 +15,7 @@ const CKLBoilerplate = () => (
     {/* eslint-disable-next-line jsx-a11y/no-distracting-elements */}
     <marquee className={styles.text}>React Boilerplate</marquee>
     <hr />
+    <Button>TESTEE</Button>
   </Fragment>
 )
 

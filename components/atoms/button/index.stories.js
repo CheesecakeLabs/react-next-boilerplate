@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react'
 
 import loginIcon from '_storybook/assets/images/login-icon.svg'
 
-import Button from './index'
+import Button from '_components/atoms/button'
 
 storiesOf('Button', module).add('with text', () => (
   <Button onClick={() => console.info('test')}>Login</Button>
