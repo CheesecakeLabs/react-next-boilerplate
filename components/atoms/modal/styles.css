@@ -1,21 +1,29 @@
-.window {
-    width: 25%;
-    height: auto;
-    background: var(--color-white);
-    border-radius: 2px;
-    box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.16);
-    padding: 15px;
+.modal {
     position: fixed;
-    top: 50%;
-    left: 50%;
-    margin-top: -50px;
-    margin-left: -100px;
-    outline: none;
-} 
-
-.overlay {
-    background: rgba(0, 0, 0, 0.2);
-    position: absolute;
     height: 100%;
     width: 100%;
+    background-color: rgba(0,0,0,0.5);
+    top: 0;
+    left: 0;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: .3s;
+}
+
+.open {
+    opacity: 1;
+
+    .box {
+        opacity: 1;
+    }
+}
+
+.box {
+    width: 610px;
+    background-color: white;
+    overflow: hidden;
+    opacity: 0;
+    transition: .3s;
 }

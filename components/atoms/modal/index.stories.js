@@ -11,7 +11,7 @@ import Button from '_components/atoms/button'
 import Modal from './index'
 
 storiesOf('Modal', module).add('Modal', () => (
-  <Modal>
+  <Modal isOpen>
     <ModalHeader>Happy Text</ModalHeader>
     <ModalBody>
       we will have a super time. Sometimes you learn more from your mistakes than you do from your

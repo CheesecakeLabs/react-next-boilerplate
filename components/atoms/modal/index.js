@@ -1,35 +1,29 @@
-import React, { Component } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import ReactModal from 'react-modal'
+import { Portal } from 'react-portal'
 
 import styles from './styles.css'
 
-class Modal extends Component {
-  static propTypes = {
-    children: PropTypes.node.isRequired,
-  }
+const Modal = ({ isOpen, styleOverlay, styleBox, children }) => (
+  <Portal>
+    <div className={classNames(styles.modal, styleOverlay, { [styles.open]: isOpen })}>
+      <div className={classNames(styles.box, styleBox)}>{children}</div>
+    </div>
+  </Portal>
+)
 
-  static defaultProps = {
-    iconURL: undefined,
-    className: undefined,
-    onClick: () => {},
-  }
-
-  state = { modalIsOpen: true }
-
-  render() {
-    const { children } = this.props
-
-    return (
-      <ReactModal
-        isOpen={this.state.modalIsOpen}
-        overlayClassName={styles.overlay}
-        className={classNames(styles.window)}
-      >
-        {children}
-      </ReactModal>
-    )
-  }
+Modal.propTypes = {
+  isOpen: PropTypes.bool,
+  styleOverlay: PropTypes.string,
+  styleBox: PropTypes.string,
+  children: PropTypes.node.isRequired,
 }
+
+Modal.defaultProps = {
+  isOpen: false,
+  styleOverlay: undefined,
+  styleBox: undefined,
+}
+
 export default Modal
