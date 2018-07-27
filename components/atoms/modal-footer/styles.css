@@ -1,8 +1,18 @@
-.modalFooter {
+.footer {
   display: flex;
+  padding: 30px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
-.modalText {
-    margin: 0;
-    width: 100%;
-  }
+.right {
+  justify-content: flex-end;
+}
+
+.left {
+  justify-content: flex-start;
+}
+
+.center {
+  justify-content: center;
+}

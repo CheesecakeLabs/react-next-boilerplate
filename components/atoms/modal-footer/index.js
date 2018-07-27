@@ -4,18 +4,24 @@ import classNames from 'classnames'
 
 import styles from './styles.css'
 
-const ModalFooter = ({ className, children }) => (
-  <div className={classNames(styles.modalFooter, className)}>
-    <div className={classNames(styles.modalText, className)}>{children}</div>
-  </div>
+const POSITION = {
+  left: styles.left,
+  right: styles.right,
+  center: styles.center,
+}
+
+const ModalFooter = ({ position, className, children }) => (
+  <div className={classNames(styles.footer, POSITION[position], className)}>{children}</div>
 )
 
 ModalFooter.propTypes = {
+  position: PropTypes.oneOf(['left', 'right', 'center']),
   className: PropTypes.string,
   children: PropTypes.node.isRequired,
 }
 
 ModalFooter.defaultProps = {
+  position: 'right',
   className: undefined,
 }
 export default ModalFooter
