@@ -1,5 +1,5 @@
 .button {
-    background-color: #0157ff;
+    background-color: var(--color-primary);
     width: 174px;
     height: 30px;
     display: flex;
@@ -11,19 +11,19 @@
     transition: all 200ms ease;
     cursor: pointer;
     color: white;
-    font-family: 'Source Sans Pro', sans-serif;
+    font-family: var(--font-default);
     font-size: 14px;
 
     &:active {
-        background-color: #005ec4;
+        background-color: var(--color-primary-dark);
     }
 }
 
 .disabled {
-    background-color: #C4CDD5;
+    background-color: var(--color-disabled);
     cursor: not-allowed;
 
     &:active {
-        background-color: #C4CDD5;
+        background-color: var(--color-disabled);
     }
 }
