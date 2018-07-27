@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import classNames from 'classnames'
 
-import Input from '_atoms/Input'
+import Input from '_components/atoms/input'
 
 import styles from './styles.css'
 
