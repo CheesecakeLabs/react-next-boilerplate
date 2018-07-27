@@ -52,19 +52,19 @@ storiesOf('Molecules/Radio', module)
   )
   .add(
     'checked',
-    withInfo({ text: '**isChecked{true}**' })(() => (
+    withInfo({ text: 'Props: **isChecked**' })(() => (
       <Radio name="radio" id="radio" value="1" isChecked handleChange={() => {}} />
     ))
   )
   .add(
     'checked and disabled',
-    withInfo({ text: '**isChecked{true} disabled**' })(() => (
+    withInfo({ text: 'Props: **isChecked disabled**' })(() => (
       <Radio name="radio" id="radio" value="1" isChecked disabled handleChange={() => {}} />
     ))
   )
   .add(
     'custom radio group',
-    withInfo({ text: 'text' })(() => (
+    withInfo()(() => (
       <CustomRadioGroup>
         <Radio value={number('value #1', 1)} id="radio1" />
         <Radio value={number('value #2', 2)} id="radio2" />

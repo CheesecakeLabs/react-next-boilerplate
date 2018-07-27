@@ -58,13 +58,13 @@ storiesOf('Molecules/Checkbox', module)
   )
   .add(
     'checked',
-    withInfo({ text: '**isChecked{true}**' })(() => (
+    withInfo({ text: 'Props: **isChecked**' })(() => (
       <Checkbox name="checkbox" id="checkbox" value="1" isChecked handleChange={() => {}} />
     ))
   )
   .add(
     'checked and disabled',
-    withInfo({ text: '**isChecked{true} disabled**' })(() => (
+    withInfo({ text: 'Props: **isChecked disabled**' })(() => (
       <Checkbox
         name="checkbox"
         id="checkbox"
@@ -77,7 +77,7 @@ storiesOf('Molecules/Checkbox', module)
   )
   .add(
     'custom checkbox group',
-    withInfo({ text: 'text' })(() => (
+    withInfo()(() => (
       <CustomCheckboxGroup>
         <Checkbox value={number('value #1', 1)} id="checkbox1" />
         <Checkbox value={number('value #2', 2)} id="checkbox2" />
