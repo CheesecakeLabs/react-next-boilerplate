@@ -1,16 +1,7 @@
-.modalHeader{
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-}
-
-.modalTitle {
-    align-self: flex-start;  
+.title {
     font-family: var(--font-header);
-    font-size: 20px;
-    font-weight: 500;
     margin: 0;
-    color: var(--color-black);
-    width: 90%;
-    word-wrap: break-word;
+    color: var(--color-primary-dark);
+    margin: 0;
+    padding: 25px 30px;
 }
