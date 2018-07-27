@@ -1,32 +1,29 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import Icon from '_components/atoms/icon'
 
 import styles from './styles.css'
 
-const Button = ({ onClick, iconURL, className, children, isBlock }) => (
+const Button = ({ onClick, disabled, className, children }) => (
   <button
-    className={classNames(styles.button, className, { [styles.block]: isBlock })}
+    className={classNames(styles.button, className, { [styles.disabled]: disabled })}
     onClick={onClick}
+    disabled={disabled}
   >
-    {iconURL && <Icon src={iconURL} text="button icon" />}
-    <p className={styles.buttonText}>{children}</p>
+    {children}
   </button>
 )
 
 Button.propTypes = {
   onClick: PropTypes.func,
-  iconURL: PropTypes.string,
+  disabled: PropTypes.bool,
   className: PropTypes.string,
   children: PropTypes.node.isRequired,
-  isBlock: PropTypes.bool,
 }
 
 Button.defaultProps = {
-  iconURL: undefined,
+  disabled: false,
   className: undefined,
   onClick: () => {},
-  isBlock: false,
 }
 export default Button

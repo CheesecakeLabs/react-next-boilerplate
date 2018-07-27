@@ -1,34 +1,29 @@
 .button {
-    background-color: var(--color-light-blue);
-    display: inline-flex;
-    padding: 10px 30px;
+    background-color: var(--color-primary);
+    width: 174px;
+    height: 30px;
+    display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 2px;
+    border-radius: 4px;
     border: none;
     outline: none;
-    margin: auto;
     transition: all 200ms ease;
+    cursor: pointer;
+    color: white;
+    font-family: var(--font-default);
+    font-size: 14px;
 
     &:active {
-        background-color: var(--color-dark-blue);
+        background-color: var(--color-primary-dark);
     }
 }
 
-.block {
-    display: flex;
-    width: 100%;
-    margin-bottom: 10px;
+.disabled {
+    background-color: var(--color-disabled);
+    cursor: not-allowed;
 
-    &:last-child{
-        margin-bottom: 0;
+    &:active {
+        background-color: var(--color-disabled);
     }
-}
-
-.buttonText {
-    color: var(--color-white);
-    font-size: 14px;
-    font-family: var(--font-default);
-    margin: auto 0;
-    padding: 0 30px;
 }

@@ -1,12 +1,12 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
 
-import ModalBody from '_atoms/modal-body'
-import loginIcon from '_images/login-icon.svg'
-import CloseIcon from '_atoms/close-icon'
-import ModalHeader from '_atoms/modal-header'
-import ModalFooter from '_atoms/modal-footer'
-import Button from '_atoms/button'
+import loginIcon from '_storybook/assets/images/login-icon.svg'
+import ModalBody from '_components/atoms/modal-body'
+import CloseIcon from '_components/atoms/close-icon'
+import ModalHeader from '_components/atoms/modal-header'
+import ModalFooter from '_components/atoms/modal-footer'
+import Button from '_components/atoms/button'
 
 import Modal from './index'
 
