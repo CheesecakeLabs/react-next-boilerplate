@@ -1,11 +1,3 @@
-.modalBody {
-  display: flex;
+.body {
+  padding: 25px 30px;
 }
-
-.modalText {
-    align-self: flex-start;
-    font-family: var(--font-default);
-    font-size: 13px;
-    font-weight: 200;
-    color: var(--color-light-gray);
-  }

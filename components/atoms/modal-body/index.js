@@ -5,9 +5,7 @@ import classNames from 'classnames'
 import styles from './styles.css'
 
 const ModalBody = ({ className, children }) => (
-  <div className={classNames(styles.modalBody, className)}>
-    <p className={classNames(styles.modalText, className)}>{children}</p>
-  </div>
+  <div className={classNames(styles.body, className)}>{children}</div>
 )
 
 ModalBody.propTypes = {
