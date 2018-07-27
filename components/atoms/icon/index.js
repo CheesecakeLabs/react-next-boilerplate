@@ -1,21 +1,17 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import classNames from 'classnames'
 
 import styles from './styles.css'
 
-const Icon = ({ src, alt, className }) => (
-  <img className={classNames(styles.icon, className)} src={src} alt={alt} />
-)
+const Icon = ({ src, text }) => <img className={styles.icon} src={src} alt={text} />
 
 Icon.propTypes = {
   src: PropTypes.string.isRequired,
-  alt: PropTypes.string.isRequired,
-  className: PropTypes.string,
+  text: PropTypes.string.isRequired,
 }
 
 Icon.defaultProps = {
-  className: undefined,
+  text: undefined,
 }
 
 export default Icon
