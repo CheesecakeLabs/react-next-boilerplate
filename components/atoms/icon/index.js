@@ -15,7 +15,6 @@ Icon.propTypes = {
 }
 
 Icon.defaultProps = {
-  alt: undefined,
   className: undefined,
 }
 

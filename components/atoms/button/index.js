@@ -7,7 +7,7 @@ import styles from './styles.css'
 const Button = ({ onClick, disabled, className, children }) => (
   <button
     className={classNames(styles.button, className, { [styles.disabled]: disabled })}
-    onClick={disabled ? null : onClick}
+    onClick={onClick}
     disabled={disabled}
   >
     {children}
