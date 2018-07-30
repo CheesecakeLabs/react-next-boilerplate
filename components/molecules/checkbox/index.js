@@ -15,11 +15,7 @@ const Checkbox = props => {
     [styles.disabled]: disabled,
   })
 
-  return (
-    <label className={styles.checkbox} role="checkbox" aria-checked={checked}>
-      <Input {...props} type="checkbox" className={inputClasses} />
-    </label>
-  )
+  return <Input {...props} type="checkbox" className={inputClasses} />
 }
 
 Checkbox.propTypes = {

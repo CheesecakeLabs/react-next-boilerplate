@@ -1,9 +1,5 @@
-.radio {
-  display: inline-block;
-  position: relative;
-}
-
 .input {
+  display: inline-block;
   position: relative;
   width: 22px;
   height: 22px;

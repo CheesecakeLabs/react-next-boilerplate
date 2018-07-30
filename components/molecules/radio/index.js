@@ -15,11 +15,7 @@ const Radio = props => {
     [styles.disabled]: disabled,
   })
 
-  return (
-    <label className={styles.radio} role="radio" aria-checked={checked}>
-      <Input {...props} type="radio" className={inputClasses} />
-    </label>
-  )
+  return <Input {...props} type="radio" className={inputClasses} />
 }
 
 Radio.propTypes = {
