@@ -1,14 +1,13 @@
 import React, { createRef, Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
 
-import { isBrowser, GoogleLayer, Map, TileLayer, LayersControl } from '_utils/LeafletElements'
-
-import Mapbox from '../MapboxMap'
-import MarkerList from '../../molecules/MarkerList'
+import { isBrowser, GoogleLayer, Map, TileLayer, LayersControl } from '_utils/leaflet-elements'
+import Mapbox from '_components/organisms/mapbox-map'
+import MarkerList from '_components/molecules/marker-list'
 
 const road = 'ROADMAP'
 
-class LeafletWrapper extends Component {
+class LeafletMap extends Component {
   setPosition = () => [this.props.lat, this.props.lng]
 
   mapRef = createRef()
@@ -69,7 +68,7 @@ class LeafletWrapper extends Component {
   }
 }
 
-LeafletWrapper.propTypes = {
+LeafletMap.propTypes = {
   lat: PropTypes.number.isRequired,
   lng: PropTypes.number.isRequired,
   zoom: PropTypes.number,
@@ -81,7 +80,7 @@ LeafletWrapper.propTypes = {
   showMapbox: PropTypes.bool,
 }
 
-LeafletWrapper.defaultProps = {
+LeafletMap.defaultProps = {
   zoom: 13,
   hasGoogleLayer: false,
   markers: [],
@@ -91,4 +90,4 @@ LeafletWrapper.defaultProps = {
   showMapbox: false,
 }
 
-export default LeafletWrapper
+export default LeafletMap

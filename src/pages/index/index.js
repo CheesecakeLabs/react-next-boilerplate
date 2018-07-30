@@ -1,8 +1,8 @@
 import React, { Fragment } from 'react'
 
 import logo from '_components/assets/icons/logo.png'
-import LeafletMap from '_components/organisms/LeafletMap'
-import { RandomMarkers } from '_utils/RandomMarkers'
+import LeafletMap from '_components/organisms/leaflet-map'
+import { RandomMarkers } from '_utils/random-markers'
 
 import styles from './styles.css'
 
