@@ -20,15 +20,15 @@
   &::before {
     width: 18px;
     height: 18px;
-    background: var(--color-blue);
-    border: 1px solid var(--color-blue);
+    background: var(--color-input-primary);
+    border: 1px solid var(--color-input-primary);
     outline: 0;
   }
 
   &::after {
     width: 5px;
     height: 5px;
-    background: white;
+    background: var(--color-light);
     opacity: 0;
   }
 
@@ -36,7 +36,7 @@
     border-color: var(--color-input-focus);
 
     &::before {
-      box-shadow: 0 0px 1px 1px #91d0d9;
+      box-shadow: 0 0px 1px 1px var(--color-input-shadow);
       border-color: var(--color-input-focus);
     }
   }
