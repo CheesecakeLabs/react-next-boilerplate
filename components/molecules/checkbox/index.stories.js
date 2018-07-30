@@ -1,18 +1,26 @@
 import PropTypes from 'prop-types'
-import React from 'react'
+import React, { cloneElement, Children, Component, Fragment } from 'react'
 import { storiesOf } from '@storybook/react'
 import { withInfo } from '@storybook/addon-info'
 import { withKnobs, number } from '@storybook/addon-knobs/react'
 
 import Checkbox from './index'
 
-class CustomCheckboxGroup extends React.Component {
+class CustomCheckboxGroup extends Component {
+  static propTypes = {
+    children: PropTypes.node.isRequired,
+  }
+
+  static defaultProps = {
+    children: null,
+  }
+
   state = { values: [1] }
 
   includesValue = val => this.state.values.includes(val)
 
-  handleChange = e => {
-    const value = parseInt(e.target.value, 10)
+  handleChange = event => {
+    const value = parseInt(event.target.value, 10)
     const { values } = this.state
 
     const newValues = this.includesValue(value)
@@ -23,10 +31,10 @@ class CustomCheckboxGroup extends React.Component {
   }
 
   render = () => (
-    <React.Fragment>
+    <Fragment>
       <h1>Selected: {this.state.values.join(', ')}</h1>
 
-      {React.Children.map(this.props.children, child => {
+      {Children.map(this.props.children, child => {
         const childProps = {
           key: child.props.value,
           name: 'checkbox[]',
@@ -34,18 +42,10 @@ class CustomCheckboxGroup extends React.Component {
           handleChange: this.handleChange,
         }
 
-        return React.cloneElement(child, childProps)
+        return cloneElement(child, childProps)
       })}
-    </React.Fragment>
+    </Fragment>
   )
-}
-
-CustomCheckboxGroup.propTypes = {
-  children: PropTypes.node.isRequired,
-}
-
-CustomCheckboxGroup.defaultProps = {
-  children: null,
 }
 
 storiesOf('Molecules/Checkbox', module)

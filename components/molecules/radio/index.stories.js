@@ -1,26 +1,34 @@
 import PropTypes from 'prop-types'
-import React from 'react'
+import React, { cloneElement, Children, Component, Fragment } from 'react'
 import { storiesOf } from '@storybook/react'
 import { withInfo } from '@storybook/addon-info'
 import { withKnobs, number } from '@storybook/addon-knobs/react'
 
 import Radio from './index'
 
-class CustomRadioGroup extends React.Component {
+class CustomRadioGroup extends Component {
+  static propTypes = {
+    children: PropTypes.node.isRequired,
+  }
+
+  static defaultProps = {
+    children: null,
+  }
+
   state = { value: 1 }
 
   isEqualValue = val => this.state.value === val
 
-  handleChange = e => {
-    const value = parseInt(e.target.value, 10)
+  handleChange = event => {
+    const value = parseInt(event.target.value, 10)
     this.setState({ value })
   }
 
   render = () => (
-    <React.Fragment>
+    <Fragment>
       <h1>Selected: {this.state.value}</h1>
 
-      {React.Children.map(this.props.children, child => {
+      {Children.map(this.props.children, child => {
         const childProps = {
           key: child.props.value,
           name: 'radio',
@@ -28,27 +36,17 @@ class CustomRadioGroup extends React.Component {
           handleChange: this.handleChange,
         }
 
-        return React.cloneElement(child, childProps)
+        return cloneElement(child, childProps)
       })}
-    </React.Fragment>
+    </Fragment>
   )
-}
-
-CustomRadioGroup.propTypes = {
-  children: PropTypes.node.isRequired,
-}
-
-CustomRadioGroup.defaultProps = {
-  children: null,
 }
 
 storiesOf('Molecules/Radio', module)
   .addDecorator(withKnobs)
   .add(
     'initial',
-    withInfo({ text: 'Initial component' })(() => (
-      <Radio name="radio" id="radio" value="1" />
-    ))
+    withInfo({ text: 'Initial component' })(() => <Radio name="radio" id="radio" value="1" />)
   )
   .add(
     'checked',
