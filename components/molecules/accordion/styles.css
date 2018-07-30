@@ -1,0 +1,10 @@
+.accordion{
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    width: 300px;
+    text-align: left;
+    border: solid 0.5px #979797;
+    border-radius: 2px;
+    overflow: overlay;
+}
