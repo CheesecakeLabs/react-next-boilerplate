@@ -7,17 +7,17 @@ import Input from '_components/atoms/input'
 import styles from './styles.css'
 
 const Checkbox = props => {
-  const { className, isChecked, disabled } = props
+  const { className, checked, disabled } = props
   const inputClasses = classNames({
     [className]: true,
     [styles.input]: true,
-    [styles.checked]: isChecked,
+    [styles.checked]: checked,
     [styles.disabled]: disabled,
   })
 
   return (
-    <label className={styles.checkbox} role="checkbox" aria-checked={isChecked}>
-      <Input {...props} type="checkbox" className={inputClasses} checked={isChecked} />
+    <label className={styles.checkbox} role="checkbox" aria-checked={checked}>
+      <Input {...props} type="checkbox" className={inputClasses} />
     </label>
   )
 }
@@ -25,13 +25,15 @@ const Checkbox = props => {
 Checkbox.propTypes = {
   className: PropTypes.string,
   id: PropTypes.string,
-  isChecked: PropTypes.bool,
+  checked: PropTypes.bool,
+  disabled: PropTypes.bool,
 }
 
 Checkbox.defaultProps = {
   className: undefined,
   id: null,
-  isChecked: false,
+  checked: false,
+  disabled: false,
 }
 
 export default Checkbox

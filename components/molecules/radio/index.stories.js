@@ -24,7 +24,7 @@ class CustomRadioGroup extends React.Component {
         const childProps = {
           key: child.props.value,
           name: 'radio',
-          isChecked: this.isEqualValue(child.props.value),
+          checked: this.isEqualValue(child.props.value),
           handleChange: this.handleChange,
         }
 
@@ -47,19 +47,19 @@ storiesOf('Molecules/Radio', module)
   .add(
     'initial',
     withInfo({ text: 'Initial component' })(() => (
-      <Radio name="radio" id="radio" value="1" handleChange={() => {}} />
+      <Radio name="radio" id="radio" value="1" />
     ))
   )
   .add(
     'checked',
-    withInfo({ text: 'Props: **isChecked**' })(() => (
-      <Radio name="radio" id="radio" value="1" isChecked handleChange={() => {}} />
+    withInfo({ text: 'Props: **checked**' })(() => (
+      <Radio name="radio" id="radio" value="1" checked />
     ))
   )
   .add(
     'checked and disabled',
-    withInfo({ text: 'Props: **isChecked disabled**' })(() => (
-      <Radio name="radio" id="radio" value="1" isChecked disabled handleChange={() => {}} />
+    withInfo({ text: 'Props: **checked disabled**' })(() => (
+      <Radio name="radio" id="radio" value="1" checked disabled />
     ))
   )
   .add(

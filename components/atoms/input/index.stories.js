@@ -17,24 +17,24 @@ storiesOf('Atoms/Input', module)
   .add(
     'initial',
     withInfo({ text: 'Initial component' })(() => (
-      <Input value={text('value', 'initial value')} handleChange={() => {}} />
+      <Input value={text('value', 'initial value')} />
     ))
   )
   .add(
     'multiline input',
     withInfo({ text: 'Props: **multiline**' })(() => (
-      <Input value={text('value', 'initial\nvalue')} multiline handleChange={() => {}} />
+      <Input value={text('value', 'initial\nvalue')} multiline />
     ))
   )
   .add(
     'html5 type',
     withInfo({ text: 'Props: **type="date"**' })(() => (
-      <Input value={text('value', today())} type="date" handleChange={() => {}} />
+      <Input value={text('value', today())} type="date" />
     ))
   )
   .add(
     'disabled',
     withInfo({ text: 'Initial component' })(() => (
-      <Input value={text('value', 'initial value')} disabled handleChange={() => {}} />
+      <Input value={text('value', 'initial value')} disabled />
     ))
   )

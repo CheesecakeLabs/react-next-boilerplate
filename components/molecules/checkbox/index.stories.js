@@ -30,7 +30,7 @@ class CustomCheckboxGroup extends React.Component {
         const childProps = {
           key: child.props.value,
           name: 'checkbox[]',
-          isChecked: this.includesValue(child.props.value),
+          checked: this.includesValue(child.props.value),
           handleChange: this.handleChange,
         }
 
@@ -53,26 +53,19 @@ storiesOf('Molecules/Checkbox', module)
   .add(
     'initial',
     withInfo({ text: 'Initial component' })(() => (
-      <Checkbox name="checkbox" id="checkbox" value="1" handleChange={() => {}} />
+      <Checkbox name="checkbox" id="checkbox" value="1" />
     ))
   )
   .add(
     'checked',
-    withInfo({ text: 'Props: **isChecked**' })(() => (
-      <Checkbox name="checkbox" id="checkbox" value="1" isChecked handleChange={() => {}} />
+    withInfo({ text: 'Props: **checked**' })(() => (
+      <Checkbox name="checkbox" id="checkbox" value="1" checked />
     ))
   )
   .add(
     'checked and disabled',
-    withInfo({ text: 'Props: **isChecked disabled**' })(() => (
-      <Checkbox
-        name="checkbox"
-        id="checkbox"
-        value="1"
-        isChecked
-        disabled
-        handleChange={() => {}}
-      />
+    withInfo({ text: 'Props: **checked disabled**' })(() => (
+      <Checkbox name="checkbox" id="checkbox" value="1" checked disabled />
     ))
   )
   .add(
