@@ -51,42 +51,38 @@
     position: relative;
     display: inline-block;
     width: 10px;
-    height: 8px;
+    height: 9px;
     margin: 3px;
 
     &::before,
     &::after {
         content: '';
         width: 10px;
-        height: 14px;
+        height: 10px;
         display: block;
         border-bottom: 2px solid blue;
-        border-radius: 2px;
         position: absolute;
     }
 
     &:before {
         transition: all 0.3s ease-out;
-        transform: rotate(-45deg);
+        transform: rotate(-45deg) translate(0, 0);
     }
 
     &:after {
         transition: all 0.3s ease-out;
-        transform: rotate(45deg);
+        transform: rotate(45deg) translate(0, 0);
     }
 }
 
 .exitIcon {
-    transition: all 0.3s ease-out;    
-    width: 10px;
-    height: 14px;
 
     &:before {
         transition: all 0.3s ease-out;
-        transform: rotate(-45deg) translate(-7px,0px);
+        transform: rotate(-45deg) translate(-2px, -2px);
     }
     &:after {
         transition: all 0.3s ease-out;
-        transform: rotate(45deg) translate(-7px, 0px);
+        transform: rotate(45deg) translate(3px, -3px);
     }
 }
