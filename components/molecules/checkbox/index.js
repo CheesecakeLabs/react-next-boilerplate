@@ -7,11 +7,12 @@ import Input from '_components/atoms/input'
 import styles from './styles.css'
 
 const Checkbox = props => {
-  const { className, isChecked } = props
+  const { className, isChecked, disabled } = props
   const inputClasses = classNames({
     [className]: true,
     [styles.input]: true,
     [styles.checked]: isChecked,
+    [styles.disabled]: disabled,
   })
 
   return (

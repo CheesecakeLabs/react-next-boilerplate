@@ -32,3 +32,9 @@ storiesOf('Atoms/Input', module)
       <Input value={text('value', today())} type="date" handleChange={() => {}} />
     ))
   )
+  .add(
+    'disabled',
+    withInfo({ text: 'Initial component' })(() => (
+      <Input value={text('value', 'initial value')} disabled handleChange={() => {}} />
+    ))
+  )

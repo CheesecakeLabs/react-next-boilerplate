@@ -8,6 +8,7 @@ const Input = ({
   className,
   type,
   checked,
+  disabled,
   id,
   name,
   multiline,
@@ -17,7 +18,8 @@ const Input = ({
   handleChange,
 }) => {
   const props = {
-    className: classNames(styles.input, className),
+    className: classNames(styles.input, className, { [styles.disabled]: disabled }),
+    disabled,
     id,
     name,
     placeholder,
@@ -32,6 +34,7 @@ Input.propTypes = {
   className: PropTypes.string,
   type: PropTypes.string,
   checked: PropTypes.bool,
+  disabled: PropTypes.bool,
   id: PropTypes.string,
   name: PropTypes.string,
   placeholder: PropTypes.string,
@@ -45,6 +48,7 @@ Input.defaultProps = {
   className: undefined,
   type: 'text',
   checked: false,
+  disabled: false,
   id: undefined,
   name: undefined,
   placeholder: undefined,

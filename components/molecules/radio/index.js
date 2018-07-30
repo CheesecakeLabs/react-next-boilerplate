@@ -7,11 +7,12 @@ import Input from '_components/atoms/input'
 import styles from './styles.css'
 
 const Radio = props => {
-  const { className, isChecked } = props
+  const { className, isChecked, disabled } = props
   const inputClasses = classNames({
     [className]: true,
     [styles.input]: true,
     [styles.checked]: isChecked,
+    [styles.disabled]: disabled,
   })
 
   return (
@@ -25,12 +26,14 @@ Radio.propTypes = {
   className: PropTypes.string,
   id: PropTypes.string.isRequired,
   isChecked: PropTypes.bool.isRequired,
+  disabled: PropTypes.bool,
 }
 
 Radio.defaultProps = {
   className: undefined,
   id: null,
   isChecked: false,
+  disabled: false,
 }
 
 export default Radio
