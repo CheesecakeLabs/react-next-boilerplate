@@ -1,4 +1,4 @@
-import { CustomIconMarker } from '../components/atoms/CustomIconMarker'
+import { CustomIconMarker } from '_components/atoms/CustomIconMarker'
 
 import { isBrowser, Icon } from './LeafletElements'
 

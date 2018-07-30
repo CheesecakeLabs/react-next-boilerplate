@@ -1,13 +1,10 @@
 import React, { Fragment } from 'react'
 
 import logo from '_components/assets/icons/logo.png'
-
-import LeafletWrapper from '../../components/organisms/LeafletMap'
-import { RandomMarkers } from '../../utils/RandomMarkers'
+import LeafletMap from '_components/organisms/LeafletMap'
+import { RandomMarkers } from '_utils/RandomMarkers'
 
 import styles from './styles.css'
-
-import Button from '_components/atoms/button'
 
 const CKLBoilerplate = () => (
   <Fragment>
@@ -17,7 +14,7 @@ const CKLBoilerplate = () => (
     <hr />
     <marquee className={styles.text}>React Boilerplate</marquee>
     <hr />
-    <LeafletWrapper lat={51.505} lng={-0.09} zoom={13} markers={RandomMarkers()} />
+    <LeafletMap lat={51.505} lng={-0.09} zoom={13} markers={RandomMarkers()} />
   </Fragment>
 )
 
