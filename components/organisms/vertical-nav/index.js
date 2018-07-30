@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import classNames from 'classnames'
 
-import AppBar from '_molecules/app-bar'
-import Drawer from '_organisms/drawer'
+import AppBar from '_components/molecules/app-bar'
+import Drawer from '_components/organisms/drawer'
 
 class VerticalNav extends Component {
   static propTypes = {

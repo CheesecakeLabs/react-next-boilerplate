@@ -2,11 +2,11 @@ import React from 'react'
 import classNames from 'classnames'
 import PropTypes from 'prop-types'
 
-import menuIcon from '_images/menu.png'
-import closeIcon from '_images/close.png'
-import NavFooter from '_atoms/nav-footer'
-import IconButton from '_atoms/icon-button'
-import Icon from '_atoms/icon'
+import menuIcon from '_components/assets/icons/menu.png'
+import closeIcon from '_components/assets/icons/close.png'
+import NavFooter from '_components/atoms/nav-footer'
+import IconButton from '_components/atoms/icon-button'
+import Icon from '_components/atoms/icon'
 
 import styles from './styles.css'
 
