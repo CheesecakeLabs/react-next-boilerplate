@@ -3,6 +3,9 @@ import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import { Portal } from 'react-portal'
 
+import Header from './header'
+import Body from './body'
+import Footer from './footer'
 import styles from './styles.css'
 
 const Modal = ({ isOpen, styleOverlay, styleBox, children }) => (
@@ -25,5 +28,7 @@ Modal.defaultProps = {
   styleOverlay: undefined,
   styleBox: undefined,
 }
+
+export { Footer, Body, Header }
 
 export default Modal

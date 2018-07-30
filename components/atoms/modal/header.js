@@ -5,7 +5,7 @@ import classNames from 'classnames'
 import styles from './styles.css'
 
 const ModalHeader = ({ className, children }) => (
-  <h3 className={classNames(styles.title, className)}>{children}</h3>
+  <h3 className={classNames(styles.header, className)}>{children}</h3>
 )
 
 ModalHeader.propTypes = {
