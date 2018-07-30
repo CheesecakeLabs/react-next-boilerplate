@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
-import Icon from '_atoms/icon'
+import Icon from '_components/atoms/icon'
 
 import styles from './styles.css'
 

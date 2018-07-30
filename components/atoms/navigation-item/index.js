@@ -2,8 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
-import Icon from '_atoms/icon'
-import drawerStyle from '_organisms/drawer/styles.css'
+import Icon from '_components/atoms/icon'
+import drawerStyle from '_components/organisms/drawer/styles.css'
 
 import styles from './styles.css'
 

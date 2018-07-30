@@ -2,11 +2,11 @@ import React from 'react'
 import { storiesOf } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
 
-import NavigationItems from '_molecules/navigation-items'
-import NavigationItem from '_atoms/navigation-item'
-import VerticalNav from '_organisms/vertical-nav'
-import settingsIcon from '_images/settings.png'
-import cklLogo from '_images/ckl-logo.png'
+import NavigationItems from '_components/molecules/navigation-items'
+import NavigationItem from '_components/atoms/navigation-item'
+import VerticalNav from '_components/organisms/vertical-nav'
+import settingsIcon from '_components/assets/icons/settings.png'
+import cklLogo from '_components/assets/icons/ckl-logo.png'
 
 storiesOf('Organisms/VerticalNav', module).add('VerticalNav', () => (
   <VerticalNav navFooterIcon={cklLogo} navFooterText="2018 Todos os direitos reservados">
