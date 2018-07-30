@@ -24,8 +24,8 @@ const Radio = props => {
 
 Radio.propTypes = {
   className: PropTypes.string,
-  id: PropTypes.string.isRequired,
-  isChecked: PropTypes.bool.isRequired,
+  id: PropTypes.string,
+  isChecked: PropTypes.bool,
   disabled: PropTypes.bool,
 }
 

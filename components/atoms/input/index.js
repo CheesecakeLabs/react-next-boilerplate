@@ -41,7 +41,7 @@ Input.propTypes = {
   multiline: PropTypes.bool,
   required: PropTypes.bool,
   value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-  handleChange: PropTypes.func.isRequired,
+  handleChange: PropTypes.func,
 }
 
 Input.defaultProps = {
@@ -55,7 +55,7 @@ Input.defaultProps = {
   multiline: false,
   required: false,
   value: '',
-  handleChange: null,
+  handleChange: () => {},
 }
 
 export default Input

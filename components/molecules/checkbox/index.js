@@ -24,8 +24,8 @@ const Checkbox = props => {
 
 Checkbox.propTypes = {
   className: PropTypes.string,
-  id: PropTypes.string.isRequired,
-  isChecked: PropTypes.bool.isRequired,
+  id: PropTypes.string,
+  isChecked: PropTypes.bool,
 }
 
 Checkbox.defaultProps = {
