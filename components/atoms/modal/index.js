@@ -29,6 +29,8 @@ Modal.defaultProps = {
   styleBox: undefined,
 }
 
-export { Footer, Body, Header }
+Modal.Header = Header
+Modal.Body = Body
+Modal.Footer = Footer
 
 export default Modal
