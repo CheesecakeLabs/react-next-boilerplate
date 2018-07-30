@@ -23,6 +23,7 @@
 .box {
     width: 610px;
     background-color: white;
+    border-radius: 2px;
     overflow: hidden;
     opacity: 0;
     transition: .3s;

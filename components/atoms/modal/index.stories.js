@@ -26,7 +26,7 @@ storiesOf('Modal', module).add('Modal', () => (
 ))
 
 storiesOf('Modal', module).add('Modal with Two Buttons', () => (
-  <Modal>
+  <Modal isOpen>
     <ModalHeader>Happy Text</ModalHeader>
     <ModalBody>
       we will have a super time. Sometimes you learn more from your mistakes than you do from your
@@ -44,7 +44,7 @@ storiesOf('Modal', module).add('Modal with Two Buttons', () => (
 ))
 
 storiesOf('Modal', module).add('Modal with an X', () => (
-  <Modal>
+  <Modal isOpen>
     <ModalHeader closeIcon={<CloseIcon />}>Super Happy Text</ModalHeader>
     <ModalBody>
       we will have a super time. Sometimes you learn more from your mistakes than you do from your
