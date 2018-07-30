@@ -1,8 +1,8 @@
 .input {
   outline: 0;
   transition: all .3s ease-in-out;
-  color: #323232;
-  border: 1px solid #979797;
+  color: var(--color-input-text);
+  border: 1px solid var(--color-input-border);
   border-radius: 3px;
   padding: .6rem .8rem;
   font-family: 'Source Sans Pro', Arial, sans-serif;
@@ -14,6 +14,16 @@
 
   &:not([type="radio"]):not([type="checkbox"]):focus {
     box-shadow: 0 0px 2px 2px #91d0d9;
-    border-color: var(--color-focusable-blue);
+    border-color: var(--color-input-focus);
+  }
+}
+
+
+.disabled {
+  color:  var(--color-disabled);
+  border-color: var(--color-disabled);
+
+  &:hover {
+    border-color: inherit;
   }
 }

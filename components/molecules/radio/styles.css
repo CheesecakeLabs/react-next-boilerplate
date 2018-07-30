@@ -37,17 +37,24 @@
   }
 
   &:focus {
-    border-color: var(--color-focusable-blue);
+    border-color: var(--color-input-focus);
+
+    &::before {
+      box-shadow: 0 0px 1px 1px #91d0d9;
+      border-color: var(--color-input-focus);
+    }
   }
 }
 
-.input:focus::before {
-  box-shadow: 0 0px 1px 1px #91d0d9;
-  border-color: var(--color-focusable-blue);
+.checked {
+  &::after {
+    opacity: 1;
+  }
 }
 
-.checked {
-  &:after {
-    opacity: 1;
+.disabled {
+  &::before {
+    background: var(--color-disabled);
+    border-color:  var(--color-disabled);
   }
 }

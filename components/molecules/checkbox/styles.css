@@ -25,7 +25,7 @@
     width: 18px;
     height: 18px;
     background: white;
-    border: 1px solid var(--color-grey);
+    border: 1px solid var(--color-input-border);
     outline: 0;
   }
 
@@ -41,20 +41,31 @@
   }
 
   &:focus {
-    border-color: var(--color-focusable-blue);
-  }
-}
+    border-color: var(--color-input-focus);
 
-.input:focus::before {
-  box-shadow: 0 0px 1px 1px #91d0d9;
-  border-color: var(--color-focusable-blue);
+    &::before {
+      box-shadow: 0 0px 1px 1px #91d0d9;
+      border-color: var(--color-input-focus);
+    }
+  }
 }
 
 .checked {
-  &:before {
+  &::before {
     border-color: var(--color-blue);
   }
-  &:after {
+
+  &::after {
     opacity: 1;
+  }
+}
+
+.disabled {
+  &::before {
+    border-color:  var(--color-disabled);
+  }
+
+  &::after {
+    background: var(--color-disabled);
   }
 }
