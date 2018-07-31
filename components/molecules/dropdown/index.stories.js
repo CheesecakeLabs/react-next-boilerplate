@@ -64,6 +64,14 @@ storiesOf('Molecules/Dropdown', module)
         <Button>#2 item</Button>
         <Button>#3 item</Button>
         <Button>#4 item</Button>
+        <Button>#5 item</Button>
+        <Button>#6 item</Button>
+        <Button>#7 item</Button>
+        <Button>#8 item</Button>
+        <Button>#9 item</Button>
+        <Button>#10 item</Button>
+        <Button>#11 item</Button>
+        <Button>#12 item</Button>
       </CustomDropdown>
     ))
   )
