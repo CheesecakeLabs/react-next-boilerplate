@@ -6,20 +6,22 @@ import Button from '_components/atoms/button'
 
 import styles from './styles.css'
 
-const Dropdown = ({ className, label, disabled, isOpen, children }) => {
+const Dropdown = ({ className, button, disabled, isOpen, children, handleClick }) => {
   const dropdownClasses = classNames({
     [className]: true,
     [styles.dropdown]: true,
     [styles.disabled]: disabled,
-    [styles.dropdownOpen]: isOpen,
+  })
+
+  const buttonClasses = classNames({
+    [styles.button]: true,
+    [styles.buttonOpen]: isOpen,
   })
 
   const listClasses = classNames({
     [styles.list]: true,
     [styles.listOpen]: isOpen,
   })
-
-  const openIcon = 'v'
 
   const list = Children.map(children, child => {
     const itemClasses = classNames(child.className, styles.item)
@@ -28,8 +30,8 @@ const Dropdown = ({ className, label, disabled, isOpen, children }) => {
 
   return (
     <div className={dropdownClasses}>
-      <Button>
-        {label} {openIcon}
+      <Button className={buttonClasses} onClick={handleClick}>
+        {button}
       </Button>
       <nav className={listClasses}>{list}</nav>
     </div>
@@ -38,18 +40,19 @@ const Dropdown = ({ className, label, disabled, isOpen, children }) => {
 
 Dropdown.propTypes = {
   className: PropTypes.string,
-  label: PropTypes.node,
+  button: PropTypes.node,
   disabled: PropTypes.bool,
   isOpen: PropTypes.bool,
   children: PropTypes.node.isRequired,
+  handleClick: PropTypes.func,
 }
 
 Dropdown.defaultProps = {
   className: undefined,
-  label: null,
+  button: null,
   disabled: false,
   isOpen: false,
-  onClick: () => {},
+  handleClick: () => {},
 }
 
 export default Dropdown
