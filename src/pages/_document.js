@@ -17,7 +17,11 @@ export default class DefaultDocument extends Document {
           />
           <link rel="stylesheet" href="/_next/static/style.css" />
           {/* Mapbox stylesheet */}
-          <link href="https://api.mapbox.com/mapbox-gl-js/v0.42.0/mapbox-gl.css" rel="stylesheet" />
+          <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v0.47.0/mapbox-gl.js" />
+          <link
+            href="https://api.tiles.mapbox.com/mapbox-gl-js/v0.47.0/mapbox-gl.css"
+            rel="stylesheet"
+          />
           {/* Leaflet CSS setup */}
           <link
             rel="stylesheet"
