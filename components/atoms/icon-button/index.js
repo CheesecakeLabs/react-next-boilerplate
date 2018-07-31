@@ -7,14 +7,15 @@ import Button from '_components/atoms/button'
 
 import styles from './styles.css'
 
-const IconButton = ({ iconURL, onClick, className, classNameIcon }) => (
+const IconButton = ({ iconURL, iconText, onClick, className, classNameIcon }) => (
   <Button className={classNames(className, styles.iconButton)} onClick={onClick}>
-    <Icon className={classNameIcon} src={iconURL} />
+    <Icon className={classNameIcon} src={iconURL} alt={iconText} />
   </Button>
 )
 
 Icon.propTypes = {
   iconURL: PropTypes.string.isRequired,
+  iconText: PropTypes.string.isRequired,
   onClick: PropTypes.func,
   className: PropTypes.string,
   classNameIcon: PropTypes.string,
