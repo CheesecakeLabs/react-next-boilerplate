@@ -4,4 +4,8 @@
   outline: none;
   cursor: pointer;
   padding: 0;
+
+  &:active {
+    background-color: var(--color-white);
+  }
 }
