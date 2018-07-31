@@ -3,13 +3,14 @@ import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
 import Icon from '_components/atoms/icon'
+import Button from '_components/atoms/button'
 
 import styles from './styles.css'
 
 const IconButton = ({ iconURL, onClick, className, classNameIcon }) => (
-  <button className={classNames(className, styles.iconButton)} onClick={onClick}>
+  <Button className={classNames(className, styles.iconButton)} onClick={onClick}>
     <Icon className={classNameIcon} src={iconURL} />
-  </button>
+  </Button>
 )
 
 Icon.propTypes = {
