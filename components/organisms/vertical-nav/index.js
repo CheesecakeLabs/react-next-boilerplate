@@ -2,9 +2,17 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
 import AppBar from '_components/molecules/app-bar'
-import Drawer from '_components/organisms/drawer'
+
+import Drawer from './drawer'
+import Footer from './footer'
+import Items from './items'
+import Item from './item'
 
 class VerticalNav extends Component {
+  static Footer = Footer
+  static Items = Items
+  static Item = Item
+
   static propTypes = {
     navFooterIcon: PropTypes.string,
     navFooterText: PropTypes.string,

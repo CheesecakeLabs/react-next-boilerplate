@@ -2,12 +2,12 @@ import React from 'react'
 import classNames from 'classnames'
 import PropTypes from 'prop-types'
 
-import menuIcon from '_components/assets/icons/menu.png'
-import closeIcon from '_components/assets/icons/close.png'
-import NavFooter from '_components/atoms/nav-footer'
 import IconButton from '_components/atoms/icon-button'
 import Icon from '_components/atoms/icon'
+import menuIcon from '_components/assets/icons/menu.png'
+import closeIcon from '_components/assets/icons/close.png'
 
+import NavFooter from './footer'
 import styles from './styles.css'
 
 const Drawer = ({ isOpen, onToggleClick, children, footerIcon, footerText, className }) => {
