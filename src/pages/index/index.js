@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
 
-import logo from '_images/logo.png'
+import logo from '_components/assets/icons/logo.png'
 
 import styles from './styles.css'
 
