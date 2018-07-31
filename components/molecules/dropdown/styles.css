@@ -1,9 +1,88 @@
+:root {
+  --icon-y: translateY(-50%);
+}
+
 .dropdown {}
 
-.dropdownOpen {}
-
-.list {}
+.list {
+  display: flex;
+  flex-flow: column;
+}
 
 .listOpen {}
 
-.item {}
+.button {
+  background: white;
+  color: #000000;
+  border: 1px solid #ccc;
+  position: relative;
+  display: block;
+
+  &::after {
+    content: '';
+    mask: url('_components/assets/images/angle.svg');
+    position: absolute;
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: contain;
+    background: var(--color-primary);
+    width: .5rem;
+    height: .5rem;
+    top: 50%;
+    transform: var(--icon-y) rotate(360deg);
+    animation: rotateTo360 .4s linear;
+    left: calc(100% - 1rem);
+  }
+}
+
+.buttonOpen {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+
+  &::after {
+    animation: rotateTo180 .4s linear;
+    transform: var(--icon-y) rotate(180deg);
+  }
+}
+
+.item {
+  background: white;
+  color: #000000;
+  border: 1px solid #ccc;
+
+  &:not(:last-child) {
+    border-radius: 0;
+  }
+
+  &:last-child {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+
+  &:hover {
+    background: #f3f3f3
+  }
+
+  &:focus {
+    box-shadow: 0 0px 2px 2px #91d0d9;
+    z-index: 1;
+  }
+}
+
+@keyframes rotateTo360 {
+  from {
+    transform: var(--icon-y) rotate(180deg);
+  }
+  to {
+    transform: var(--icon-y) rotate(360deg);
+  }
+}
+
+@keyframes rotateTo180 {
+  from {
+    transform: var(--icon-y) rotate(0);
+  }
+  to {
+    transform: var(--icon-y) rotate(180deg);
+  }
+}
