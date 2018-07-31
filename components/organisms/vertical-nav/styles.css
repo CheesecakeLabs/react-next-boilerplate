@@ -12,25 +12,26 @@
   }
 }
 
-.navFooter {
-  opacity: 1;
-  transition: .3s;
-}
-
-.navFooterClosedOnDesktop {
-  opacity: 0;
-  transition: .3s;
-}
-
 .opened {
   left: 0;
 }
-
 
 .navItem span {
   transition: .5s;
   opacity: 1;
   transform: translateX(0)
+}
+
+.showCollapseFooterContent {
+  opacity: 1;
+}
+
+.footerChildren {
+  opacity: 1;
+}
+
+.collapseFooterContent {
+  opacity: 0;
 }
 
 .closed {
@@ -50,12 +51,17 @@
       justify-content: center;
     }
 
-    .navFooter {
-      opacity: 0;
-    }
-
-    .navFooterClosedOnDesktop {
+    .showCollapseFooterContent {
       opacity: 1;
+
+      .footerChildren {
+        opacity: 0;
+        display: none;
+      }
+
+      .collapseFooterContent {
+        opacity: 1;
+      }
     }
   }
 }
