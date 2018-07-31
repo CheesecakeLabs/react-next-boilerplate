@@ -13,7 +13,6 @@ styles['color-input-text'] = '#4c4c4c'
 styles['color-input-border'] = '#979797'
 styles['color-input-focus'] = '#91d0d9'
 styles['color-input-hover'] = styles['color-text']
-styles['color-input-shadow'] = '#91d0d9'
 styles['color-input-primary'] = '#60cae5'
 
 styles['color-disabled'] = '#C4CDD5'

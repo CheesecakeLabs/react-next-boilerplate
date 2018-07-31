@@ -40,7 +40,7 @@
     border-color: var(--color-input-focus);
 
     &::before {
-      box-shadow: 0 0px 1px 1px var(--color-input-shadow);
+      box-shadow: 0 0px 1px 1px var(--color-input-focus);
       border-color: var(--color-input-focus);
     }
   }
