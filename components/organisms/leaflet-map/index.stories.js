@@ -8,13 +8,16 @@ import { RandomMarkers } from '_utils/random-markers'
 
 storiesOf('Organisms/Map', module)
   .addDecorator(withKnobs)
-  .add(
-    'default leaflet map',
-    withInfo({ text: '' })(() => <LeafletMap lat={51.505} lng={-0.09} markers={RandomMarkers()} />)
-  )
+  .add('default leaflet map', withInfo({ text: '' })(() => <LeafletMap lat={51.505} lng={-0.09} />))
   .add(
     'leaflet map with markers',
     withInfo({ text: '' })(() => <LeafletMap lat={51.505} lng={-0.09} markers={RandomMarkers()} />)
+  )
+  .add(
+    'hide layers control of leaflet map',
+    withInfo({ text: '' })(() => (
+      <LeafletMap lat={51.505} lng={-0.09} markers={RandomMarkers()} showLayersControls={false} />
+    ))
   )
   .add(
     'leaflet map with Google layer',
@@ -23,14 +26,8 @@ storiesOf('Organisms/Map', module)
     ))
   )
   .add(
-    'Mapbox map',
+    'mapbox map',
     withInfo({ text: '' })(() => (
       <LeafletMap lat={51.505} lng={-0.09} markers={RandomMarkers()} showMapbox />
-    ))
-  )
-  .add(
-    'Hide layers control of leaflet map',
-    withInfo({ text: '' })(() => (
-      <LeafletMap lat={51.505} lng={-0.09} markers={RandomMarkers()} showLayersControls />
     ))
   )
