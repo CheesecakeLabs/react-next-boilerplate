@@ -10,7 +10,7 @@ import styles from './styles.css'
 
 const AppBar = ({ onMenuClick, className }) => (
   <header className={classNames(styles.appBar, className)}>
-    <IconButton iconURL={menu} onClick={onMenuClick} />
+    <IconButton iconURL={menu} onClick={onMenuClick} className={styles.iconWidth} />
     <Logo />
   </header>
 )
