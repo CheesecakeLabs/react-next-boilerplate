@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
+import Icon from './icon'
 import styles from './styles.css'
 
 const Button = ({ onClick, disabled, className, children }) => (
@@ -13,6 +14,8 @@ const Button = ({ onClick, disabled, className, children }) => (
     {children}
   </button>
 )
+
+Button.Icon = Icon
 
 Button.propTypes = {
   onClick: PropTypes.func,
@@ -26,4 +29,5 @@ Button.defaultProps = {
   className: undefined,
   onClick: () => {},
 }
+
 export default Button
