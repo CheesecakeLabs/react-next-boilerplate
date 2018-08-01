@@ -33,7 +33,7 @@ storiesOf('Organisms/VerticalNav', module)
           </VerticalNav.Item>
         </VerticalNav.Items>
 
-        <VerticalNav.Footer hasCoolapseContent collapseContent={<Icon src={cklLogo} />}>
+        <VerticalNav.Footer hasCoolapseContent collapseIconUrl={cklLogo}>
           <p>Todos os direitos reservados</p>
         </VerticalNav.Footer>
       </VerticalNav>
