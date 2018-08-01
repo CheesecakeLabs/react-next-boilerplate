@@ -22,16 +22,18 @@
   transform: translateX(0)
 }
 
-.showCollapseFooterContent {
-  opacity: 1;
-}
-
 .footerChildren {
   opacity: 1;
+  transition: .3s;
+  white-space: nowrap;
+  width: 100%;
+  text-align: center;
+  overflow: hidden;
 }
 
 .collapseFooterContent {
   opacity: 0;
+  transition: .15s;
 }
 
 .closed {
@@ -51,12 +53,14 @@
       justify-content: center;
     }
 
+    .footerChildren {
+      opacity: 0;
+    }
+
     .showCollapseFooterContent {
-      opacity: 1;
 
       .footerChildren {
-        opacity: 0;
-        display: none;
+        width: 0;
       }
 
       .collapseFooterContent {
