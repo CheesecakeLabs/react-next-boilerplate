@@ -1,11 +1,11 @@
-.tooltip {
+.toolTip {
     position: relative;
     width: max-content;
     padding: 10px;
 }
 
- .tooltiptext {
-    background-color: black;
+ .toolTipText {
+    background-color: var(--color-black);
     color: var(--color-white);
     text-align: center;
     padding: 5px 10px;
