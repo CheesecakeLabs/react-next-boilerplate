@@ -1,23 +1,34 @@
-import React from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import Popover from 'react-popover'
 
 import styles from './styles.css'
 
-class Tooltip extends React.Component {
-  state = {
-    isOpen: true,
+class Tooltip extends Component {
+  static propTypes = {
+    body: PropTypes.string.isRequired,
+    children: PropTypes.node.isRequired,
   }
 
-  toggle(toState = null) {
-    this.setState({ isOpen: toState === null ? !this.state.isOpen : toState })
+  static defaultProps = {
+    body: undefined,
+    className: undefined,
   }
+
+  state = {
+    isOpen: false,
+  }
+
+  toggle = () => {
+    this.setState(prevState => ({ isOpen: !prevState.isOpen }))
+  }
+
   render() {
     const { isOpen } = this.state
     return (
-      <Popover className={styles.tooltiptext} isOpen={isOpen} body="o ousado chegou kkkkjjk">
+      <Popover className={styles.toolTipText} isOpen={isOpen} body={this.props.body}>
         <div
-          className={styles.tooltip}
+          className={styles.toolTip}
           onMouseOver={() => this.toggle(true)}
           onMouseOut={() => this.toggle(false)}
         >
@@ -28,11 +39,4 @@ class Tooltip extends React.Component {
   }
 }
 
-Tooltip.propTypes = {
-  children: PropTypes.node.isRequired,
-}
-
-Tooltip.defaultProps = {
-  className: undefined,
-}
 export default Tooltip
