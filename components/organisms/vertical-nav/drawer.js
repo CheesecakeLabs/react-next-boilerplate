@@ -4,21 +4,32 @@ import PropTypes from 'prop-types'
 
 import menuIcon from '_components/assets/icons/menu.png'
 import closeIcon from '_components/assets/icons/close.png'
+import Button from '_components/atoms/button'
 
 import styles from './styles.css'
 
-const Drawer = ({ isOpen, onToggleClick, children, className }) => (
-  <div
-    className={classNames(
-      styles.sidenav,
-      className,
-      { [styles.opened]: isOpen },
-      { [styles.closed]: !isOpen }
-    )}
-  >
-    <nav>{children}</nav>
-  </div>
-)
+const Drawer = ({ isOpen, onToggleClick, children, className }) => {
+  const headerIcon = iconURL => (
+    <Button onClick={onToggleClick} className={styles.iconButton}>
+      <Button.Icon src={iconURL} alt="toggle menu" className={styles.iconStyle} />
+    </Button>
+  )
+
+  return (
+    <div
+      className={classNames(
+        styles.sidenav,
+        className,
+        { [styles.opened]: isOpen },
+        { [styles.closed]: !isOpen }
+      )}
+    >
+      <div className={styles.navHeaderMobileOnly}>{headerIcon(closeIcon)}</div>
+      <div className={styles.navHeaderDesktopOnly}>{headerIcon(menuIcon)}</div>
+      <nav>{children}</nav>
+    </div>
+  )
+}
 
 Drawer.propTypes = {
   isOpen: PropTypes.bool,
