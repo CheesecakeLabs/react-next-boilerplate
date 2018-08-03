@@ -1,0 +1,21 @@
+.tooltip {
+    position: relative;
+    width: max-content;
+    padding: 10px;
+}
+
+ .tooltiptext {
+    background-color: black;
+    color: var(--color-white);
+    text-align: center;
+    padding: 5px 10px;
+    border-radius: 6px;
+}
+
+:global .Popover-tip {
+    position: absolute;
+    left: -6px;
+    top: 0;
+    width: 10px;
+}
+
