@@ -1,6 +1,6 @@
 import React from 'react'
 
-import logo from '_components/assets/icons/ckl-logo.png'
+import logo from '_storybook/assets/icons/ckl-logo.png'
 
 import styles from './styles.css'
 
