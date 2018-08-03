@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
 
 import AppBar from '_components/molecules/app-bar'
@@ -42,7 +42,7 @@ class VerticalNav extends Component {
     const { navFooterIcon, navFooterText, appBarClass, drawerClass, children } = this.props
     const { sidenavIsOpen } = this.state
     return (
-      <div>
+      <Fragment>
         <AppBar onMenuClick={this.sideMenuHandler} className={appBarClass} />
         <Drawer
           onToggleClick={this.sideMenuHandler}
@@ -53,7 +53,7 @@ class VerticalNav extends Component {
         >
           {children}
         </Drawer>
-      </div>
+      </Fragment>
     )
   }
 }

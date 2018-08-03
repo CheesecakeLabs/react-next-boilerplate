@@ -5,9 +5,8 @@ import { withInfo } from '@storybook/addon-info'
 import { withKnobs } from '@storybook/addon-knobs/react'
 
 import VerticalNav from '_components/organisms/vertical-nav'
-import settingsIcon from '_components/assets/icons/settings.png'
-import cklLogo from '_components/assets/icons/ckl-logo.png'
-import Icon from '_components/atoms/icon'
+import settingsIcon from '_storybook/assets/icons/settings.png'
+import cklLogo from '_storybook/assets/icons/ckl-logo.png'
 
 storiesOf('Organisms/VerticalNav', module)
   .addDecorator(withKnobs)
