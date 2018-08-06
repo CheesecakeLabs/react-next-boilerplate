@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
+
 import Button from '_components/atoms/button'
 
 import styles from './styles.css'
@@ -8,11 +9,12 @@ import styles from './styles.css'
 class Section extends Component {
   static propTypes = {
     children: PropTypes.node.isRequired,
-    sectionTitle: PropTypes.node,
+    title: PropTypes.string,
+    className: PropTypes.string,
   }
 
   static defaultProps = {
-    sectionTitle: undefined,
+    title: undefined,
     className: undefined,
   }
 
@@ -22,10 +24,9 @@ class Section extends Component {
   }
 
   handleClick = () => {
-    const { isOpen } = this.state
-    this.setState({
-      isOpen: !isOpen,
-    })
+    this.setState(prevState => ({
+      isOpen: !prevState.isOpen,
+    }))
   }
 
   bodyRef = element => {
@@ -33,24 +34,25 @@ class Section extends Component {
     this.setState({ bodyHeight: bodyRect.height, isOpen: false })
   }
 
-  render = () => {
+  render() {
     const { isOpen, bodyHeight } = this.state
+    const { className, title, children } = this.props
     const height = isOpen ? bodyHeight : 0
     const iconClass = classnames(styles.downIcon, {
       [styles.exitIcon]: isOpen,
     })
-    const title = classnames(styles.title, {
+    const titleClass = classnames(styles.title, {
       [styles.selected]: isOpen,
     })
 
     return (
-      <div className={styles.section}>
+      <div className={classnames(styles.section, className)}>
         <Button className={styles.header} onClick={this.handleClick}>
-          <h1 className={title}>{this.props.sectionTitle}</h1>
+          <h1 className={titleClass}>{title}</h1>
           <i className={iconClass} />
         </Button>
         <div className={styles.body} ref={this.bodyRef} style={{ height }}>
-          <p>{this.props.children}</p>
+          <p>{children}</p>
         </div>
       </div>
     )
