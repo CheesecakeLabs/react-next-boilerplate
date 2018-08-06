@@ -1,13 +1,17 @@
 import React from 'react'
-
-import logo from '_storybook/assets/icons/ckl-logo.png'
+import PropTypes from 'prop-types'
 
 import styles from './styles.css'
 
-const Logo = () => (
+const Logo = ({ src, alt }) => (
   <div className={styles.brand}>
-    <img className={styles.brandImage} src={logo} alt="company logo" />
+    <img className={styles.brandImage} src={src} alt={alt} />
   </div>
 )
+
+Logo.propTypes = {
+  src: PropTypes.string.isRequired,
+  alt: PropTypes.string.isRequired,
+}
 
 export default Logo
