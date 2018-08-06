@@ -11,35 +11,38 @@ class CustomRadioGroup extends Component {
     children: PropTypes.node.isRequired,
   }
 
-  static defaultProps = {
-    children: null,
-  }
-
   state = { value: 1 }
 
-  isEqualValue = val => this.state.value === val
+  isEqualValue = val => {
+    const { value } = this.state
+    return value === val
+  }
 
   handleChange = event => {
     const value = parseInt(event.target.value, 10)
     this.setState({ value })
   }
 
-  render = () => (
-    <Fragment>
-      <h1>Selected: {this.state.value}</h1>
+  render() {
+    const { value } = this.state
+    const { children } = this.props
+    return (
+      <Fragment>
+        <h1>Selected: {value}</h1>
 
-      {Children.map(this.props.children, child => {
-        const childProps = {
-          key: child.props.value,
-          name: 'radio',
-          checked: this.isEqualValue(child.props.value),
-          handleChange: this.handleChange,
-        }
+        {Children.map(children, child => {
+          const childProps = {
+            key: child.props.value,
+            name: 'radio',
+            checked: this.isEqualValue(child.props.value),
+            handleChange: this.handleChange,
+          }
 
-        return cloneElement(child, childProps)
-      })}
-    </Fragment>
-  )
+          return cloneElement(child, childProps)
+        })}
+      </Fragment>
+    )
+  }
 }
 
 storiesOf('Molecules/Radio', module)
