@@ -8,9 +8,17 @@ import Tooltip from '_components/atoms/tooltip'
 storiesOf('Atoms/Tooltip', module)
   .addDecorator(withKnobs)
   .add(
-    'with text',
+    'default',
     withInfo({ text: '' })(() => (
       <Tooltip isOpen body="Lorem ipsum dolor sit amet.">
+        Loren Ipsum
+      </Tooltip>
+    ))
+  )
+  .add(
+    'below',
+    withInfo({ text: '' })(() => (
+      <Tooltip isOpen body="Lorem ipsum dolor sit amet." place="below">
         Loren Ipsum
       </Tooltip>
     ))
