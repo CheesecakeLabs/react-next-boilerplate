@@ -1,5 +1,7 @@
 const path = require('path')
 
+const extra = require('../webpack.extra.js')
+
 module.exports = (baseConfig, env, defaultConfig) => {
   const cssRule = {
     test: /\.css$/,
@@ -17,22 +19,23 @@ module.exports = (baseConfig, env, defaultConfig) => {
         loader: 'postcss-loader',
         options: {
           config: {
-            path: path.resolve(__dirname, '..'),
+            path: path.resolve(process.cwd()),
           },
         },
       },
     ],
   }
-  const config = defaultConfig
-  config.resolve.alias = {
-    ...config.resolve.alias,
-    _atoms: path.resolve(__dirname, '..', 'src', 'components', 'atoms'),
-    _molecules: path.resolve(__dirname, '..', 'src', 'components', 'molecules'),
-    _organisms: path.resolve(__dirname, '..', 'src', 'components', 'organisms'),
-    _images: path.resolve(__dirname, '..', 'src', 'images'),
-    _pages: path.resolve(__dirname, '..', 'src', 'pages'),
-    _utils: path.resolve(__dirname, '..', 'src', 'utils'),
+  const config = {
+    ...defaultConfig,
+    resolve: {
+      ...defaultConfig.resolve,
+      alias: extra.resolve.alias,
+    },
+    module: {
+      ...defaultConfig.module,
+      rules: defaultConfig.module.rules.map(rule => (rule.test.test('.css') ? cssRule : rule)),
+    },
   }
-  config.module.rules = config.module.rules.map(rule => (rule.test.test('.css') ? cssRule : rule))
+
   return config
 }

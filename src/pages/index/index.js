@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
 
-import logo from '_images/logo.png'
+import logo from '_storybook/assets/icons/logo.png'
 import EditableImage from '_organisms/editable-image'
 
 import styles from './styles.css'
