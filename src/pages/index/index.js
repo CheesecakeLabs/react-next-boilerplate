@@ -2,7 +2,7 @@ import React, { Fragment } from 'react'
 import Router from 'next/router'
 import Cookie from 'js-cookie'
 
-import logo from '_images/logo.png'
+import logo from '_storybook/assets/icons/logo.png'
 
 import Button from '../../components/atoms/button'
 import { signOut } from '../../utils/SignOut'

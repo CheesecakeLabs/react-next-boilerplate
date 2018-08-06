@@ -1,5 +1,5 @@
 import React from 'react'
 
-const Error = () => <div>Error Endpoint not found</div>
+const Error = () => <div>Error</div>
 
 export default Error
