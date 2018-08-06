@@ -2,6 +2,7 @@ import React from 'react'
 import Document, { Head, Main, NextScript } from 'next/document'
 
 export default class DefaultDocument extends Document {
+  // eslint-disable-next-line class-methods-use-this
   render() {
     return (
       <html lang="en">
