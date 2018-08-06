@@ -1,0 +1,93 @@
+import React, { createRef, Component, Fragment } from 'react'
+import PropTypes from 'prop-types'
+
+import { isBrowser, GoogleLayer, Map, TileLayer, LayersControl } from '_utils/leaflet-elements'
+import Mapbox from '_components/organisms/mapbox-map'
+import MarkerList from '_components/molecules/marker-list'
+
+const road = 'ROADMAP'
+
+class LeafletMap extends Component {
+  setPosition = () => [this.props.lat, this.props.lng]
+
+  mapRef = createRef()
+
+  handleClick = () => {
+    this.mapRef.current.leafletElement.locate()
+  }
+
+  render() {
+    const BaseLayer = isBrowser ? LayersControl.BaseLayer : null
+    const mapDimensions = {
+      width: this.props.width,
+      height: this.props.height,
+    }
+
+    return isBrowser ? (
+      <Fragment>
+        {!this.props.showMapbox ? (
+          <Map
+            center={this.setPosition()}
+            zoom={this.props.zoom}
+            onClick={this.handleClick}
+            style={mapDimensions}
+          >
+            {this.props.showLayersControls ? (
+              <LayersControl position="topright">
+                <BaseLayer checked name="Default color">
+                  <TileLayer
+                    attribution="&amp;copy <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
+                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                  />
+                </BaseLayer>
+                <BaseLayer name="Black and White">
+                  <TileLayer
+                    attribution="&amp;copy <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
+                    url="https://tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png"
+                  />
+                </BaseLayer>
+              </LayersControl>
+            ) : (
+              <TileLayer
+                attribution="&amp;copy <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
+                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+              />
+            )}
+            {this.props.markers.length > 0 && <MarkerList markers={this.props.markers} />}
+            {this.props.hasGoogleLayer && (
+              <GoogleLayer googlekey={process.env.GOOGLE_MAPS_API_KEY} maptype={road} />
+            )}
+          </Map>
+        ) : (
+          <Mapbox />
+        )}
+      </Fragment>
+    ) : (
+      <div>Loading map</div>
+    )
+  }
+}
+
+LeafletMap.propTypes = {
+  lat: PropTypes.number.isRequired,
+  lng: PropTypes.number.isRequired,
+  zoom: PropTypes.number,
+  hasGoogleLayer: PropTypes.bool,
+  markers: PropTypes.arrayOf(PropTypes.object),
+  width: PropTypes.number,
+  height: PropTypes.number,
+  showLayersControls: PropTypes.bool,
+  showMapbox: PropTypes.bool,
+}
+
+LeafletMap.defaultProps = {
+  zoom: 13,
+  hasGoogleLayer: false,
+  markers: [],
+  width: 500,
+  height: 300,
+  showLayersControls: true,
+  showMapbox: false,
+}
+
+export default LeafletMap
