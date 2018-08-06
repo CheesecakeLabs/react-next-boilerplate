@@ -4,11 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "test",
+    "test": "echo 'TODO: we need to add some tests on this project as soon as possible!'",
+    "eslint-staged": "files=`git diff --staged --diff-filter=AM --name-only | grep .js$ | tr '\n' ' '`; if [ -n \"$files\" ]; then eslint $files; fi;",
+    "eslint": "eslint .",
     "dev": "node server.js",
     "build": "next build src",
     "start": "NODE_ENV=production node server.js",
-    "storybook": "start-storybook -p 9009 -c storybook"
+    "storybook": "start-storybook -p 9009 -c storybook",
+    "precommit": "npm run eslint-staged",
+    "prepush": "npm run eslint && npm run test"
   },
   "author": "Daniel Leite de Oliveira <dleitee@gmail.com> (https://github.com/dleitee)",
   "license": "ISC",
@@ -42,6 +46,7 @@
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-prettier": "^2.6.2",
     "eslint-plugin-react": "^7.9.1",
+    "husky": "^0.14.3",
     "postcss-color-function": "^4.0.1",
     "postcss-custom-media": "^6.0.0",
     "postcss-import": "^11.1.0",
