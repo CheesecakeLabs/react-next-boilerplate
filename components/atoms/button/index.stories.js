@@ -5,7 +5,6 @@ import { withKnobs } from '@storybook/addon-knobs/react'
 
 import loginIcon from '_storybook/assets/images/login-icon.svg'
 import Button from '_components/atoms/button'
-import Icon from '_components/atoms/icon'
 import styles from '_storybook/styles.css'
 
 storiesOf('Atoms/Button', module)
@@ -21,7 +20,7 @@ storiesOf('Atoms/Button', module)
         If you'll copy the code below you **should** remove the id into the **className** props apply your own style. It's very simple to create your style, you can do that creating a style file and import this into your component and that's it :)`,
     })(() => (
       <Button onClick={() => console.info('test')} className={styles.buttonIconStyle}>
-        <Icon src={loginIcon} alt="login" className={styles.iconStyle} />
+        <Button.Icon src={loginIcon} alt="login" className={styles.iconStyle} />
         Login
       </Button>
     ))
