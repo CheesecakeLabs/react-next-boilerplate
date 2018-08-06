@@ -4,7 +4,6 @@ import { storiesOf } from '@storybook/react'
 import Modal from '_components/atoms/modal'
 import loginIcon from '_storybook/assets/images/login-icon.svg'
 import Button from '_components/atoms/button'
-
 import styles from '_storybook/styles.css'
 
 storiesOf('Modal', module).add('Modal', () => (

@@ -1,10 +1,8 @@
 import React, { Fragment } from 'react'
 
-import logo from '_components/assets/icons/logo.png'
+import logo from '_storybook/assets/icons/logo.png'
 
 import styles from './styles.css'
-
-import Button from '_components/atoms/button'
 
 const CKLBoilerplate = () => (
   <Fragment>
@@ -15,7 +13,6 @@ const CKLBoilerplate = () => (
     {/* eslint-disable-next-line jsx-a11y/no-distracting-elements */}
     <marquee className={styles.text}>React Boilerplate</marquee>
     <hr />
-    <Button>TESTEE</Button>
   </Fragment>
 )
 

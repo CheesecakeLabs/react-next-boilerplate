@@ -17,8 +17,8 @@ require('dotenv').config()
 const nextConfiguration = {
   webpack: (config, options) => {
     const entryFactory = config.entry
-    // eslint-disable-next-line no-param-reassign
     const { isServer, defaultLoaders } = options
+    // eslint-disable-next-line no-param-reassign
     config.plugins = [...config.plugins, new webpack.EnvironmentPlugin(process.env)]
     config.module.rules.push({
       test: /\.+(js|jsx)$/,
