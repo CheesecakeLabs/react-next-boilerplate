@@ -1,5 +1,7 @@
 const path = require('path')
 
+const extra = require('../webpack.extra.js')
+
 module.exports = (baseConfig, env, defaultConfig) => {
   const cssRule = {
     test: /\.css$/,
@@ -17,13 +19,23 @@ module.exports = (baseConfig, env, defaultConfig) => {
         loader: 'postcss-loader',
         options: {
           config: {
-            path: path.resolve(__dirname, '..'),
+            path: path.resolve(process.cwd()),
           },
         },
       },
     ],
   }
-  const config = defaultConfig
-  config.module.rules = config.module.rules.map(rule => (rule.test.test('.css') ? cssRule : rule))
+  const config = {
+    ...defaultConfig,
+    resolve: {
+      ...defaultConfig.resolve,
+      alias: extra.resolve.alias,
+    },
+    module: {
+      ...defaultConfig.module,
+      rules: defaultConfig.module.rules.map(rule => (rule.test.test('.css') ? cssRule : rule)),
+    },
+  }
+
   return config
 }

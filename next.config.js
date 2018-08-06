@@ -1,3 +1,5 @@
+const path = require('path')
+
 // TODO: we need to check why this file is not parsing by .eslintrc.json
 // eslint-disable-next-line import/no-extraneous-dependencies
 const webpack = require('webpack')
@@ -15,9 +17,14 @@ require('dotenv').config()
 const nextConfiguration = {
   webpack: (config, options) => {
     const entryFactory = config.entry
-    const { isServer } = options
     // eslint-disable-next-line no-param-reassign
+    const { isServer, defaultLoaders } = options
     config.plugins = [...config.plugins, new webpack.EnvironmentPlugin(process.env)]
+    config.module.rules.push({
+      test: /\.+(js|jsx)$/,
+      include: [path.resolve(process.cwd(), 'components')],
+      use: [defaultLoaders.babel],
+    })
     if (!isServer) {
       const newConfig = {
         ...config,
