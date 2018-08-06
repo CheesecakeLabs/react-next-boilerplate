@@ -11,13 +11,12 @@ class CustomCheckboxGroup extends Component {
     children: PropTypes.node.isRequired,
   }
 
-  static defaultProps = {
-    children: null,
-  }
-
   state = { values: [1] }
 
-  includesValue = val => this.state.values.includes(val)
+  includesValue = val => {
+    const { values } = this.state
+    return values.includes(val)
+  }
 
   handleChange = event => {
     const value = parseInt(event.target.value, 10)
@@ -30,22 +29,26 @@ class CustomCheckboxGroup extends Component {
     this.setState({ values: newValues })
   }
 
-  render = () => (
-    <Fragment>
-      <h1>Selected: {this.state.values.join(', ')}</h1>
+  render() {
+    const { values } = this.state
+    const { children } = this.props
+    return (
+      <Fragment>
+        <h1>Selected: {values.join(', ')}</h1>
 
-      {Children.map(this.props.children, child => {
-        const childProps = {
-          key: child.props.value,
-          name: 'checkbox[]',
-          checked: this.includesValue(child.props.value),
-          handleChange: this.handleChange,
-        }
+        {Children.map(children, child => {
+          const childProps = {
+            key: child.props.value,
+            name: 'checkbox[]',
+            checked: this.includesValue(child.props.value),
+            handleChange: this.handleChange,
+          }
 
-        return cloneElement(child, childProps)
-      })}
-    </Fragment>
-  )
+          return cloneElement(child, childProps)
+        })}
+      </Fragment>
+    )
+  }
 }
 
 storiesOf('Molecules/Checkbox', module)

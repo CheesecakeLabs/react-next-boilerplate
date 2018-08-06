@@ -13,7 +13,7 @@
   }
 
   &:not([type="radio"]):not([type="checkbox"]):focus {
-    box-shadow: 0 0px 2px 2px #91d0d9;
+    box-shadow: 0 0px 2px 2px var(--color-input-focus);
     border-color: var(--color-input-focus);
   }
 }

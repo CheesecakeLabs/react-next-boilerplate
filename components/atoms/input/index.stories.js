@@ -1,7 +1,7 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
 import { withInfo } from '@storybook/addon-info'
-import { withKnobs, text, number } from '@storybook/addon-knobs/react'
+import { withKnobs, text } from '@storybook/addon-knobs/react'
 
 import Input from './index'
 
@@ -16,9 +16,7 @@ storiesOf('Atoms/Input', module)
   .addDecorator(withKnobs)
   .add(
     'initial',
-    withInfo({ text: 'Initial component' })(() => (
-      <Input value={text('value', 'initial value')} />
-    ))
+    withInfo({ text: 'Initial component' })(() => <Input value={text('value', 'initial value')} />)
   )
   .add(
     'multiline input',
