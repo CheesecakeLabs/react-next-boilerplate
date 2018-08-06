@@ -10,7 +10,9 @@ import Item from './item'
 
 class VerticalNav extends Component {
   static Footer = Footer
+
   static Items = Items
+
   static Item = Item
 
   static propTypes = {
