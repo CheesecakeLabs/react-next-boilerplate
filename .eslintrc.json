@@ -1,9 +1,6 @@
 {
   "extends": ["cheesecakelabs/react"],
-  "parserOptions": {
-    "ecmaVersion": 2018,
-    "sourceType": "module"
-  },
+  "parser": "babel-eslint",
   "env": {
     "browser": true,
     "node": true,
@@ -24,6 +21,7 @@
         "devDependencies": [
           "**/*.dev.js",
           "**/*.test.js",
+          "**/*.stories.js",
           "server.js",
           "next.config.js",
           "postcss.config.js",

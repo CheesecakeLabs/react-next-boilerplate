@@ -1,10 +1,9 @@
 import React, { Fragment } from 'react'
 
+import Button from '_components/atoms/button'
 import logo from '_components/assets/icons/logo.png'
 
 import styles from './styles.css'
-
-import Button from '_components/atoms/button'
 
 const CKLBoilerplate = () => (
   <Fragment>
