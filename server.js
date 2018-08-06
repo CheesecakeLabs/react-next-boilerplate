@@ -1,9 +1,12 @@
 const { join } = require('path')
 const { parse } = require('url')
 
+const session = require('express-session')
 const express = require('express')
 const next = require('next')
+const cookieParser = require('cookie-parser')
 
+const proxy = require('./server-proxy')
 const routes = require('./routes')
 
 const dev = process.env.NODE_ENV !== 'production'
@@ -25,10 +28,23 @@ const handler = routes.getRequestHandler(app, ({ req, res, route, query }) => {
 
 app.prepare().then(() => {
   const server = express()
+
+  // Authorization Cookie handle
+  server.use(cookieParser())
+
+  // Server Proxy
+  server.use(proxy())
+
+  // Create a session between server and client side.
+  server.use(
+    session({ secret: process.env.SESSION_SECRET, resave: true, saveUninitialized: false })
+  )
+
+  // Route's handler from next-js
   server.use(handler)
 
   server.listen(PORT, err => {
     if (err) throw err
-    console.info(`> Ready on http://localhost:${PORT}`)
+    console.log(`> Ready on http://localhost:${PORT}`)
   })
 })

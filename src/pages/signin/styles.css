@@ -1,0 +1,33 @@
+.siginWrapper {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #545454
+
+}
+.siginEmailField {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.socialButtons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 50px;
+}
+
+.facebookButton {
+  background-color: #4469B0;
+  color: white;
+  width: 190px;
+  padding: 10px;
+  font: bold 16px Roboto;
+  border-radius: 2px;
+  border: 1px solid transparent;
+  margin-right: 10px;
+  cursor: pointer;
+}

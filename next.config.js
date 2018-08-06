@@ -9,7 +9,7 @@ const withCSS = require('@zeit/next-css')
 const withSourceMaps = require('@zeit/next-source-maps')
 const optimizedImages = require('next-optimized-images')
 const withOffline = require('next-offline')
-
+const webpack = require('webpack')
 const webpackExtra = require('./webpack.extra')
 
 require('dotenv').config()
