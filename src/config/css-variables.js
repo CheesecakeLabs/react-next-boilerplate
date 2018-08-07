@@ -32,6 +32,7 @@ styles['color-primary-dark'] = '#888888'
 styles['color-primary-light'] = '#D8D8D8'
 
 styles['color-error'] = '#F1615C'
+styles['color-warning'] = '#FFA500'
 
 styles['color-white'] = '#fff'
 

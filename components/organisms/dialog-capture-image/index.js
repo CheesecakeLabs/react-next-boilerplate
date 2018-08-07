@@ -3,8 +3,7 @@ import PropTypes from 'prop-types'
 
 import WebcamCapture from '_components/molecules/webcam-capture'
 import Dialog from '_components/molecules/dialog'
-import ErrorMessageList from '_components/molecules/error-message-list'
-import ErrorMessage from '_components/atoms/error-message'
+import Helper from '_components/atoms/helper'
 import Button from '_components/atoms/button'
 
 import styles from './styles.css'
@@ -54,11 +53,13 @@ class DialogCaptureImage extends Component {
     } = this.props
     return (
       <Dialog isOpen={isOpen} title={title} onCancelClick={onCancelClick}>
-        <ErrorMessageList>
+        <div>
           {invalidProperties.map((error, index) => (
-            <ErrorMessage key={index.toString()}>{error}</ErrorMessage>
+            <Helper key={index.toString()} type="error">
+              {error}
+            </Helper>
           ))}
-        </ErrorMessageList>
+        </div>
         <input
           style={{ display: 'none' }}
           type="file"
