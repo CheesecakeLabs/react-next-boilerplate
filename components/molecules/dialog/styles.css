@@ -1,0 +1,50 @@
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-white);
+  margin: auto;
+  padding: 20px;
+  border: 1px solid var(--color-primary-dark);
+  width: 30%;
+  height: auto;
+  max-height: 300px;
+  border-radius: 5px;
+  position: relative;
+  transition: all 0.3s ease-out;
+}
+
+.body {
+  text-align: center;
+}
+
+.opened {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.closed {
+  transform: translateY(-100vh);
+  opacity: 0;
+}
+
+.title {
+  font: 600 15px var(--font-default);
+  color: var(--color-gray-dark);
+  margin-top: 20px;
+}
+
+.close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: white;
+  width: auto;
+  margin: 10px;
+}
+
+.iconClose {
+  width: 15px;
+  height: 15px;
+}

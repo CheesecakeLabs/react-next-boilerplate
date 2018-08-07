@@ -27,4 +27,17 @@ styles['color-input-primary'] = '#60cae5'
 
 styles['color-disabled'] = '#C4CDD5'
 
+styles['color-primary'] = '#007aff'
+styles['color-primary-dark'] = '#888888'
+styles['color-primary-light'] = '#D8D8D8'
+
+styles['color-error'] = '#F1615C'
+styles['color-warning'] = '#FFA500'
+
+styles['color-white'] = '#fff'
+
+styles['color-gray-default'] = '#777777'
+styles['color-gray-dark'] = '#676767'
+styles['color-gray-light'] = '#E2E2E2'
+
 module.exports = styles

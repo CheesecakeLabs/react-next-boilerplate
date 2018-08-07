@@ -9,6 +9,10 @@ export default class DefaultDocument extends Document {
         <Head>
           <meta name="viewport" content="width=device-width, initial-scale=1.0" />
           <link
+            rel="stylesheet"
+            href="https://unpkg.com/react-image-crop@4.0.1/dist/ReactCrop.css"
+          />
+          <link
             href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700"
             rel="stylesheet"
           />
