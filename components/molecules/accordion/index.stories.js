@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react'
 
 import Accordion from './index'
 
-storiesOf('Accordion', module).add('Accordion', () => (
+storiesOf('Molecules/Accordion', module).add('Accordion', () => (
   <Accordion>
     <Accordion.Section title="Lorem ipsum">
       Morbi euismod consectetur est, eget vestibulum enim egestas vel. Maecenas ut tortor at massa
