@@ -6,12 +6,12 @@ import {
   isAInvalidFileSize,
   isAInvalidDimension,
   isAInvalidExtension,
-} from '_utils/file-validations'
-import DialogCaptureImage from '_organisms/dialog-capture-image'
-import DialogPreviewImage from '_organisms/dialog-preview-image'
-import Avatar from '_molecules/avatar'
-import Loader from '_atoms/loader'
-import Overlay from '_atoms/overlay'
+} from '_components/utils/file-validations'
+import DialogCaptureImage from '_components/organisms/dialog-capture-image'
+import DialogPreviewImage from '_components/organisms/dialog-preview-image'
+import Avatar from '_components/molecules/avatar'
+import Loader from '_components/atoms/loader'
+import Overlay from '_components/atoms/overlay'
 
 import styles from './styles.css'
 

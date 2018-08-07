@@ -2,9 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
-import IconButton from '_molecules/icon-button'
-import close from '_images/close-icon.svg'
-import Overlay from '_atoms/overlay'
+import close from '_components/assets/icons/close-icon.svg'
+import Overlay from '_components/atoms/overlay'
+import Button from '_components/atoms/button'
 
 import styles from './styles.css'
 
@@ -13,13 +13,9 @@ const Dialog = ({ isOpen, title, onCancelClick, children }) => (
     <div
       className={classNames(styles.content, { [styles.opened]: isOpen, [styles.closed]: !isOpen })}
     >
-      <IconButton
-        className={styles.close}
-        iconClassName={styles.iconClose}
-        onClick={onCancelClick}
-        icon={close}
-        alt="Close button"
-      />
+      <Button onClick={onCancelClick} className={styles.close}>
+        <Button.Icon src={close} alt="Close button" className={styles.iconClose} />
+      </Button>
       <p className={styles.title}>{title}</p>
       <div className={styles.body}>{children}</div>
     </div>

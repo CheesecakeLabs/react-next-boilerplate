@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import Image from '_atoms/image'
+import Image from '_components/atoms/image'
 import profilePlaceholdor from '_images/profile-placeholder.png'
 
 import styles from './styles.css'

@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
-import WebcamCapture from '_molecules/webcam-capture'
-import Dialog from '_molecules/dialog'
-import ErrorMessageList from '_molecules/error-message-list'
-import ErrorMessage from '_atoms/error-message'
-import Button from '_atoms/button'
+import WebcamCapture from '_components/molecules/webcam-capture'
+import Dialog from '_components/molecules/dialog'
+import ErrorMessageList from '_components/molecules/error-message-list'
+import ErrorMessage from '_components/atoms/error-message'
+import Button from '_components/atoms/button'
+
+import styles from './styles.css'
 
 class DialogCaptureImage extends Component {
   static propTypes = {
@@ -71,7 +73,9 @@ class DialogCaptureImage extends Component {
           {userMediaEnabled && (
             <WebcamCapture onImageCaptured={onImageSelected} userMedia={userMedia} />
           )}
-          <Button onClick={() => this.fileInput.click()}>Upload photo</Button>
+          <Button onClick={() => this.fileInput.click()} className={styles.uploadButton}>
+            Upload photo
+          </Button>
         </div>
       </Dialog>
     )

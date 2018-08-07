@@ -2,7 +2,7 @@ import React from 'react'
 import { storiesOf } from '@storybook/react'
 
 import cklLogo from '_images/ckl-logo.png'
-import ImageCrop from '_molecules/image-crop'
+import ImageCrop from '_components/molecules/image-crop'
 
 storiesOf('Molecules/ImageCrop', module)
   .add('Free aspect', () => <ImageCrop selectedFile={cklLogo} />)

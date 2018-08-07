@@ -3,10 +3,10 @@ import PropTypes from 'prop-types'
 
 import 'react-image-crop/dist/ReactCrop.css'
 
-import ImageCrop from '_molecules/image-crop'
-import Dialog from '_molecules/dialog'
-import Image from '_atoms/image'
-import Button from '_atoms/button'
+import ImageCrop from '_components/molecules/image-crop'
+import Dialog from '_components/molecules/dialog'
+import Image from '_components/atoms/image'
+import Button from '_components/atoms/button'
 
 import styles from './styles.css'
 

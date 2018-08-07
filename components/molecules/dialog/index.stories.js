@@ -1,7 +1,7 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
 
-import Dialog from '_molecules/dialog'
+import Dialog from '_components/molecules/dialog'
 
 storiesOf('Molecules/Dialog', module).add('Dialog', () => (
   <Dialog isOpen title="This is the title">

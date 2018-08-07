@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react'
 import { createClient } from 'fetches'
 import { Provider } from 'react-fetches'
 
-import EditableImage from '_organisms/editable-image'
+import EditableImage from '_components/organisms/editable-image'
 
 const client = createClient(process.env.IMAGE_UPLOAD_ENDPOINT, {
   uri: { removeTrailingSlash: true },
@@ -12,7 +12,7 @@ const client = createClient(process.env.IMAGE_UPLOAD_ENDPOINT, {
 storiesOf('Organisms/Update avatar', module)
   .add('from camera or computer', () => (
     <Provider client={client}>
-      <EditableImage withCrop />
+      <EditableImage />
     </Provider>
   ))
   .add('from computer', () => (

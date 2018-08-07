@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Webcam from 'react-webcam'
 import PropTypes from 'prop-types'
 
-import Button from '_atoms/button'
+import Button from '_components/atoms/button'
 
 import styles from './styles.css'
 

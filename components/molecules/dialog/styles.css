@@ -39,6 +39,9 @@
   position: absolute;
   top: 0;
   right: 0;
+  background: white;
+  width: auto;
+  margin: 10px;
 }
 
 .iconClose {
