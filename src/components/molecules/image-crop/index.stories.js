@@ -1,6 +1,5 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
-import { action } from '@storybook/addon-actions'
 
 import cklLogo from '_images/ckl-logo.png'
 import ImageCrop from '_molecules/image-crop'

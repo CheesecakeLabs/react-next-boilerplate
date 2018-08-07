@@ -5,7 +5,12 @@ import classNames from 'classnames/bind'
 import styles from './styles.css'
 
 const Button = ({ onClick, className, disabled, children }) => (
-  <button className={classNames(styles.button, className)} onClick={onClick} disabled={disabled}>
+  <button
+    className={classNames(styles.button, className)}
+    onClick={onClick}
+    disabled={disabled}
+    type="button"
+  >
     {children}
   </button>
 )

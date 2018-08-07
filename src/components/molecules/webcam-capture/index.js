@@ -12,12 +12,14 @@ class WebcamCapture extends Component {
   }
 
   capture = () => {
+    const { onImageCaptured } = this.props
     const imageSrc = this.webcam.getScreenshot()
-    this.props.onImageCaptured(imageSrc)
+    onImageCaptured(imageSrc)
   }
 
   render() {
-    const { height, width, scrennshotFormat, videoConstraints } = this.props.userMedia
+    const { userMedia } = this.props
+    const { height, width, scrennshotFormat, videoConstraints } = userMedia
     return (
       <div className={styles.webcamContainer}>
         <Webcam

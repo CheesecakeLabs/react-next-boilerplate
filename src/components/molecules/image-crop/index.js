@@ -19,8 +19,9 @@ class ImageCrop extends Component {
   }
 
   onImageLoaded = image => {
-    let { cropShape, crop } = this.props
-    //when the shape is a circle the aspect should be 1
+    const { cropShape } = this.props
+    let { crop } = this.props
+    // when the shape is a circle the aspect should be 1
     if (cropShape === 'circle') {
       crop = { ...crop, aspect: 1 }
     }
@@ -49,6 +50,7 @@ class ImageCrop extends Component {
   }
 
   getCroppedImage = () => {
+    const { onImageCropped } = this.props
     const { pixelCrop, originalImage } = this.state
     const canvas = document.createElement('canvas')
     canvas.width = pixelCrop.width
@@ -68,17 +70,18 @@ class ImageCrop extends Component {
     )
 
     const base64Image = canvas.toDataURL('image/jpeg')
-    this.props.onImageCropped(base64Image)
+    onImageCropped(base64Image)
   }
 
   render() {
-    const { cropShape } = this.props
+    const { selectedFile, cropShape } = this.props
+    const { crop } = this.state
     return (
       <div>
         <div className={classNames(styles.container, SHAPES[cropShape])}>
           <ReactCrop
-            src={this.props.selectedFile}
-            crop={this.state.crop}
+            src={selectedFile}
+            crop={crop}
             onImageLoaded={this.onImageLoaded}
             onComplete={this.onCropComplete}
             onChange={this.onCropChange}
