@@ -11,8 +11,11 @@ import Button from '_atoms/button'
 import styles from './styles.css'
 
 class DialogPreviewImage extends Component {
-  state = {
-    newImage: this.props.selectedFile,
+  constructor(props) {
+    super(props)
+    this.state = {
+      newImage: props.selectedFile,
+    }
   }
 
   setNewImage = image => {
