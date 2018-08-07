@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-fetches'
+
 import {
   isAInvalidFileSize,
   isAInvalidDimension,
   isAInvalidExtension,
 } from '_utils/file-validations'
-
 import DialogCaptureImage from '_organisms/dialog-capture-image'
 import DialogPreviewImage from '_organisms/dialog-preview-image'
 import Avatar from '_molecules/avatar'
@@ -34,7 +34,8 @@ class EditableImage extends Component {
   }
 
   onImageSelectedOrCaptured = imageSrc => {
-    if (this.props.withPreview) {
+    const { withPreview } = this.props
+    if (withPreview) {
       this.setImagePreviewState(imageSrc)
     } else {
       this.uploadImage(imageSrc)
@@ -103,14 +104,15 @@ class EditableImage extends Component {
   }
 
   selectedOrTakeAPhoto = () => {
+    const { accept, userMediaEnabled, userMedia } = this.props
     const { showDialogToGetImage, showImagePreviewOrEdition } = this.state
     return (
       <DialogCaptureImage
         isOpen={!showImagePreviewOrEdition && showDialogToGetImage}
         title="Selected or take a photo"
-        accept={this.props.accept}
-        userMediaEnabled={this.props.userMediaEnabled}
-        userMedia={this.props.userMedia}
+        accept={accept}
+        userMediaEnabled={userMediaEnabled}
+        userMedia={userMedia}
         fileSelectedHandler={this.fileSelectedHandler}
         invalidProperties={this.renderErrors()}
         onImageSelected={this.onImageSelectedOrCaptured}
@@ -127,7 +129,9 @@ class EditableImage extends Component {
         type="file"
         onChange={this.fileSelectedHandler}
         accept={accept}
-        ref={fileInput => (this.fileInput = fileInput)}
+        ref={fileInput => {
+          this.fileInput = fileInput
+        }}
         multiple={false}
       />
     )
@@ -141,9 +145,11 @@ class EditableImage extends Component {
     this.setState({ showImagePreviewOrEdition: false })
   }
 
-  uploadImage = image => {
+  uploadImage = () => {
+    const { uploadImage } = this.props
+    const { selectedFile } = this.state
     this.setState({ showLoader: true })
-    this.props.uploadImage({ file: image }).then(({ data, error }) => {
+    uploadImage({ file: selectedFile }).then(({ data }) => {
       this.setState(() => ({
         imageUploadResponse: data,
         showImagePreviewOrEdition: false,
@@ -166,31 +172,31 @@ class EditableImage extends Component {
     const reader = new FileReader()
     const file = event.target.files[0]
 
-    reader.onload = event => {
+    reader.onload = e => {
       const image = new Image()
-      image.src = event.target.result
+      image.src = e.target.result
       const imgExtension = `.${file.type.split('/').pop()}`
       image.onload = () => {
         this.validateImageProperties(file.size, image.height, image.width, imgExtension)
         this.onImageSelectedOrCaptured(image.src)
       }
     }
-    event.target.value = null
     reader.readAsDataURL(file)
   }
 
   renderErrors = () => {
     const { invalidFileSizeText, invalidFileDimensionsText, invalidFileExtension } = this.props
+    const { notAcceptedFileSize, notAcceptedFileDimensions, notAcceptedFileExtension } = this.state
     let invalidProperties = []
-    if (this.state.notAcceptedFileSize) {
+    if (notAcceptedFileSize) {
       invalidProperties = [...invalidProperties, invalidFileSizeText]
     }
 
-    if (this.state.notAcceptedFileDimensions) {
+    if (notAcceptedFileDimensions) {
       invalidProperties = [...invalidProperties, invalidFileDimensionsText]
     }
 
-    if (this.state.notAcceptedFileExtension) {
+    if (notAcceptedFileExtension) {
       invalidProperties = [...invalidProperties, invalidFileExtension]
     }
 
@@ -254,6 +260,7 @@ EditableImage.propTypes = {
       facingMode: PropTypes.string,
     }),
   }),
+  uploadImage: PropTypes.func.isRequired,
 }
 
 EditableImage.defaultProps = {
