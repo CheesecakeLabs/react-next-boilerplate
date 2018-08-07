@@ -1,23 +1,46 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
-import { action } from '@storybook/addon-actions'
+import { createClient } from 'fetches'
+import { Provider } from 'react-fetches'
 
 import EditableImage from '_organisms/editable-image'
 
+const client = createClient(process.env.IMAGE_UPLOAD_ENDPOINT, {
+  uri: { removeTrailingSlash: true },
+})
+
 storiesOf('Organisms/Update avatar', module)
-  .add('from camera or computer', () => <EditableImage />)
-  .add('from computer', () => <EditableImage userMediaEnabled={false} />)
-  .add('with crop', () => (
-    <EditableImage
-      withCrop
-      crop={{
-        aspect: 1,
-        x: 10,
-        y: 10,
-        width: 80,
-        height: 80,
-      }}
-    />
+  .add('from camera or computer', () => (
+    <Provider client={client}>
+      <EditableImage withCrop />
+    </Provider>
   ))
-  .add('accepted just png', () => <EditableImage acceptedImgExtensions={['.png']} />)
-  .add('without preview', () => <EditableImage withPreview={false} />)
+  .add('from computer', () => (
+    <Provider client={client}>
+      <EditableImage userMediaEnabled={false} />
+    </Provider>
+  ))
+  .add('with crop', () => (
+    <Provider client={client}>
+      <EditableImage
+        withCrop
+        crop={{
+          aspect: 1,
+          x: 10,
+          y: 10,
+          width: 80,
+          height: 80,
+        }}
+      />
+    </Provider>
+  ))
+  .add('accepted just png', () => (
+    <Provider client={client}>
+      <EditableImage acceptedImgExtensions={['.png']} />
+    </Provider>
+  ))
+  .add('without preview', () => (
+    <Provider client={client}>
+      <EditableImage withPreview={false} />
+    </Provider>
+  ))
