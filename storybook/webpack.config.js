@@ -5,6 +5,7 @@ const extra = require('../webpack.extra.js')
 module.exports = (baseConfig, env, defaultConfig) => {
   const cssRule = {
     test: /\.css$/,
+    exclude: /node_modules/,
     use: [
       {
         loader: 'style-loader',
@@ -25,6 +26,33 @@ module.exports = (baseConfig, env, defaultConfig) => {
       },
     ],
   }
+  const cssRuleModules = {
+    test: /\.css$/,
+    include: /node_modules/,
+    use: [
+      {
+        loader: 'style-loader',
+      },
+      {
+        loader: 'css-loader',
+        options: {
+          modules: false,
+        },
+      },
+      {
+        loader: 'postcss-loader',
+        options: {
+          config: {
+            path: path.resolve(process.cwd()),
+          },
+        },
+      },
+    ],
+  }
+
+  const rules = defaultConfig.module.rules.map(rule => (rule.test.test('.css') ? cssRule : rule))
+  rules.push(cssRuleModules)
+
   const config = {
     ...defaultConfig,
     resolve: {
@@ -33,7 +61,7 @@ module.exports = (baseConfig, env, defaultConfig) => {
     },
     module: {
       ...defaultConfig.module,
-      rules: defaultConfig.module.rules.map(rule => (rule.test.test('.css') ? cssRule : rule)),
+      rules,
     },
   }
 
