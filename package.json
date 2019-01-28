@@ -1,7 +1,7 @@
 {
-  "name": "singularity-directory-webapp-react",
+  "name": "react-next-boilerplate",
   "version": "1.0.0",
-  "description": "",
+  "description": "Components boilerplate",
   "main": "index.js",
   "scripts": {
     "test": "echo 'TODO: we need to add some tests on this project as soon as possible!'",
@@ -10,9 +10,13 @@
     "dev": "node server.js",
     "build": "next build src",
     "start": "NODE_ENV=production node server.js",
-    "storybook": "start-storybook -p 9009 -c storybook",
-    "precommit": "npm run eslint-staged",
-    "prepush": "npm run eslint && npm run test"
+    "storybook": "start-storybook -p 9009 -c storybook"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run eslint-staged",
+      "pre-push": "npm run eslint && npm run test"
+    }
   },
   "author": "Daniel Leite de Oliveira <dleitee@gmail.com> (https://github.com/dleitee)",
   "license": "ISC",
