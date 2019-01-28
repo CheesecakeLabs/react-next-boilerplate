@@ -34,7 +34,7 @@
     "prop-types": "^15.6.2",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
-    "react-fetches": "^2.0.0-3",
+    "react-fetches": "^1.0.1-20.0",
     "react-image-crop": "^6.0.12",
     "react-popover": "^0.5.10",
     "react-portal": "^4.2.0",
