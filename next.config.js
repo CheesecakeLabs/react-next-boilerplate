@@ -33,10 +33,8 @@ const nextConfiguration = {
             const main = entry['main.js']
             const pages = glob.sync('./src/pages/**/*.js').map(page => page.replace('src/', ''))
             return {
+              ...entry,
               'main.js': [...main, ...pages],
-              'bundles/pages/_app.js': './pages/_app.js',
-              'bundles/pages/_document.js': './pages/_document.js',
-              'bundles/pages/_error.js': './pages/_error.js',
             }
           }),
       }
