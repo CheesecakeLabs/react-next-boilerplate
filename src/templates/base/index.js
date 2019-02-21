@@ -8,7 +8,10 @@ import '_styles/base.css'
 const Base = ({ title, children }) => (
   <div>
     <Head>
-      <title>{TITLE}{title && ` - ${title}`}</title>
+      <title>
+        {TITLE}
+        {title && ` - ${title}`}
+      </title>
     </Head>
     {children}
   </div>
