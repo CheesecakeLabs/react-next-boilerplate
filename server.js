@@ -1,34 +1,35 @@
-const { join } = require('path')
-const { parse } = require('url')
-
 const express = require('express')
 const next = require('next')
+const compression = require('compression')
+const path = require('path')
 
-const routes = require('./routes')
+const isDev = process.env.NODE_ENV !== 'production'
+const port = 3000
+const app = next({ dev: isDev, dir: './src' })
+const handle = app.getRequestHandler()
 
-const dev = process.env.NODE_ENV !== 'production'
-const PORT = process.env.PORT || 5000
+app
+  .prepare()
+  .then(() => {
+    const server = express()
+    server.use(compression())
 
-const app = next({ dir: './src/', dev })
+    server.get('/service-worker.js', (req, res) => {
+      const filePath = path.join(__dirname, 'src', '.next', 'service-worker.js')
 
-const handler = routes.getRequestHandler(app, ({ req, res, route, query }) => {
-  const parsedUrl = parse(req.url, true)
-  const { pathname } = parsedUrl
-  if (pathname === '/service-worker.js') {
-    const filePath = join(__dirname, '.next', pathname)
+      return app.serveStatic(req, res, filePath)
+    })
 
-    return app.serveStatic(req, res, filePath)
-  }
+    server.get('*', (req, res) => {
+      return handle(req, res)
+    })
 
-  return app.render(req, res, route.page, query)
-})
-
-app.prepare().then(() => {
-  const server = express()
-  server.use(handler)
-
-  server.listen(PORT, err => {
-    if (err) throw err
-    console.info(`> Ready on http://localhost:${PORT}`)
+    server.listen(port, err => {
+      if (err) throw err
+      console.info(`> Ready on http://localhost:${port}`)
+    })
   })
-})
+  .catch(ex => {
+    console.error(ex.stack)
+    process.exit(1)
+  })
