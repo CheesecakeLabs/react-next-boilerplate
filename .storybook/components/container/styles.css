@@ -1,0 +1,13 @@
+.container {
+  padding: 10px;
+}
+
+.dark {
+  background: var(--color-luftblue);
+}
+
+.darkResponsive {
+  @media (min-width: 769px) {
+    background: var(--color-luftblue);
+  }
+}

@@ -1,0 +1,21 @@
+:root {
+  --color-heliow: #febb01;
+  --color-buddhagold: #cc9600;
+  --color-luftblue: #04164d;
+  --color-darknavyblue: #000003;
+  --color-iconblue: #083d83;
+  --color-paleluft: #ebecf1;
+  --color-darkgrey: #6e6f74;
+  --color-grey: #87888c;
+  --color-lightgrey: #adadad;
+  --color-lightpink: #e5e5e5;
+  --color-errorpink: #e35365;
+  --color-white: #fff;
+  --color-black: #323232;
+  --color-alto: #d7d7d7;
+  --color-greyblue: #5d698c;
+  --color-silver: #c0bebe;
+  --font-primary: 'Rubik', sans-serif;
+  --font-secondary: 'Muli', sans-serif;
+  --font-condensed: 'Saira Extra Condensed', sans-serif;
+}
