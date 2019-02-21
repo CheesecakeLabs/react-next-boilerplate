@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "test": "We need make more tests in our apps",
     "dev": "node server.js",
     "build": "next build src",
     "start": "NODE_ENV=production node server.js",
