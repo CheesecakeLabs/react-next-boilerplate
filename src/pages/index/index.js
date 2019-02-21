@@ -1,19 +1,7 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 
-import logo from '_storybook/assets/icons/logo.png'
+import Base from '_templates/base'
 
-import styles from './styles.css'
+const Index = () => <Base title="Home"><h1>React Next Boilerplate</h1></Base>
 
-const CKLBoilerplate = () => (
-  <Fragment>
-    <div className={styles.logoContainer}>
-      <img src={logo} alt="CheesecakeLabs logo" className={styles.logo} />
-    </div>
-    <hr />
-    {/* eslint-disable-next-line jsx-a11y/no-distracting-elements */}
-    <marquee className={styles.text}>React Boilerplate</marquee>
-    <hr />
-  </Fragment>
-)
-
-export default CKLBoilerplate
+export default Index

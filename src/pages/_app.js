@@ -1,23 +1,45 @@
-import App, { Container } from 'next/app'
 import React from 'react'
+import App, { Container } from 'next/app'
+import Cookie from 'js-cookie'
 import { createClient } from 'fetches'
 import { Provider } from 'react-fetches'
 
-const client = createClient(process.env.IMAGE_UPLOAD_ENDPOINT, {
-  uri: { removeTrailingSlash: true },
+import verifyTokenMiddleware from '_middlewares/verify-token'
+
+const client = createClient(process.env.API_URL || 'http://api.example.com', {
+  after: [verifyTokenMiddleware],
+  request: {
+    headers: {
+      Authorization: Cookie.get('token') ? `Token ${Cookie.get('token')}` : '',
+    },
+  },
+  uri: {
+    removeTrailingSlash: false,
+  },
 })
 
-class ProjectApp extends App {
-  render() {
+class MyApp extends App {
+  static async getInitialProps({ Component, ctx }) {
+    let pageProps = {}
+
+    if (Component.getInitialProps) {
+      pageProps = await Component.getInitialProps(ctx)
+    }
+
+    return { pageProps }
+  }
+
+  render () {
     const { Component, pageProps } = this.props
+
     return (
-      <Provider client={client}>
-        <Container>
+      <Container>
+        <Provider client={client}>
           <Component {...pageProps} />
-        </Container>
-      </Provider>
+        </Provider>
+      </Container>
     )
   }
 }
 
-export default ProjectApp
+export default MyApp
