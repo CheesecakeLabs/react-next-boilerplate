@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "We need make more tests in our apps",
+    "test": "echo 'TODO: we need to add some tests on this project as soon as possible!'",
     "dev": "node server.js",
     "build": "next build src",
     "start": "NODE_ENV=production node server.js",
