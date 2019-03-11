@@ -6,6 +6,6 @@
   "bracketSpacing": true,
   "arrowParens": "avoid",
   "jsxBracketSameLine": false,
-  "parser": "babylon",
+  "parser": "babel",
   "semi": false
 }

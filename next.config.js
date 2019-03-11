@@ -1,7 +1,5 @@
 const path = require('path')
 
-// TODO: we need to check why this file is not parsing by .eslintrc.json
-// eslint-disable-next-line import/no-extraneous-dependencies
 const webpack = require('webpack')
 const glob = require('glob')
 const withPlugins = require('next-compose-plugins')
@@ -15,34 +13,33 @@ const webpackExtra = require('./webpack.extra')
 require('dotenv').config()
 
 const nextConfiguration = {
-  webpack: (config, options) => {
-    const entryFactory = config.entry
+  webpack: (nextConfig, options) => {
+    const entryFactory = nextConfig.entry
     const { isServer, defaultLoaders } = options
-    // eslint-disable-next-line no-param-reassign
+    const config = { ...nextConfig, ...webpackExtra }
+
     config.plugins = [...config.plugins, new webpack.EnvironmentPlugin(process.env)]
     config.module.rules.push({
       test: /\.+(js|jsx)$/,
       include: [path.resolve(process.cwd(), 'components')],
       use: [defaultLoaders.babel],
     })
+
     if (!isServer) {
-      const newConfig = {
+      return {
         ...config,
         entry: () =>
           entryFactory().then(entry => {
             const main = entry['main.js']
             const pages = glob.sync('./src/pages/**/*.js').map(page => page.replace('src/', ''))
             return {
+              ...entry,
               'main.js': [...main, ...pages],
-              'bundles/pages/_app.js': './pages/_app.js',
-              'bundles/pages/_document.js': './pages/_document.js',
-              'bundles/pages/_error.js': './pages/_error.js',
             }
           }),
       }
-      return Object.assign({}, newConfig, webpackExtra)
     }
-    return Object.assign({}, config, webpackExtra)
+    return config
   },
   poweredByHeader: false,
   rootPaths: ['./src'],
