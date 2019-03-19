@@ -6,6 +6,14 @@
   "bracketSpacing": true,
   "arrowParens": "avoid",
   "jsxBracketSameLine": false,
-  "parser": "babel",
-  "semi": false
+  "semi": false,
+  "overrides": [
+    {
+      "files": "*.css",
+      "options": {
+        "singleQuote": false,
+        "parser": "css"
+      }
+    }
+  ]
 }
