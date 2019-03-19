@@ -6,6 +6,7 @@
   "bracketSpacing": true,
   "arrowParens": "avoid",
   "jsxBracketSameLine": false,
+  "parser": "babel",
   "semi": false,
   "overrides": [
     {
