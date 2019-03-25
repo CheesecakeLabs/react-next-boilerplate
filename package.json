@@ -6,7 +6,9 @@
   "scripts": {
     "test": "echo 'TODO: we need to add some tests on this project as soon as possible!'",
     "eslint-staged": "files=`git diff --staged --diff-filter=AM --name-only | grep .js$ | tr '\n' ' '`; if [ -n \"$files\" ]; then eslint $files; fi;",
+    "stylelint-staged": "files=`git diff --staged --diff-filter-AM --name-only | grep .css$ | tr '\n' ' '`; if [ -n \"$files\" ]; then stylelint $files fi;",
     "eslint": "eslint .",
+    "stylelint": "stylelint .",
     "dev": "node server.js",
     "build": "next build src",
     "start": "NODE_ENV=production node server.js",
@@ -42,9 +44,11 @@
     "react-image-crop": "^6.0.12",
     "react-popover": "^0.5.10",
     "react-portal": "^4.2.0",
-    "react-webcam": "^1.1.0"
+    "react-webcam": "^1.1.0",
+    "stylelint-config-prettier": "^5.0.0"
   },
   "devDependencies": {
+    "@cheesecakelabs/stylelint-config-cheesecakelabs": "0.2.1",
     "@storybook/addon-info": "^4.1.11",
     "@storybook/addon-knobs": "^4.1.11",
     "@storybook/react": "^4.1.11",
@@ -64,6 +68,9 @@
     "postcss-inline-svg": "^3.1.1",
     "postcss-nested": "^4.1.1",
     "prettier": "^1.16.1",
+    "stylelint": "^9.10.1",
+    "stylelint-config-css-modules": "^1.3.0",
+    "stylelint-prettier": "^1.0.6",
     "webpack": "^4.29.0"
   }
 }

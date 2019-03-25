@@ -1,7 +1,7 @@
 .imageContainer {
   width: 50%;
   height: 200px;
-  border: 2px solid #E5E5E5;
+  border: 2px solid #e5e5e5;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -14,7 +14,6 @@
   &:hover {
     background-color: var(--color-gray-light);
   }
-
   &:active {
     opacity: 0.5;
   }
