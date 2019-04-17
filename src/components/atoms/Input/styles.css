@@ -1,0 +1,19 @@
+.input {
+  outline: 0;
+  transition: all .3s ease-in-out;
+  color: #323232;
+  border: 1px solid #979797;
+  border-radius: 3px;
+  padding: .6rem .8rem;
+  font-family: 'Source Sans Pro', Arial, sans-serif;
+  font-size: .9rem;
+
+  &:hover {
+    border-color: #000000;
+  }
+
+  &:not([type="radio"]):not([type="checkbox"]):focus {
+    box-shadow: 0 0px 2px 2px #91d0d9;
+    border-color: var(--color-focusable-blue);
+  }
+}
